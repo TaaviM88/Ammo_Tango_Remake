@@ -16,7 +16,7 @@ public class P2Movement : MonoBehaviour
         Vector3 moveDirection = new Vector3(Input.GetAxis("LeftStickHorizontalP2"), 0, Input.GetAxis("LeftStickVerticalP2"));
         Vector3 lookDirection = new Vector3(Input.GetAxis("RightStickHorizontalP2"), 0, Input.GetAxis("RightStickVerticalP2"));
 
-        transform.rotation = Quaternion.Euler(lookDirection);
         MyRb.velocity = moveDirection * MovementSpeed;
+        transform.rotation = Quaternion.LookRotation(lookDirection);
     }
 }
