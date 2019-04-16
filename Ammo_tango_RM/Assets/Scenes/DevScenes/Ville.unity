@@ -124,7 +124,7 @@ GameObject:
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -136,7 +136,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 152404918}
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 1.13, y: 0.65, z: 0}
+  m_LocalPosition: {x: 0.34, y: 0.65, z: -1.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 346519181}
@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 346519182}
   - component: {fileID: 346519183}
   - component: {fileID: 346519184}
+  - component: {fileID: 346519185}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Player
@@ -298,14 +299,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 346519177}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 1.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 152404919}
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!114 &346519182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,11 +348,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e317a5cc00315324fb7f97f0d9a2ac06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  cooldown: 0
+  damage: 20
+  cooldown: 1
   ammo: {fileID: 6498116042369813284, guid: 9028e48426e5bd74abf647b691a9378c, type: 3}
   player: {fileID: 346519182}
   shotspawn: {fileID: 152404919}
+--- !u!114 &346519185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346519177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce39a820e6c54548879ff4e09f697e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovementSpeed: 3
 --- !u!1001 &579669968
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -761,8 +775,8 @@ GameObject:
   - component: {fileID: 1508790286}
   - component: {fileID: 1508790291}
   - component: {fileID: 1508790290}
-  - component: {fileID: 1508790292}
   - component: {fileID: 1508790293}
+  - component: {fileID: 1508790292}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -882,7 +896,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1508790285}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0be13f52ab1959c4380eb63cbc49d9aa, type: 3}
+  m_Script: {fileID: 11500000, guid: 78684f50627c85b4a9fff80bb39002c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MovementSpeed: 3
