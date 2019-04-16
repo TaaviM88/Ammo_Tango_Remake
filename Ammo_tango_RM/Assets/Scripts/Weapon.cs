@@ -28,6 +28,7 @@ public class Weapon : MonoBehaviour {
         GameObject clone = Instantiate(ammo, shotspawn.transform.position, shotspawn.transform.rotation);
 
         clone.GetComponent<Rigidbody>().velocity = new Vector3(transform.forward.x * 10,transform.forward.y * 10,transform.forward.z * 10);
+
     }
 
     public bool cooldownTimer()
