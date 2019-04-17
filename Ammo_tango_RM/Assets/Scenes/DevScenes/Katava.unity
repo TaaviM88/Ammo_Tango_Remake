@@ -567,7 +567,7 @@ PrefabInstance:
     - target: {fileID: 1129475147745572116, guid: e45488b0ab6b6994fa103dd08556fc9f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1
+      value: 0.052
       objectReference: {fileID: 0}
     - target: {fileID: 1129475147745572116, guid: e45488b0ab6b6994fa103dd08556fc9f,
         type: 3}
@@ -656,7 +656,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1534299296}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0be13f52ab1959c4380eb63cbc49d9aa, type: 3}
+  m_Script: {fileID: 11500000, guid: 78684f50627c85b4a9fff80bb39002c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MovementSpeed: 10
@@ -674,7 +674,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 1
 --- !u!136 &1534299299
 CapsuleCollider:
@@ -743,7 +743,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1534299296}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.54, y: 0.06, z: 0.54}
+  m_LocalPosition: {x: 0.54, y: -0.036, z: 0.54}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 1695227509}
