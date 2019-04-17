@@ -44,4 +44,9 @@ public class Bullet : MonoBehaviour {
         rb.velocity = Vector3.zero;
         gameObject.SetActive(false);
     }
+
+    public void ResetTimer()
+    {
+        btimer = 0;
+    }
  }

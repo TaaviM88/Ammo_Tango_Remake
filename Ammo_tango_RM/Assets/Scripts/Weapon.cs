@@ -33,7 +33,8 @@ public class Weapon : MonoBehaviour {
 
         bullet.transform.position = shotspawn.position;
         bullet.transform.rotation = transform.rotation;
-
+        bullet.GetComponent<Rigidbody>().velocity = new Vector3(transform.forward.x * 1, transform.forward.y * 1, transform.forward.z * 1);
+        bullet.GetComponent<Bullet>().ResetTimer();
         bullet.SetActive(true);
 
         /*if (Time.time > nextfire)
