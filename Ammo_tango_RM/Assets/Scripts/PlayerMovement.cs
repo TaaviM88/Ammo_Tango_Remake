@@ -37,6 +37,18 @@ public class PlayerMovement : MonoBehaviour
                 lookDirection = new Vector3(Input.GetAxis("RightStickHorizontalP2"), 0, Input.GetAxis("RightStickVerticalP2"));
                 Movement(moveDirection, lookDirection);
                 break;
+
+            case 3:
+                moveDirection = new Vector3(Input.GetAxis("LeftStickHorizontalP3"), 0, Input.GetAxis("LeftStickVerticalP3"));
+                lookDirection = new Vector3(Input.GetAxis("RightStickHorizontalP3"), 0, Input.GetAxis("RightStickVerticalP3"));
+                Movement(moveDirection, lookDirection);
+                break;
+
+            case 4:
+                moveDirection = new Vector3(Input.GetAxis("LeftStickHorizontalP4"), 0, Input.GetAxis("LeftStickVerticalP4"));
+                lookDirection = new Vector3(Input.GetAxis("RightStickHorizontalP4"), 0, Input.GetAxis("RightStickVerticalP4"));
+                Movement(moveDirection, lookDirection);
+                break;
         }
     }
 
