@@ -6,6 +6,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public static List<GameObject> playerList;
+    public static List<GameObject> spawnpoints;
+
+    //public Transform[] spawnpoints;
 
     void Awake()
     {
@@ -25,7 +28,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
 
-        playerList = new List<GameObject>();
+        SetupGame();
 
     }
 
@@ -35,12 +38,30 @@ public class GameManager : MonoBehaviour
         Debug.Log(playerList.Count);
     }
 
-    public void addPlayer(GameObject player)
+    public void SetupGame()
+    {
+
+        //lisää timeri
+
+        playerList = new List<GameObject>();
+        spawnpoints = new List<GameObject>();
+
+        AddSpawnPoint(GameObject.Find("Spawn1"));
+        AddSpawnPoint(GameObject.Find("Spawn2"));
+
+        AddPlayer(GameObject.FindGameObjectWithTag("P1"));
+        AddPlayer(GameObject.FindGameObjectWithTag("P2"));
+
+        GetSpawnPoints();
+
+    }
+
+    public void AddPlayer(GameObject player)
     {
         playerList.Add(player);
     }
 
-    public void removePlayer(GameObject player)
+    public void RemovePlayer(GameObject player)
     {
         if (playerList.Contains(player)){
             playerList.Remove(player);
@@ -49,7 +70,7 @@ public class GameManager : MonoBehaviour
         return;
     }
 
-    public GameObject getPlayer(GameObject player)
+    public GameObject GetPlayer(GameObject player)
     {
         if (playerList.Contains(player))
         {
@@ -57,5 +78,28 @@ public class GameManager : MonoBehaviour
         }
 
         return null;
+    }
+
+    public void AddSpawnPoint(GameObject spawner)
+    {
+        spawnpoints.Add(spawner);
+    }
+
+    /// <summary>
+    /// Sets players on the playerList on spawnpoints on their respective list. Requires Spawn1, Spawn2 and Player1, Player2.
+    /// </summary>
+    public void GetSpawnPoints()
+    {
+        foreach(GameObject point in spawnpoints)
+        {
+            if (point.name.Equals("Spawn1"))
+            {
+                GetPlayer(playerList[0]).transform.position = point.transform.position;
+            }
+            if (point.name.Equals("Spawn2"))
+            {
+                GetPlayer(playerList[1]).transform.position = point.transform.position;
+            }
+        }
     }
 }
