@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour { 
+public class Bullet : MonoBehaviour {
 
+    [Header("Bullet Settings")]
     private float btimer;
     public float fadetime;
-    public int damage;
+    
+    [SerializeField]
+    private float speed = 10;
+    
+    [SerializeField]
+    private float damage;
     Rigidbody rb;
     // Start is called before the first frame update
     void Start()
@@ -23,6 +29,13 @@ public class Bullet : MonoBehaviour {
         {
             Disable();
         }
+    }
+
+    private void FixedUpdate()
+    {
+        rb.AddForce(Vector3.forward * (Time.deltaTime * speed), ForceMode.Impulse);
+        //rb.velocity = new Vector3(transform.forward.x * (Time.deltaTime * speed), transform.forward.y * (Time.deltaTime * speed), transform.forward.z * (Time.deltaTime * speed));
+
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -49,4 +62,11 @@ public class Bullet : MonoBehaviour {
     {
         btimer = 0;
     }
+
+    public void UpdateDamage(float newDMG)
+    {
+
+        damage = newDMG;
+    }
+
  }

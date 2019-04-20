@@ -8,7 +8,8 @@ public class PoolManager : MonoBehaviour
     public static PoolManager Instance;
 
     public GameObject bulletPrefab;
-    public GameObject enemyBulletPrefab;
+
+    //public GameObject enemyBulletPrefab;
     [SerializeField]
     private int maxAmountPlayer1Bullets = 12;
     [SerializeField]
@@ -29,21 +30,21 @@ public class PoolManager : MonoBehaviour
 
         }
 
-        for (int i = 0; i <= maxAmountPlayer2Bullets; i++)
+       /* for (int i = 0; i <= maxAmountPlayer2Bullets; i++)
         {
             GameObject player2Bullet = GameObject.Instantiate(enemyBulletPrefab);
             player2Bullet.transform.parent = this.transform;
             player2Bullet.SetActive(false);
             p2Bullets.Add(player2Bullet);
-        }
+        }*/
     }
     public GameObject GetPlayer1Bullet()
     {
         return p1Bullets.FirstOrDefault(x => !x.activeInHierarchy);
     }
 
-    public GameObject GetPlayer2Bullet()
+   /* public GameObject GetPlayer2Bullet()
     {
         return p2Bullets.FirstOrDefault(x => !x.activeInHierarchy);
-    }
+    }*/
 }

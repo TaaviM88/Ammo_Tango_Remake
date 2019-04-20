@@ -2,27 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour { 
+public class Player : MonoBehaviour {
 
-    [SerializeField]
-    private float currentHealth;
+    enum PlayerName {character1, character2, character3, character4 }
+
+    [Header("Player stats")]
+    
+    private float currentHealth = 10;
 
     [SerializeField]
     private float MaxHp;
 
-    [SerializeField]
-    private float currentShield;
+
+    private float currentShield = 0;
 
     [SerializeField]
     private float MaxShield;
 
-    private Weapon weapon;
+    private PlayerCombat combat;
 
     bool shieldOn = true;
     // Start is called before the first frame update
     void Start()
     {
-        weapon = gameObject.GetComponent<Weapon>();
+        combat = gameObject.GetComponent<PlayerCombat>();
         currentHealth = MaxHp;
         currentShield = MaxShield;
         shieldOn = true;
@@ -31,14 +34,9 @@ public class Player : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Fire3") && weapon.cooldownTimer() == true)
+        if(Input.GetButtonDown("Fire2") && combat.cooldownTimer() == true)
         {
-            weapon.shoot();
-        }
-
-        if (Input.GetButtonDown("Horizontal"))
-        {
-            transform.Rotate(0, 90, 0);
+            combat.shoot();
         }
 
     }
@@ -85,5 +83,13 @@ public class Player : MonoBehaviour {
     {
         //dying stuff here
         Debug.Log($"{gameObject.name} dies.");
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.GetComponent<WeaponBox>())
+        {
+            combat.UpdateWeapon(other.gameObject.GetComponent<WeaponBox>().ReturnWeapon());
+        } 
     }
 }
