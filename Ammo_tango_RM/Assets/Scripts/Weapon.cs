@@ -39,18 +39,21 @@ public class Weapon : MonoBehaviour
     public virtual void Shoot(Transform spawnBullet)
     {
 
-        //GameObject bulletClone = Instantiate(bullet, spawnBullet.position, spawnBullet.transform.rotation);
-        
-         GameObject bul = PoolManager.Instance.GetPlayer1Bullet();
+        GameObject bulletClone = Instantiate(bullet, spawnBullet.position, spawnBullet.rotation);
+        //bulletClone.GetComponent<Rigidbody>().AddForce(transform.forward * (Time.deltaTime * 60),ForceMode.Impulse);
+        /*GameObject bul = PoolManager.Instance.GetPlayer1Bullet();
          if (bul == null) return;
 
         bul.transform.position = spawnBullet.position;
-        bul.transform.rotation = transform.rotation;
+        bul.transform.rotation = spawnBullet.rotation;
+        bul.GetComponent<EmptyBullet>().AddBullet(bullet,damage);
+        
         //bullet.GetComponent<Rigidbody>().AddForce(Vector3.forward * Time.deltaTime * 6);
         //bullet.GetComponent<Rigidbody>().velocity = new Vector3(transform.forward.x * 1, transform.forward.y * 1, transform.forward.z * 1);
-        bul.GetComponent<Bullet>().ResetTimer();
-        bul.GetComponent<Bullet>().UpdateDamage(damage);
-        bul.SetActive(true);        
+        //bul.GetComponent<Bullet>().ResetTimer();
+        //bul.GetComponent<Bullet>().UpdateDamage(damage);
+        bul.SetActive(true);
+        */
     }
 
     public string ReturnName()

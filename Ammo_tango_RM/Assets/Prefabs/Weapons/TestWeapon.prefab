@@ -48,4 +48,4 @@ MonoBehaviour:
   fireRate: 1
   maxClipSize: 10
   reloadTime: 10
-  bullet: {fileID: 584501105366420901, guid: a7215e758fc69d24da171e86f47113d6, type: 3}
+  bullet: {fileID: 584501105366420901, guid: c0f87c3b1c0b2e74697f3f4ddfa24153, type: 3}

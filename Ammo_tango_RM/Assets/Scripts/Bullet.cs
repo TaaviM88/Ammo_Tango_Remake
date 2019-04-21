@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour {
     public float fadetime;
     
     [SerializeField]
-    private float speed = 10;
+    private float force = 10;
     
     [SerializeField]
     private float damage;
@@ -33,7 +33,8 @@ public class Bullet : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        rb.AddForce(Vector3.forward * (Time.deltaTime * speed), ForceMode.Impulse);
+        //rb.AddForce(Vector3.forward * (Time.deltaTime * speed), ForceMode.Impulse);
+        rb.AddForce( - transform.forward * (Time.deltaTime * force), ForceMode.Impulse);
         //rb.velocity = new Vector3(transform.forward.x * (Time.deltaTime * speed), transform.forward.y * (Time.deltaTime * speed), transform.forward.z * (Time.deltaTime * speed));
 
     }
@@ -69,4 +70,8 @@ public class Bullet : MonoBehaviour {
         damage = newDMG;
     }
 
+    public float ReturnTimer()
+    {
+        return fadetime;
+    }
  }
