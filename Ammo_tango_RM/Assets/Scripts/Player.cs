@@ -84,12 +84,14 @@ public class Player : MonoBehaviour {
         //dying stuff here
         Debug.Log($"{gameObject.name} dies.");
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.GetComponent<WeaponBox>())
         {
-            combat.UpdateWeapon(other.gameObject.GetComponent<WeaponBox>().ReturnWeapon());
+            if(other.gameObject.GetComponent<WeaponBox>().ReturnWeapon() != null)
+            {
+                combat.UpdateWeapon(other.gameObject.GetComponent<WeaponBox>().ReturnWeapon());
+            }
         } 
     }
 }

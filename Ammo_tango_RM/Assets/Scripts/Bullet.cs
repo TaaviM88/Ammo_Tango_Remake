@@ -56,7 +56,8 @@ public class Bullet : MonoBehaviour {
         transform.position = Vector3.zero;
         transform.rotation = Quaternion.Euler(0, 0, 0);
         rb.velocity = Vector3.zero;
-        gameObject.SetActive(false);
+        Destroy(gameObject);
+        //gameObject.SetActive(false);
     }
 
     public void ResetTimer()

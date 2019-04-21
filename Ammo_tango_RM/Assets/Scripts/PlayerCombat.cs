@@ -100,4 +100,10 @@ public class PlayerCombat : MonoBehaviour {
         currentWeapon = newWeapon;
         wp = currentWeapon.GetComponent<Weapon>();
     }
+
+    public void RollBackBaseWeapon()
+    {
+        currentWeapon = baseWeapon;
+        wp = currentWeapon.GetComponent<Weapon>();
+    }
 }
