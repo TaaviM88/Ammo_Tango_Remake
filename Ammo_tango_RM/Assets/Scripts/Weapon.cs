@@ -24,9 +24,15 @@ public class Weapon : MonoBehaviour
 
     [SerializeField]
     protected GameObject bullet;
+    [SerializeField]
+    protected AudioClip weaponshotSound;
     // Start is called before the first frame update
     public virtual void Start()
     {
+        if(weaponshotSound == null)
+        {
+            return;
+        }
         currentClipAmount = maxClipSize;
     }
 
@@ -64,5 +70,10 @@ public class Weapon : MonoBehaviour
     public GameObject ReturnBullet()
     {
         return bullet;
+    }
+
+    public void PlaySoud()
+    {
+        //play shooting sound
     }
 }
