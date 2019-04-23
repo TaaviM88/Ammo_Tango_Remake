@@ -98,6 +98,7 @@ public class PlayerCombat : MonoBehaviour {
     public void UpdateWeapon(GameObject newWeapon)
     {
         currentWeapon = newWeapon;
+        
         wp = currentWeapon.GetComponent<Weapon>();
     }
 
