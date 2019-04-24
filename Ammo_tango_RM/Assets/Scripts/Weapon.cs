@@ -39,13 +39,35 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(currentReloadTime > 0 && currentClipAmount < 0)
+        {
+            currentReloadTime -= Time.deltaTime;
+        }
+        else
+        {
+            ReloadClip();
+        }
+
+        /*if (Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+        }*/
+
     }
 
     public virtual void Shoot(Transform spawnBullet)
     {
-
-        GameObject bulletClone = Instantiate(bullet, spawnBullet.position, spawnBullet.rotation);
+        if(currentClipAmount > 0 && Time.time > nextFire)
+        {
+            GameObject bulletClone = Instantiate(bullet, spawnBullet.position, spawnBullet.rotation);
+            PlaySoud();
+            nextFire = Time.time + fireRate;
+        }
+        else
+        {
+            currentReloadTime = reloadTime;
+            //ReloadClip();
+        }
         //bulletClone.GetComponent<Rigidbody>().AddForce(transform.forward * (Time.deltaTime * 60),ForceMode.Impulse);
         /*GameObject bul = PoolManager.Instance.GetPlayer1Bullet();
          if (bul == null) return;
@@ -75,5 +97,10 @@ public class Weapon : MonoBehaviour
     public void PlaySoud()
     {
         //play shooting sound
+    }
+
+    public void ReloadClip()
+    {
+        currentClipAmount = maxClipSize;
     }
 }
