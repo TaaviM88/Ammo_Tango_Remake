@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public static List<GameObject> playerList;
     public static List<GameObject> spawnpoints;
 
-    //public Transform[] spawnpoints;
+    //public int playerID;
 
     void Awake()
     {
@@ -27,15 +27,20 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerList = new List<GameObject>();
+        spawnpoints = new List<GameObject>();
 
-        SetupGame();
+        playerList.Add(GameObject.Find("P1"));
+        playerList.Add(GameObject.Find("P2"));
+        playerList.Add(GameObject.Find("P3"));
+        playerList.Add(GameObject.Find("P4"));
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(playerList.Count);
+        
     }
 
     public void SetupGame()
@@ -43,23 +48,37 @@ public class GameManager : MonoBehaviour
 
         //lisää timeri
 
-        playerList = new List<GameObject>();
-        spawnpoints = new List<GameObject>();
-
         AddSpawnPoint(GameObject.Find("Spawn1"));
         AddSpawnPoint(GameObject.Find("Spawn2"));
 
+        /*
         AddPlayer(GameObject.FindGameObjectWithTag("P1"));
         AddPlayer(GameObject.FindGameObjectWithTag("P2"));
-
+        */
         GetSpawnPoints();
 
     }
 
-    public void AddPlayer(GameObject player)
+    /*
+    public void AddPlayer(GameObject character)
     {
-        playerList.Add(player);
+        switch (PlayerMovement.PlayerId){
+
+            case 1:
+                playerList[0] = character;
+                PlayerMovement.PlayerId = 1;
+                Debug.Log(playerList[0].name);
+                break;
+            case 2:
+                playerList[1] = character;
+                PlayerMovement.PlayerId = 2;
+                break;
+
+        }
+
+        Debug.Log("lol ei toimi");
     }
+    */
 
     public void RemovePlayer(GameObject player)
     {
@@ -76,7 +95,7 @@ public class GameManager : MonoBehaviour
         {
             return player;
         }
-
+        Debug.Log(null);
         return null;
     }
 
@@ -90,15 +109,20 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void GetSpawnPoints()
     {
+
         foreach(GameObject point in spawnpoints)
         {
             if (point.name.Equals("Spawn1"))
             {
-                GetPlayer(playerList[0]).transform.position = point.transform.position;
+                Instantiate(playerList[0]);
+                playerList[0].GetComponent<PlayerMovement>().UpdatePlayerID(1);
+                playerList[0].transform.position = point.transform.position;
             }
             if (point.name.Equals("Spawn2"))
             {
-                GetPlayer(playerList[1]).transform.position = point.transform.position;
+                Instantiate(playerList[1]);
+                playerList[1].GetComponent<PlayerMovement>().UpdatePlayerID(2);
+                playerList[1].transform.position = point.transform.position;
             }
         }
     }
