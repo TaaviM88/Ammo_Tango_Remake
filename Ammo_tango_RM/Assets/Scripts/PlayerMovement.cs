@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public int PlayerId;
+    public int PlayerId = 0;
 
     protected Rigidbody MyRb;
     public float MovementSpeed = 10f;
@@ -18,6 +18,10 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(PlayerId == 0)
+        {
+            Debug.Log(this.gameObject.name + " missing ID");
+        }
         MyRb = GetComponent<Rigidbody>();
     }
 
@@ -73,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-     public void UpdatePlyaerID(int ID)
+     public void UpdatePlayerID(int ID)
      {
         PlayerId = ID;
      }
@@ -81,5 +85,28 @@ public class PlayerMovement : MonoBehaviour
     public void CanMove(bool b)
     {
         _canMove = b;
+    }
+
+    public void AddPlayer(GameObject character)
+    {
+        switch (PlayerId)
+        {
+
+            case 1:
+                GameManager.playerList[0] = character.gameObject;
+                PlayerId = 1;
+                Debug.Log(GameManager.playerList[0].name);
+                break;
+            case 2:
+                GameManager.playerList[1] = character;
+                PlayerId = 2;
+                break;
+            default:
+                Debug.Log("lol ei toimi");
+                break;
+
+        }
+
+        
     }
 }
