@@ -4826,7 +4826,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadetime: 2
   force: -10
-  damage: 1
+  damage: 2
 --- !u!54 &2393648402652785171
 Rigidbody:
   m_ObjectHideFlags: 0

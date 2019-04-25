@@ -14,10 +14,14 @@ public class Bullet : MonoBehaviour {
     [SerializeField]
     private float damage;
     Rigidbody rb;
+
+    public ParticleSystem particleLauncher;
+    List<ParticleCollisionEvent> collisionEvents;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        collisionEvents = new List<ParticleCollisionEvent>();
     }
 
     // Update is called once per frame
@@ -45,10 +49,42 @@ public class Bullet : MonoBehaviour {
         if(collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<Player>().TakeDamageShield(damage);
+            Disable();
+        }
+
+        if(collision.gameObject.GetComponent<Destroyer>())
+        {
+            collision.gameObject.GetComponent<Destroyer>().TakeDMG(damage);
+            Disable();
         }
 
         //Destroy(this.gameObject);
         
+    }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        /*Destroyer d = other.GetComponent<Destroyer>();
+        d.TakeDMG(damage);*/
+
+        if(other.gameObject.GetComponent<Destroyer>())
+        {
+            Debug.Log("Shotgun");
+        }
+        /*other.gameObject.GetComponent<Destroyer>().TakeDMG(damage);
+        Disable();*/
+
+        ParticlePhysicsExtensions.GetCollisionEvents(particleLauncher, other, collisionEvents);
+
+        for (int i = 0; i < collisionEvents.Count; i++)
+        {
+         
+                
+            //other.gameObject.GetComponent<Destroyer>().TakeDMG(damage);
+            Debug.Log("Shotgun");
+        }
+
+        Debug.Log($"osuin {other.name}");
     }
 
     public void Disable()
