@@ -25,6 +25,7 @@ public class PlayerCombat : MonoBehaviour {
         currentWeapon = baseWeapon;
 
          wp = currentWeapon.GetComponent<Weapon>();
+        wp.ReloadClip();
     }
 
     // Update is called once per frame
@@ -35,6 +36,8 @@ public class PlayerCombat : MonoBehaviour {
 
     public void shoot()
     {
+        Debug.Log("Shot");
+
         wp.Shoot(shotspawn);
         //GameObject clone = Instantiate(ammo, shotspawn.transform.position, shotspawn.transform.rotation);
 

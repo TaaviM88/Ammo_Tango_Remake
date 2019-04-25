@@ -64,27 +64,18 @@ public class Bullet : MonoBehaviour {
 
     private void OnParticleCollision(GameObject other)
     {
-        /*Destroyer d = other.GetComponent<Destroyer>();
-        d.TakeDMG(damage);*/
 
-        if(other.gameObject.GetComponent<Destroyer>())
+        if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Shotgun");
-        }
-        /*other.gameObject.GetComponent<Destroyer>().TakeDMG(damage);
-        Disable();*/
-
-        ParticlePhysicsExtensions.GetCollisionEvents(particleLauncher, other, collisionEvents);
-
-        for (int i = 0; i < collisionEvents.Count; i++)
-        {
-         
-                
-            //other.gameObject.GetComponent<Destroyer>().TakeDMG(damage);
-            Debug.Log("Shotgun");
+            other.gameObject.GetComponent<Player>().TakeDamageShield(damage);
+            Disable();
         }
 
-        Debug.Log($"osuin {other.name}");
+        if (other.gameObject.GetComponent<Destroyer>())
+        {
+            other.gameObject.GetComponent<Destroyer>().TakeDMG(damage);
+            Debug.Log("Shotgun");
+        }
     }
 
     public void Disable()

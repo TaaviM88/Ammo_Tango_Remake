@@ -15,7 +15,8 @@ public class Weapon : MonoBehaviour
     protected float nextFire;
     [SerializeField]
     protected float maxClipSize = 10;
-    protected float currentClipAmount;
+    [SerializeField]
+    protected float currentClipAmount = 4;
 
     [SerializeField]
     protected float reloadTime = 10f;
@@ -27,19 +28,25 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     protected AudioClip weaponshotSound;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        
+    }
+
     public virtual void Start()
     {
         if(weaponshotSound == null)
         {
             return;
         }
+
         currentClipAmount = maxClipSize;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(currentReloadTime > 0 && currentClipAmount < 0)
+        /*if(currentReloadTime > 0 && currentClipAmount <= 0)
         {
             currentReloadTime -= Time.deltaTime;
         }
@@ -47,7 +54,7 @@ public class Weapon : MonoBehaviour
         {
             ReloadClip();
         }
-
+        */
         /*if (Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
@@ -57,16 +64,22 @@ public class Weapon : MonoBehaviour
 
     public virtual void Shoot(Transform spawnBullet)
     {
-        if(currentClipAmount > 0 && Time.time > nextFire)
+        Debug.Log("shootted");
+        //&& Time.time > nextFire
+        if (currentClipAmount > 0)
         {
+            Debug.Log("Luon luotia");
             GameObject bulletClone = Instantiate(bullet, spawnBullet.position, spawnBullet.rotation);
+            bulletClone.GetComponent<Bullet>().UpdateDamage(damage);
             PlaySoud();
             nextFire = Time.time + fireRate;
+            currentClipAmount -= 1;
         }
         else
         {
+            Debug.Log("Ladataan asetta");
             currentReloadTime = reloadTime;
-            //ReloadClip();
+            ReloadClip();
         }
         //bulletClone.GetComponent<Rigidbody>().AddForce(transform.forward * (Time.deltaTime * 60),ForceMode.Impulse);
         /*GameObject bul = PoolManager.Instance.GetPlayer1Bullet();

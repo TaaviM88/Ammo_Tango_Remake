@@ -34,10 +34,11 @@ public class Player : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Fire2") && combat.cooldownTimer() == true)
+        if(Input.GetButtonDown("Fire2"))
         {
+            Debug.Log("Pressed fire2");
             combat.shoot();
-        }
+         }
 
     }
 
