@@ -50,35 +50,15 @@ public class GameManager : MonoBehaviour
 
         AddSpawnPoint(GameObject.Find("Spawn1"));
         AddSpawnPoint(GameObject.Find("Spawn2"));
+        AddSpawnPoint(GameObject.Find("Spawn3"));
+        AddSpawnPoint(GameObject.Find("Spawn4"));
 
-        /*
-        AddPlayer(GameObject.FindGameObjectWithTag("P1"));
-        AddPlayer(GameObject.FindGameObjectWithTag("P2"));
-        */
+
         GetSpawnPoints();
 
     }
 
-    /*
-    public void AddPlayer(GameObject character)
-    {
-        switch (PlayerMovement.PlayerId){
 
-            case 1:
-                playerList[0] = character;
-                PlayerMovement.PlayerId = 1;
-                Debug.Log(playerList[0].name);
-                break;
-            case 2:
-                playerList[1] = character;
-                PlayerMovement.PlayerId = 2;
-                break;
-
-        }
-
-        Debug.Log("lol ei toimi");
-    }
-    */
 
     public void RemovePlayer(GameObject player)
     {
@@ -104,8 +84,21 @@ public class GameManager : MonoBehaviour
         spawnpoints.Add(spawner);
     }
 
+    public void HideUI(GameObject setupUI)
+    {
+        if(setupUI.activeSelf == true)
+        {
+            setupUI.SetActive(false);
+        }
+        else
+        {
+            setupUI.SetActive(true);
+        }
+    }
+
     /// <summary>
     /// Sets players on the playerList on spawnpoints on their respective list. Requires Spawn1, Spawn2 and Player1, Player2.
+    /// Instantiates prefabs chosen by the player and updates playerID for the instantiated gameobject.
     /// </summary>
     public void GetSpawnPoints()
     {
@@ -123,6 +116,18 @@ public class GameManager : MonoBehaviour
                 Instantiate(playerList[1]);
                 playerList[1].GetComponent<PlayerMovement>().UpdatePlayerID(2);
                 playerList[1].transform.position = point.transform.position;
+            }
+            if (point.name.Equals("Spawn3"))
+            {
+                Instantiate(playerList[2]);
+                playerList[2].GetComponent<PlayerMovement>().UpdatePlayerID(3);
+                playerList[2].transform.position = point.transform.position;
+            }
+            if (point.name.Equals("Spawn4"))
+            {
+                Instantiate(playerList[3]);
+                playerList[3].GetComponent<PlayerMovement>().UpdatePlayerID(4);
+                playerList[3].transform.position = point.transform.position;
             }
         }
     }

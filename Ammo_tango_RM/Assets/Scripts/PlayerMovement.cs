@@ -93,20 +93,62 @@ public class PlayerMovement : MonoBehaviour
         {
 
             case 1:
+                #region player1
                 GameManager.playerList[0] = character.gameObject;
                 PlayerId = 1;
-                Debug.Log(GameManager.playerList[0].name);
                 break;
+                #endregion
+
             case 2:
-                GameManager.playerList[1] = character;
+                #region player2
+                GameManager.playerList[1] = character.gameObject;
                 PlayerId = 2;
                 break;
+                #endregion;
+
+            case 3:
+                #region player3
+                GameManager.playerList[2] = character.gameObject;
+                PlayerId = 3;
+                break;
+                #endregion
+
+            case 4:
+                #region player4
+                GameManager.playerList[3] = character.gameObject;
+                PlayerId = 4;
+                break;
+                #endregion
+
+
             default:
-                Debug.Log("lol ei toimi");
+                Debug.Log($"PlayerID not found. {gameObject.name}");
                 break;
 
         }
 
         
+    }
+
+    public void RemovePlayer()
+    {
+        switch (PlayerId)
+        {
+            case 1:
+                GameManager.playerList[0] = GameObject.Find("P1");
+                break;
+
+            case 2:
+                GameManager.playerList[1] = GameObject.Find("P2");
+                break;
+
+            case 3:
+                GameManager.playerList[2] = GameObject.Find("P3");
+                break;
+
+            case 4:
+                GameManager.playerList[3] = GameObject.Find("P4");
+                break;
+        }
     }
 }
