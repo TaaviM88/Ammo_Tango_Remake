@@ -107,26 +107,26 @@ public class GameManager : MonoBehaviour
         {
             if (point.name.Equals("Spawn1"))
             {
-                Instantiate(playerList[0]);
-                playerList[0].GetComponent<PlayerMovement>().UpdatePlayerID(1);
+
+                Instantiate(playerList[0]).GetComponent<PlayerMovement>().UpdatePlayerID(1);
                 playerList[0].transform.position = point.transform.position;
             }
             if (point.name.Equals("Spawn2"))
             {
-                Instantiate(playerList[1]);
-                playerList[1].GetComponent<PlayerMovement>().UpdatePlayerID(2);
+                
+                Instantiate(playerList[1]).GetComponent<PlayerMovement>().UpdatePlayerID(2);
                 playerList[1].transform.position = point.transform.position;
             }
             if (point.name.Equals("Spawn3"))
             {
-                Instantiate(playerList[2]);
-                playerList[2].GetComponent<PlayerMovement>().UpdatePlayerID(3);
+                
+                Instantiate(playerList[2]).GetComponent<PlayerMovement>().UpdatePlayerID(3);
                 playerList[2].transform.position = point.transform.position;
             }
             if (point.name.Equals("Spawn4"))
             {
-                Instantiate(playerList[3]);
-                playerList[3].GetComponent<PlayerMovement>().UpdatePlayerID(4);
+                
+                Instantiate(playerList[3]).GetComponent<PlayerMovement>().UpdatePlayerID(4);
                 playerList[3].transform.position = point.transform.position;
             }
         }

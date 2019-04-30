@@ -95,28 +95,28 @@ public class PlayerMovement : MonoBehaviour
             case 1:
                 #region player1
                 GameManager.playerList[0] = character.gameObject;
-                PlayerId = 1;
+                
                 break;
                 #endregion
 
             case 2:
                 #region player2
                 GameManager.playerList[1] = character.gameObject;
-                PlayerId = 2;
+                
                 break;
                 #endregion;
 
             case 3:
                 #region player3
                 GameManager.playerList[2] = character.gameObject;
-                PlayerId = 3;
+                
                 break;
                 #endregion
 
             case 4:
                 #region player4
                 GameManager.playerList[3] = character.gameObject;
-                PlayerId = 4;
+                
                 break;
                 #endregion
 
