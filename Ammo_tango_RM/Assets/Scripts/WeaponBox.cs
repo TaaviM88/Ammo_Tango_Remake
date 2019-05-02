@@ -25,6 +25,12 @@ public class WeaponBox : MonoBehaviour
         rend.material.shader = Shader.Find("HDRP/Lit");
         rend.material.SetColor("_BaseColor", Color.green);
         //GetComponentInChildren<Material>().SetColor("_color", Color.green);
+
+        foreach(GameObject weapon in Resources.LoadAll<GameObject>("Weapons"))
+        {
+            weaponPrefabs.Add(weapon);
+            Debug.Log(weapon.name);
+        }
     }
 
     private void Update()
