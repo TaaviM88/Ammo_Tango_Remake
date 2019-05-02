@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public static List<GameObject> playerList;
     public static List<GameObject> spawnpoints;
+
+    public static float timer = 0f;
+   // public TextMeshProUGUI timertext;
 
     //public int playerID;
 
@@ -35,24 +39,35 @@ public class GameManager : MonoBehaviour
         playerList.Add(GameObject.Find("P3"));
         playerList.Add(GameObject.Find("P4"));
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void SetupGame()
-    {
-
-        //lisää timeri
-
         AddSpawnPoint(GameObject.Find("Spawn1"));
         AddSpawnPoint(GameObject.Find("Spawn2"));
         AddSpawnPoint(GameObject.Find("Spawn3"));
         AddSpawnPoint(GameObject.Find("Spawn4"));
 
+        //timertext.GetComponent<TextMeshProUGUI>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //timer += Time.deltaTime * (1.0f / 0.0001f);
+        //timertext.text = Mathf.Round(timer / 10000).ToString();
+    }
+
+
+
+    public void SetupGame()
+    {
+
+        //lisää timeri
+        /*
+        Time.timeScale = 0.0001f;
+
+        if(timer >= 3)
+        {
+            Time.timeScale = 1;
+        }
+        */
 
         GetSpawnPoints();
 
