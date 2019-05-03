@@ -13,6 +13,9 @@ public class WeaponBox : MonoBehaviour
     [SerializeField]
     private bool random = false;
 
+    private int randomwep;
+    private bool hasRandom = false;
+
     private bool objectIsActive = true;
     [Header("Respawn settings")]
     private float timeBTWRespawns = 10;
@@ -29,19 +32,29 @@ public class WeaponBox : MonoBehaviour
         foreach(GameObject weapon in Resources.LoadAll<GameObject>("Weapons"))
         {
             weaponPrefabs.Add(weapon);
-            Debug.Log(weapon.name);
         }
+
+        randomwep = Random.Range(0, weaponPrefabs.Count);
+        hasRandom = true;
     }
 
     private void Update()
     {
-        if(timeBTWRespawns < 0)
+        
+
+        if (timeBTWRespawns <= 0 && hasRandom == false)
+        { 
+            // GetComponentInChildren<Material>().SetColor("_color", Color.green);
+            randomwep = Random.Range(0, weaponPrefabs.Count);
+            Debug.Log(randomwep);
+            hasRandom = true;
+        }
+        if (hasRandom == true)
         {
             objectIsActive = true;
             Renderer rend = GetComponentInChildren<Renderer>();
             rend.material.shader = Shader.Find("HDRP/Lit");
             rend.material.SetColor("_BaseColor", Color.green);
-           // GetComponentInChildren<Material>().SetColor("_color", Color.green);
         }
         else
         {
@@ -67,16 +80,19 @@ public class WeaponBox : MonoBehaviour
     {
             if (random == false && weaponIndex <= weaponPrefabs.Count)
             {
-                objectIsActive = false;
-                timeBTWRespawns = startBTWRespawns;
                 return weaponPrefabs[weaponIndex];
             }
             else
             {
-                objectIsActive = false;
-                timeBTWRespawns = startBTWRespawns;
-                return weaponPrefabs[Random.Range(0, weaponPrefabs.Count)];
+                return weaponPrefabs[randomwep];
             }  
+    }
+
+    public void ResetRespawn()
+    {
+        objectIsActive = false;
+        timeBTWRespawns = startBTWRespawns;
+        hasRandom = false;
     }
 
 }

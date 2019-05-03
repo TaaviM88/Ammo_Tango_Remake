@@ -92,6 +92,7 @@ public class Player : MonoBehaviour {
             if(other.gameObject.GetComponent<WeaponBox>().ReturnWeapon() != null)
             {
                 combat.UpdateWeapon(other.gameObject.GetComponent<WeaponBox>().ReturnWeapon());
+                other.gameObject.GetComponent<WeaponBox>().ResetRespawn();
             }
         } 
     }
