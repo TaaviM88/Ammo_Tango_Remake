@@ -74,7 +74,6 @@ public class Bullet : MonoBehaviour {
         if (other.gameObject.GetComponent<Destroyer>())
         {
             other.gameObject.GetComponent<Destroyer>().TakeDMG(damage);
-            Debug.Log("Shotgun");
         }
     }
 

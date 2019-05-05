@@ -21,12 +21,19 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     protected float reloadTime = 10f;
     protected float currentReloadTime =0;
-
+    protected bool isReloading = false;
 
     [SerializeField]
     protected GameObject bullet;
     [SerializeField]
     protected AudioClip weaponshotSound;
+
+    public enum ShootMode {None, Single, Burst, Rapid}
+    public ShootMode shootmode = ShootMode.None;
+
+    [Header("If using burst. Tell how many bullets to shoot else leave to 0")]
+    [SerializeField]
+    private int burst = 0;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -64,23 +71,24 @@ public class Weapon : MonoBehaviour
 
     public virtual void Shoot(Transform spawnBullet)
     {
-        Debug.Log("shootted");
         //&& Time.time > nextFire
         if (currentClipAmount > 0)
         {
-            Debug.Log("Luon luotia");
             GameObject bulletClone = Instantiate(bullet, spawnBullet.position, spawnBullet.rotation);
             bulletClone.GetComponent<Bullet>().UpdateDamage(damage);
             PlaySoud();
             nextFire = Time.time + fireRate;
             currentClipAmount -= 1;
         }
-        else
+        else if(!isReloading)
         {
-            Debug.Log("Ladataan asetta");
             currentReloadTime = reloadTime;
-            ReloadClip();
+            Invoke("ReloadClip", reloadTime);
+            isReloading = true;
         }
+
+
+
         //bulletClone.GetComponent<Rigidbody>().AddForce(transform.forward * (Time.deltaTime * 60),ForceMode.Impulse);
         /*GameObject bul = PoolManager.Instance.GetPlayer1Bullet();
          if (bul == null) return;
@@ -115,5 +123,16 @@ public class Weapon : MonoBehaviour
     public void ReloadClip()
     {
         currentClipAmount = maxClipSize;
+        isReloading = false;
+    }
+
+    public ShootMode ReturnShootMode()
+    {
+        return shootmode;
+    }
+
+    public int ReturnBurstAmount()
+    {
+        return burst;
     }
 }

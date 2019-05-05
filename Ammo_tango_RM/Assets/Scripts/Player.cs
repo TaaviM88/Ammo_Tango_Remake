@@ -22,10 +22,16 @@ public class Player : MonoBehaviour {
     private PlayerCombat combat;
 
     bool shieldOn = true;
+
+    PlayerMovement pmovement;
+
+    private int PlayerID = 0;
     // Start is called before the first frame update
     void Start()
     {
         combat = gameObject.GetComponent<PlayerCombat>();
+        pmovement = gameObject.GetComponent<PlayerMovement>();
+        PlayerID = pmovement.PlayerId;
         currentHealth = MaxHp;
         currentShield = MaxShield;
         shieldOn = true;
@@ -34,13 +40,51 @@ public class Player : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Fire2"))
+        switch(PlayerID)
         {
-            Debug.Log("Pressed fire2");
-            combat.shoot();
-         }
+            #region Player1            
+            case 1:
+                if (combat.ReturnWeapon().shootmode == Weapon.ShootMode.Single)
+                {
+                    if (Input.GetButtonDown("Fire2"))
+                    {
+                        combat.ShootMainWeapon();
+                    }
+                }
 
+                if(combat.ReturnWeapon().shootmode == Weapon.ShootMode.Burst)
+                {
+                    int a = combat.ReturnWeapon().ReturnBurstAmount();
+                    if( Input.GetButtonDown("Fire2"))
+                    {
+                        for (int i = 0; i < a; i++)
+                        {
+                            combat.ShootMainWeapon();
+                        }
+                    }
+                    
+                }
+                if(combat.ReturnWeapon().shootmode == Weapon.ShootMode.Rapid)
+                {
+                    if (Input.GetButton("Fire2"))
+                    {
+                        combat.ShootMainWeapon();
+                    }
+                }
+                
+
+                if(Input.GetButtonDown("Fire3"))
+                {
+                    combat.UseSubWeapon();
+                }
+                break;
+#endregion
     }
+
+
+
+
+}
 
     public void TakeDamageShield(float damage)
     {

@@ -16,14 +16,27 @@ public class PlayerCombat : MonoBehaviour {
 
     [SerializeField]
     GameObject currentWeapon;
+    [Header("SubWeapon Settings")]
+    [SerializeField]
+    GameObject baseSubWeapon;
+    [SerializeField]
+    private int SubweaponAmount;
 
+    private int currentSubWeaponAmount;
+    GameObject currentSubWeapon;
+    private bool subweaponUsed = false;
+    [SerializeField]
+    private float throwForce = -40f;
+    [SerializeField]
+    private float subweaponCoolDown = 1f;
     Weapon wp;
 
     // Start is called before the first frame update
     void Start()
     {
         currentWeapon = baseWeapon;
-
+        currentSubWeapon = baseSubWeapon;
+        currentSubWeaponAmount = SubweaponAmount;
          wp = currentWeapon.GetComponent<Weapon>();
         wp.ReloadClip();
     }
@@ -34,58 +47,29 @@ public class PlayerCombat : MonoBehaviour {
         timer += Time.deltaTime;
     }
 
-    public void shoot()
+    public void ShootMainWeapon()
     {
-        Debug.Log("Shot");
-
-        wp.Shoot(shotspawn);
-        //GameObject clone = Instantiate(ammo, shotspawn.transform.position, shotspawn.transform.rotation);
-
-        //clone.GetComponent<Rigidbody>().velocity = new Vector3(transform.forward.x * 10,transform.forward.y * 10,transform.forward.z * 10);
-        
-        /*GameObject bullet = PoolManager.Instance.GetPlayer1Bullet();
-        if (bullet == null) return;
-
-        bullet.transform.position = shotspawn.position;
-        bullet.transform.rotation = transform.rotation;
-        bullet.GetComponent<Rigidbody>().velocity = new Vector3(transform.forward.x * 1, transform.forward.y * 1, transform.forward.z * 1);
-        bullet.GetComponent<Bullet>().ResetTimer();
-        bullet.SetActive(true);
-        */
-
-        /*if (Time.time > nextfire)
-        {
-            nextfire = Time.time + firerate;
-
-            bullet.transform.position = bulletStartingPoint.position;
-            bullet.transform.rotation = transform.rotation;
-
-            bullet.SetActive(true);
-        }
+        wp.Shoot(shotspawn); 
     }
+
+    public void UseSubWeapon()
+    {
+        if(currentSubWeaponAmount > 0 && !subweaponUsed)
+        {
+            GameObject subW = Instantiate(currentSubWeapon, shotspawn.position, Quaternion.identity);
+            Rigidbody rb = subW.GetComponent<Rigidbody>();
+            rb.AddForce(transform.forward * throwForce,ForceMode.VelocityChange);
+            currentSubWeaponAmount -= 1;
+            subweaponUsed = true;
+            //Change subweaponUsed=true
+            Invoke("SubweaponCoolDown", subweaponCoolDown);
+        }
         else
         {
-            Debug.Log("Haetaan luotia niin perkeleesti");
-            GameObject ebullet = PoolManager.current.GetEnemyBullet();
-            if (ebullet == null)
-            {
-                Debug.Log("Ei täällä mitään luoteja ole!");
-                return;
-            }
-            if (Time.time > nextfire)
-            {
-                nextfire = Time.time + firerate;
-
-                ebullet.transform.position = bulletStartingPoint.position;
-                ebullet.transform.rotation = transform.rotation;
-
-                ebullet.SetActive(true);
-            }
+            Debug.Log("Yoy are out of subweapons");
         }
-     
-        }*/
+        
     }
-
     public bool cooldownTimer()
     {
         
@@ -97,6 +81,10 @@ public class PlayerCombat : MonoBehaviour {
         return false;
     }
 
+    public void SubweaponCoolDown()
+    {
+        subweaponUsed = false;
+    }
 
     public void UpdateWeapon(GameObject newWeapon)
     {
@@ -109,5 +97,10 @@ public class PlayerCombat : MonoBehaviour {
     {
         currentWeapon = baseWeapon;
         wp = currentWeapon.GetComponent<Weapon>();
+    }
+
+    public Weapon ReturnWeapon()
+    {
+        return wp;
     }
 }
