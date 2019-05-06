@@ -31,10 +31,10 @@ public class PlayerMovement : MonoBehaviour
         switch (PlayerId)
         {
             case 1:
-                moveDirection = new Vector3(Input.GetAxis("LeftStickHorizontalP1"), 0, Input.GetAxis("LeftStickVerticalP1"));
-                lookDirection = new Vector3(Input.GetAxis("RightStickHorizontalP1"), 0, Input.GetAxis("RightStickVerticalP1"));
-                Movement(moveDirection, lookDirection);
-                break;
+                    moveDirection = new Vector3(Input.GetAxis("LeftStickHorizontalP1"), 0, Input.GetAxis("LeftStickVerticalP1"));
+                    lookDirection = new Vector3(Input.GetAxis("RightStickHorizontalP1"), 0, Input.GetAxis("RightStickVerticalP1"));
+                    Movement(moveDirection, lookDirection);
+                    break;
 
             case 2:
                 moveDirection = new Vector3(Input.GetAxis("LeftStickHorizontalP2"), 0, Input.GetAxis("LeftStickVerticalP2"));
@@ -66,14 +66,18 @@ public class PlayerMovement : MonoBehaviour
             MyRb.velocity = Vector3.ClampMagnitude(MyRb.velocity, maxVelocity);
         }
 
-        if (rotation.sqrMagnitude > 0.1)
+        if (rotation != Vector3.zero)
         {
-            transform.rotation = Quaternion.LookRotation(rotation);
-            lastRotation = rotation;
-        }
-        else
-        {
-            transform.rotation = Quaternion.LookRotation(lastRotation);
+
+            if (rotation.sqrMagnitude > 0.1)
+            {
+                transform.rotation = Quaternion.LookRotation(rotation);
+                lastRotation = rotation;
+            }
+            else
+            {
+                transform.rotation = Quaternion.LookRotation(lastRotation);
+            }
         }
     }
 
