@@ -72,7 +72,7 @@ public class Weapon : MonoBehaviour
     public virtual void Shoot(Transform spawnBullet)
     {
         //&& Time.time > nextFire
-        if (currentClipAmount > 0)
+        if (currentClipAmount > 0 && Time.time > nextFire)
         {
             GameObject bulletClone = Instantiate(bullet, spawnBullet.position, spawnBullet.rotation);
             bulletClone.GetComponent<Bullet>().UpdateDamage(damage);
