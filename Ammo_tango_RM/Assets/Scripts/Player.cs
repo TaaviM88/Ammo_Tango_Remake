@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class Player : MonoBehaviour {
 
@@ -26,6 +27,9 @@ public class Player : MonoBehaviour {
     PlayerMovement pmovement;
 
     private int PlayerID = 0;
+
+    CinemachineTargetGroup cmTargets;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +39,10 @@ public class Player : MonoBehaviour {
         currentHealth = MaxHp;
         currentShield = MaxShield;
         shieldOn = true;
+
+        GameObject obj = GameObject.FindWithTag("TargetGroup");
+        cmTargets = obj.GetComponent<CinemachineTargetGroup>();
+        cmTargets.AddMember(gameObject.transform, 1, 0);
     }
 
     // Update is called once per frame
@@ -128,6 +136,7 @@ public class Player : MonoBehaviour {
     {
         //dying stuff here
         Debug.Log($"{gameObject.name} dies.");
+        cmTargets.RemoveMember(gameObject.transform);
     }
     private void OnTriggerEnter(Collider other)
     {
