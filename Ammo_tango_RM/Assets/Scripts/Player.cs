@@ -55,7 +55,7 @@ public class Player : MonoBehaviour {
             case 1:
                 if (combat.ReturnWeapon().shootmode == Weapon.ShootMode.Single)
                 {
-                    if (Input.GetButtonDown("Fire2"))
+                    if (Input.GetButtonDown("Fire1p1"))
                     {
                         combat.ShootMainWeapon();
                     }
@@ -63,7 +63,7 @@ public class Player : MonoBehaviour {
 
                 if(combat.ReturnWeapon().shootmode == Weapon.ShootMode.Burst)
                 {
-                    if (Input.GetButtonDown("Fire2"))
+                    if (Input.GetButtonDown("Fire1p1"))
                     {
                         combat.ShootMainWeapon();
                     }
@@ -71,19 +71,121 @@ public class Player : MonoBehaviour {
                 }
                 if(combat.ReturnWeapon().shootmode == Weapon.ShootMode.Rapid)
                 {
-                    if (Input.GetButton("Fire2"))
+                    if (Input.GetButton("Fire1p1"))
                     {
                         combat.ShootMainWeapon();
                     }
                 }
                 
 
-                if(Input.GetButtonDown("Fire3"))
+                if(Input.GetButtonDown("Fire2p1"))
                 {
                     combat.UseSubWeapon();
                 }
                 break;
             #endregion
+
+            #region Player2            
+            case 2:
+                if (combat.ReturnWeapon().shootmode == Weapon.ShootMode.Single)
+                {
+                    if (Input.GetButtonDown("Fire1p2"))
+                    {
+                        combat.ShootMainWeapon();
+                    }
+                }
+
+                if (combat.ReturnWeapon().shootmode == Weapon.ShootMode.Burst)
+                {
+                    if (Input.GetButtonDown("Fire1p2"))
+                    {
+                        combat.ShootMainWeapon();
+                    }
+
+                }
+                if (combat.ReturnWeapon().shootmode == Weapon.ShootMode.Rapid)
+                {
+                    if (Input.GetButton("Fire1p2"))
+                    {
+                        combat.ShootMainWeapon();
+                    }
+                }
+
+
+                if (Input.GetButtonDown("Fire2p2"))
+                {
+                    combat.UseSubWeapon();
+                }
+                break;
+            #endregion
+
+            #region Player3            
+            case 3:
+                if (combat.ReturnWeapon().shootmode == Weapon.ShootMode.Single)
+                {
+                    if (Input.GetButtonDown("Fire1p3"))
+                    {
+                        combat.ShootMainWeapon();
+                    }
+                }
+
+                if (combat.ReturnWeapon().shootmode == Weapon.ShootMode.Burst)
+                {
+                    if (Input.GetButtonDown("Fire1p3"))
+                    {
+                        combat.ShootMainWeapon();
+                    }
+
+                }
+                if (combat.ReturnWeapon().shootmode == Weapon.ShootMode.Rapid)
+                {
+                    if (Input.GetButton("Fire1p3"))
+                    {
+                        combat.ShootMainWeapon();
+                    }
+                }
+
+
+                if (Input.GetButtonDown("Fire2p3"))
+                {
+                    combat.UseSubWeapon();
+                }
+                break;
+            #endregion
+
+            #region Player4            
+            case 4:
+                if (combat.ReturnWeapon().shootmode == Weapon.ShootMode.Single)
+                {
+                    if (Input.GetButtonDown("Fire1p4"))
+                    {
+                        combat.ShootMainWeapon();
+                    }
+                }
+
+                if (combat.ReturnWeapon().shootmode == Weapon.ShootMode.Burst)
+                {
+                    if (Input.GetButtonDown("Fire1p4"))
+                    {
+                        combat.ShootMainWeapon();
+                    }
+
+                }
+                if (combat.ReturnWeapon().shootmode == Weapon.ShootMode.Rapid)
+                {
+                    if (Input.GetButton("Fire1p4"))
+                    {
+                        combat.ShootMainWeapon();
+                    }
+                }
+
+
+                if (Input.GetButtonDown("Fire2p4"))
+                {
+                    combat.UseSubWeapon();
+                }
+                break;
+                #endregion
 
         }
 
@@ -98,14 +200,15 @@ public class Player : MonoBehaviour {
         if(currentShield > 0)
         {
             float takenDamage = Mathf.Min(damage - currentShield, 0);
-
-            if( currentShield == 0)
+            Debug.Log($"{gameObject.name} Takes shield damage {damage}");
+            if ( currentShield == 0)
             {
                 shieldOn = false;
             }
         }
         else
         {
+            
             TakeDamageHP(damage);
         }
     }
@@ -123,9 +226,10 @@ public class Player : MonoBehaviour {
     {
         //instantiate hit particle effect
         float takenDamage = Mathf.Min(damage - currentHealth, 0);
-
-        if(currentHealth <=0)
+        Debug.Log($"{gameObject.name} Takes damage {damage}");
+        if (currentHealth <=0)
         {
+            Debug.Log($"{gameObject.name} Dies");
             Die();
         }
     }

@@ -353,7 +353,7 @@ MonoBehaviour:
   reloadTime: 3
   bullet: {fileID: 2393648402652785170, guid: 3ee5f8d50a06e9b4c93aeccfb3943a24, type: 3}
   weaponshotSound: {fileID: 0}
-  shootmode: 2
+  shootmode: 1
   burst: 4
   burstDelay: 0.3
 --- !u!4 &429548643
@@ -396,12 +396,12 @@ PrefabInstance:
     - target: {fileID: 5896721037192175139, guid: 09b68ab5a7d718b49bf1d46e1a9de7b1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23150.367
+      value: 35571.09
       objectReference: {fileID: 0}
     - target: {fileID: 5896721037192175139, guid: 09b68ab5a7d718b49bf1d46e1a9de7b1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -19957.967
+      value: -30665.893
       objectReference: {fileID: 0}
     - target: {fileID: 5896721037192175139, guid: 09b68ab5a7d718b49bf1d46e1a9de7b1,
         type: 3}
@@ -877,12 +877,12 @@ PrefabInstance:
     - target: {fileID: 1263851495764194680, guid: ab7d33b79eaf4154d8a0b82cf834e174,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23150.367
+      value: 35571.09
       objectReference: {fileID: 0}
     - target: {fileID: 1263851495764194680, guid: ab7d33b79eaf4154d8a0b82cf834e174,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -19957.967
+      value: -30665.893
       objectReference: {fileID: 0}
     - target: {fileID: 1263851495764194680, guid: ab7d33b79eaf4154d8a0b82cf834e174,
         type: 3}
@@ -946,7 +946,7 @@ PrefabInstance:
     - target: {fileID: 2208097455069084290, guid: da7af3a1736a5454296d1e4a945d5e95,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2208097455069084289, guid: da7af3a1736a5454296d1e4a945d5e95,
         type: 3}
@@ -1002,6 +1002,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2208097455069084291, guid: da7af3a1736a5454296d1e4a945d5e95,
+        type: 3}
+      propertyPath: PlayerId
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da7af3a1736a5454296d1e4a945d5e95, type: 3}
