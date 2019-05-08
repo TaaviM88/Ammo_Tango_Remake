@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     private bool _canMove;
     Vector3 moveDirection;
     Vector3 lookDirection;
+
+    public Animator anime;
    
 
     // Start is called before the first frame update
@@ -23,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log(this.gameObject.name + " missing ID");
         }
         MyRb = GetComponent<Rigidbody>();
+        anime = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -54,6 +57,9 @@ public class PlayerMovement : MonoBehaviour
                 Movement(moveDirection, lookDirection);
                 break;
         }
+
+        anime.SetFloat("VelX", MyRb.velocity.x);
+        anime.SetFloat("VelY", MyRb.velocity.z);
     }
 
     public void Movement(Vector3 move, Vector3 rotation)
