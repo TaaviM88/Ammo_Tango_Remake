@@ -29,6 +29,7 @@ public class Player : MonoBehaviour {
     private int PlayerID = 0;
 
     CinemachineTargetGroup cmTargets;
+    Weapon wp;
 
     // Start is called before the first frame update
     void Start()
@@ -62,13 +63,9 @@ public class Player : MonoBehaviour {
 
                 if(combat.ReturnWeapon().shootmode == Weapon.ShootMode.Burst)
                 {
-                    int a = combat.ReturnWeapon().ReturnBurstAmount();
-                    if( Input.GetButtonDown("Fire2"))
+                    if (Input.GetButtonDown("Fire2"))
                     {
-                        for (int i = 0; i < a; i++)
-                        {
-                            combat.ShootMainWeapon();
-                        }
+                        combat.ShootMainWeapon();
                     }
                     
                 }
@@ -86,13 +83,14 @@ public class Player : MonoBehaviour {
                     combat.UseSubWeapon();
                 }
                 break;
-#endregion
+            #endregion
+
+        }
+
+
+
+
     }
-
-
-
-
-}
 
     public void TakeDamageShield(float damage)
     {

@@ -13,6 +13,7 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     protected float fireRate = 1;
     protected float nextFire;
+    protected bool canShoot = true;
     [SerializeField]
     protected float maxClipSize = 10;
     [SerializeField]
@@ -33,7 +34,11 @@ public class Weapon : MonoBehaviour
 
     [Header("If using burst. Tell how many bullets to shoot else leave to 0")]
     [SerializeField]
-    private int burst = 0;
+    protected int burst = 0;
+    [SerializeField]
+    protected float burstDelay = 1;
+
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -66,28 +71,36 @@ public class Weapon : MonoBehaviour
         {
             nextFire = Time.time + fireRate;
         }*/
-
     }
 
     public virtual void Shoot(Transform spawnBullet)
     {
         //&& Time.time > nextFire
-        if (currentClipAmount > 0 && Time.time > nextFire)
-        {
-            GameObject bulletClone = Instantiate(bullet, spawnBullet.position, spawnBullet.rotation);
-            bulletClone.GetComponent<Bullet>().UpdateDamage(damage);
-            PlaySoud();
-            nextFire = Time.time + fireRate;
-            currentClipAmount -= 1;
-        }
-        else if(!isReloading)
-        {
-            currentReloadTime = reloadTime;
-            Invoke("ReloadClip", reloadTime);
-            isReloading = true;
-        }
-
-
+      
+            if (currentClipAmount > 0 && Time.time > nextFire && canShoot)
+            {
+                if(shootmode == ShootMode.Burst)
+                {
+                    StartCoroutine("FireBurst", spawnBullet);
+                }
+                else
+                {
+                    GameObject bulletClone = Instantiate(bullet, spawnBullet.position, spawnBullet.rotation);
+                    bulletClone.GetComponent<Bullet>().UpdateDamage(damage);
+                    PlaySoud();
+                    currentClipAmount -= 1;
+            }
+                
+                nextFire = Time.time + fireRate;
+                canShoot = false;
+                Invoke("ChangeCanShoot", fireRate);
+            }
+            else if (currentClipAmount <= 0 && !isReloading)
+            {
+                currentReloadTime = reloadTime;
+                Invoke("ReloadClip", reloadTime);
+                isReloading = true;
+            }
 
         //bulletClone.GetComponent<Rigidbody>().AddForce(transform.forward * (Time.deltaTime * 60),ForceMode.Impulse);
         /*GameObject bul = PoolManager.Instance.GetPlayer1Bullet();
@@ -103,6 +116,18 @@ public class Weapon : MonoBehaviour
         //bul.GetComponent<Bullet>().UpdateDamage(damage);
         bul.SetActive(true);
         */
+    }
+
+    public IEnumerator FireBurst(Transform spawnbullet)
+    {
+        for (int i = 0; i < burst; i++)
+        {
+            GameObject bulletClone = Instantiate(bullet, spawnbullet.position, spawnbullet.rotation);
+            bulletClone.GetComponent<Bullet>().UpdateDamage(damage);
+            PlaySoud();
+            currentClipAmount -= 1;
+            yield return new WaitForSeconds(burstDelay);
+        }
     }
 
     public string ReturnName()
@@ -134,5 +159,25 @@ public class Weapon : MonoBehaviour
     public int ReturnBurstAmount()
     {
         return burst;
+    }
+
+    public float ReturnBurstDelay()
+    {
+        return burstDelay;
+    }
+
+    public float ReturnFireRate()
+    {
+        return fireRate;
+    }
+
+    public bool ReturnCanShoot()
+    {
+        return canShoot;
+    }
+
+    public void ChangeCanShoot()
+    {
+        canShoot = true;
     }
 }
