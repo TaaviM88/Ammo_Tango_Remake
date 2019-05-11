@@ -16,6 +16,8 @@ public class Bullet : MonoBehaviour {
     Rigidbody rb;
 
     public ParticleSystem particleLauncher;
+
+    public int playerID = 0;
     List<ParticleCollisionEvent> collisionEvents;
     // Start is called before the first frame update
     void Start()
@@ -46,42 +48,46 @@ public class Bullet : MonoBehaviour {
     public void OnCollisionEnter(Collision collision)
     {
 
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.GetComponent<Player>())
         {
             collision.gameObject.GetComponent<Player>().TakeDamageShield(damage);
-            Disable();
+            //Disable();
         }
 
         if(collision.gameObject.GetComponent<Destroyer>())
         {
             collision.gameObject.GetComponent<Destroyer>().TakeDMG(damage);
-            Disable();
+            //Disable();
         }
 
         //Destroy(this.gameObject);
-        
+        Disable();
+
     }
 
     private void OnParticleCollision(GameObject other)
     {
 
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.GetComponent<Player>() && other.gameObject.GetComponent<PlayerMovement>().PlayerId != playerID)
         {
             other.gameObject.GetComponent<Player>().TakeDamageShield(damage);
-            Disable();
+            //Disable();
         }
 
         if (other.gameObject.GetComponent<Destroyer>())
         {
             other.gameObject.GetComponent<Destroyer>().TakeDMG(damage);
+            //Disable();
         }
+
+        Disable();
     }
 
     public void Disable()
     {
-        transform.position = Vector3.zero;
+        /*transform.position = Vector3.zero;
         transform.rotation = Quaternion.Euler(0, 0, 0);
-        rb.velocity = Vector3.zero;
+        rb.velocity = Vector3.zero;*/
         Destroy(gameObject);
         //gameObject.SetActive(false);
     }
@@ -100,5 +106,10 @@ public class Bullet : MonoBehaviour {
     public float ReturnTimer()
     {
         return fadetime;
+    }
+
+    public void UpdatePlayerID(int id)
+    {
+        playerID = id;
     }
  }

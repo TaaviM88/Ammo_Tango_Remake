@@ -15,10 +15,12 @@ public class Grenade : MonoBehaviour
     void Start()
     {
         countdown = delay;
+
+        Invoke("Explode", delay);
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         countdown -= Time.deltaTime;
         if(countdown <= 0 && !hasExploded)
@@ -26,7 +28,7 @@ public class Grenade : MonoBehaviour
             Explode();
             hasExploded = true;
         }
-    }
+    }*/
 
     public void Explode()
     {

@@ -53,3 +53,4 @@ MonoBehaviour:
   weaponshotSound: {fileID: 0}
   shootmode: 2
   burst: 2
+  burstDelay: 1

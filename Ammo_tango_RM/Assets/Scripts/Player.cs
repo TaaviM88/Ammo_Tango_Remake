@@ -9,13 +9,13 @@ public class Player : MonoBehaviour {
 
     [Header("Player stats")]
     
-    private float currentHealth = 10;
+    public float currentHealth = 10;
 
     [SerializeField]
     private float MaxHp;
 
 
-    private float currentShield = 0;
+    public float currentShield = 0;
 
     [SerializeField]
     private float MaxShield;
@@ -31,6 +31,9 @@ public class Player : MonoBehaviour {
     CinemachineTargetGroup cmTargets;
     Weapon wp;
 
+    //Child objects
+    private GameObject shield;
+    private GameObject weaponSlotObj;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,9 +44,27 @@ public class Player : MonoBehaviour {
         currentShield = MaxShield;
         shieldOn = true;
 
+        //Add player to TargetGroup object. Camera stuff
         GameObject obj = GameObject.FindWithTag("TargetGroup");
         cmTargets = obj.GetComponent<CinemachineTargetGroup>();
         cmTargets.AddMember(gameObject.transform, 1, 0);
+
+        foreach (Transform child in gameObject.GetComponentsInChildren<Transform>())
+        {
+            if(child.GetComponent<ShieldEffect>() != null)
+            {
+                shield = child.gameObject;
+                shield.SetActive(false);
+            }
+
+            if(child.name == "WeaponSlot")
+            {
+                weaponSlotObj = child.gameObject;
+                GameObject clone = Instantiate(combat.ReturnCurrentWeaponObject());
+                clone.transform.parent = weaponSlotObj.transform;
+            }
+        }
+
     }
 
     // Update is called once per frame
@@ -188,10 +209,6 @@ public class Player : MonoBehaviour {
                 #endregion
 
         }
-
-
-
-
     }
 
     public void TakeDamageShield(float damage)
@@ -199,8 +216,13 @@ public class Player : MonoBehaviour {
         //Instantiet hit particle effect
         if(currentShield > 0)
         {
-            float takenDamage = Mathf.Min(damage - currentShield, 0);
-            Debug.Log($"{gameObject.name} Takes shield damage {damage}");
+            currentShield = Mathf.Max(currentShield - damage, 0);
+            Debug.Log($"{gameObject.name} Takes shield damage {damage} Shield left {currentShield}");
+            if(shield.activeSelf == false)
+            {
+                shield.SetActive(true);
+            }
+            
             if ( currentShield == 0)
             {
                 shieldOn = false;
@@ -208,14 +230,14 @@ public class Player : MonoBehaviour {
         }
         else
         {
-            
             TakeDamageHP(damage);
         }
     }
 
     public void RestoreShield(float restore)
     {
-        float restoreAmount = Mathf.Max(currentShield + restore, MaxShield);
+        currentShield = Mathf.Min(currentShield + restore, MaxShield);
+
         if(currentShield > 0)
         {
             shieldOn = true; 
@@ -225,8 +247,8 @@ public class Player : MonoBehaviour {
     public void TakeDamageHP(float damage)
     {
         //instantiate hit particle effect
-        float takenDamage = Mathf.Min(damage - currentHealth, 0);
-        Debug.Log($"{gameObject.name} Takes damage {damage}");
+        currentHealth = Mathf.Max( currentHealth - damage, 0);
+        Debug.Log($"{gameObject.name} Takes damage {damage} Healt left {currentHealth}");
         if (currentHealth <=0)
         {
             Debug.Log($"{gameObject.name} Dies");
@@ -246,7 +268,22 @@ public class Player : MonoBehaviour {
         {
             if(other.gameObject.GetComponent<WeaponBox>().ReturnWeapon() != null)
             {
-                combat.UpdateWeapon(other.gameObject.GetComponent<WeaponBox>().ReturnWeapon());
+                foreach (Transform child in weaponSlotObj.gameObject.GetComponentsInChildren<Transform>())
+                {
+                    if(child.name != weaponSlotObj.name)
+                    {
+                        Destroy(child.gameObject);
+                    }
+                    
+                }
+
+                GameObject clone = Instantiate(other.gameObject.GetComponent<WeaponBox>().ReturnWeapon());
+                clone.transform.parent = weaponSlotObj.transform;
+                combat.UpdateWeapon(clone);
+              
+                /*weaponSlotObj = Instantiate(other.gameObject.GetComponent<WeaponBox>().ReturnWeapon());
+
+                combat.UpdateWeapon(weaponSlotObj);*/
                 other.gameObject.GetComponent<WeaponBox>().ResetRespawn();
             }
         } 

@@ -30,21 +30,23 @@ public class PlayerCombat : MonoBehaviour {
     [SerializeField]
     private float subweaponCoolDown = 1f;
     Weapon wp;
-
+    PlayerMovement pmovement;
     // Start is called before the first frame update
     void Start()
     {
         currentWeapon = baseWeapon;
         currentSubWeapon = baseSubWeapon;
         currentSubWeaponAmount = SubweaponAmount;
-         wp = currentWeapon.GetComponent<Weapon>();
+        wp = currentWeapon.GetComponent<Weapon>();
         wp.ReloadClip();
+        pmovement = GetComponent<PlayerMovement>();
+        wp.ShootingPlayerID(pmovement.PlayerId);
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
+        //timer += Time.deltaTime;
     }
 
     public void ShootMainWeapon()
@@ -66,11 +68,12 @@ public class PlayerCombat : MonoBehaviour {
         }
         else
         {
-            Debug.Log("Yoy are out of subweapons");
+            Debug.Log("You are out of subweapons");
         }
         
     }
-    public bool cooldownTimer()
+
+   /* public bool cooldownTimer()
     {
         
         if(timer >= cooldown)
@@ -79,7 +82,7 @@ public class PlayerCombat : MonoBehaviour {
             return true;
         }
         return false;
-    }
+    }*/
 
     public void SubweaponCoolDown()
     {
@@ -91,6 +94,7 @@ public class PlayerCombat : MonoBehaviour {
         currentWeapon = newWeapon;
         
         wp = currentWeapon.GetComponent<Weapon>();
+        wp.ShootingPlayerID(pmovement.PlayerId);
     }
 
     public void RollBackBaseWeapon()
@@ -102,5 +106,10 @@ public class PlayerCombat : MonoBehaviour {
     public Weapon ReturnWeapon()
     {
         return wp;
+    }
+
+    public GameObject ReturnCurrentWeaponObject()
+    {
+        return currentWeapon;
     }
 }

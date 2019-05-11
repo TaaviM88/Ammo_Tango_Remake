@@ -38,12 +38,7 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     protected float burstDelay = 1;
 
-
-    // Start is called before the first frame update
-    private void Awake()
-    {
-        
-    }
+    private int playerID = 0;
 
     public virtual void Start()
     {
@@ -124,6 +119,7 @@ public class Weapon : MonoBehaviour
         {
             GameObject bulletClone = Instantiate(bullet, spawnbullet.position, spawnbullet.rotation);
             bulletClone.GetComponent<Bullet>().UpdateDamage(damage);
+            bulletClone.GetComponent<Bullet>().UpdatePlayerID(playerID);
             PlaySoud();
             currentClipAmount -= 1;
             yield return new WaitForSeconds(burstDelay);
@@ -179,5 +175,10 @@ public class Weapon : MonoBehaviour
     public void ChangeCanShoot()
     {
         canShoot = true;
+    }
+
+    public void ShootingPlayerID(int id)
+    {
+        playerID = id;
     }
 }

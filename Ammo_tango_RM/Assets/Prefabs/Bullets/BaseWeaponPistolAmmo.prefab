@@ -47,8 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadetime: 3
-  force: 10
+  force: 20
   damage: 5
+  particleLauncher: {fileID: 0}
 --- !u!54 &3770040816076177521
 Rigidbody:
   m_ObjectHideFlags: 0
