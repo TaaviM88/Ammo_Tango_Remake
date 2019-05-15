@@ -35,9 +35,6 @@ public class PlayerCombat : MonoBehaviour {
     void Awake()
     {
         currentWeapon = baseWeapon;
-        /*GameObject clone = Instantiate(currentWeapon);
-        clone.transform.parent = weaponSlotObj.transform;
-        clone.transform.position = Vector3.zero;*/
         currentSubWeapon = baseSubWeapon;
         currentSubWeaponAmount = SubweaponAmount;
 

@@ -71,14 +71,16 @@ public class Player : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        switch(PlayerID)
+        switch(pmovement.PlayerId)
         {
             #region Player1            
             case 1:
+                
                 if (combat.ReturnCurrentWeaponObject().GetComponent<Weapon>().shootmode == Weapon.ShootMode.Single)
                 {
                     if (Input.GetButtonDown("Fire1p1"))
                     {
+                        Debug.Log($"Player{PlayerID} is shooting");
                         combat.ShootMainWeapon();
                     }
                 }
@@ -109,10 +111,12 @@ public class Player : MonoBehaviour {
 
             #region Player2            
             case 2:
+                
                 if (combat.ReturnCurrentWeaponObject().GetComponent<Weapon>().shootmode == Weapon.ShootMode.Single)
                 {
                     if (Input.GetButtonDown("Fire1p2"))
                     {
+                        Debug.Log($"Player{PlayerID} is shooting");
                         combat.ShootMainWeapon();
                     }
                 }

@@ -36,7 +36,7 @@ public class Bullet : MonoBehaviour {
             Disable();
         }
 
-        Debug.Log($"Bullet id ={playerID}");
+        //Debug.Log($"Bullet id ={playerID}");
     }
 
     private void FixedUpdate()
