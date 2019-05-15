@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2827627678350128133
+--- !u!1 &1097164258209305290
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,55 +8,56 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2827627678350128138}
-  - component: {fileID: 2827627678350128137}
-  - component: {fileID: 2827627678350128136}
-  - component: {fileID: 6823539805686409702}
+  - component: {fileID: 6791976072643723557}
+  - component: {fileID: 7841027415557732342}
+  - component: {fileID: 4857365334868544936}
+  - component: {fileID: 792275799333808458}
   m_Layer: 0
-  m_Name: testBullet
+  m_Name: SMGBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2827627678350128138
+--- !u!4 &6791976072643723557
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2827627678350128133}
+  m_GameObject: {fileID: 1097164258209305290}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.35, y: -0.09, z: -5.84}
+  m_LocalPosition: {x: -0.11720395, y: -2.390183, z: 2.2199159}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 8983869142206703880}
+  - {fileID: 4814077309144620196}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2827627678350128137
+--- !u!114 &7841027415557732342
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2827627678350128133}
+  m_GameObject: {fileID: 1097164258209305290}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3d13b5d670f5e04994ef508af36bdd0, type: 3}
+  m_Script: {fileID: 11500000, guid: ffe73603e69500a4ab572e78028e057d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadetime: 3
+  fadetime: 1
   force: 20
-  damage: 0
+  damage: 5
   particleLauncher: {fileID: 0}
---- !u!54 &2827627678350128136
+  playerID: 0
+--- !u!54 &4857365334868544936
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2827627678350128133}
+  m_GameObject: {fileID: 1097164258209305290}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -66,20 +67,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &6823539805686409702
+--- !u!135 &792275799333808458
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2827627678350128133}
+  m_GameObject: {fileID: 1097164258209305290}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.107872695
+  m_Radius: 0.03
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &2991148474994222612
+--- !u!1 &5342241344261435219
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,8 +88,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8983869142206703880}
-  - component: {fileID: 6728883288804642253}
+  - component: {fileID: 4814077309144620196}
+  - component: {fileID: 3280368652582876732}
   m_Layer: 0
   m_Name: Trail
   m_TagString: Untagged
@@ -96,28 +97,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8983869142206703880
+--- !u!4 &4814077309144620196
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2991148474994222612}
+  m_GameObject: {fileID: 5342241344261435219}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2827627678350128138}
+  m_Father: {fileID: 6791976072643723557}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!96 &6728883288804642253
+--- !u!96 &3280368652582876732
 TrailRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2991148474994222612}
+  m_GameObject: {fileID: 5342241344261435219}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -148,7 +149,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.3
+  m_Time: 5
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -156,8 +157,8 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.13868457
+        time: 0.02589035
+        value: 0.05970192
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -169,15 +170,15 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.9245283, g: 0.17880027, b: 0.6834256, a: 1}
-      key1: {r: 1, g: 0.042452812, b: 0.042452812, a: 1}
+      key0: {r: 0.025627613, g: 1, b: 0, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 6168
+      ctime0: 0
       ctime1: 65535
       ctime2: 0
       ctime3: 0

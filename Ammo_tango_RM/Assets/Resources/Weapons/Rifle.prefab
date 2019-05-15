@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2661958313303032576
+--- !u!1 &6695549403535983292
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9056136399982636145}
-  - component: {fileID: 2610585190667671372}
+  - component: {fileID: 5704501270654412850}
+  - component: {fileID: 5869851672200482296}
   m_Layer: 0
-  m_Name: BaseWeaponPistol
+  m_Name: Rifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9056136399982636145
+--- !u!4 &5704501270654412850
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2661958313303032576}
+  m_GameObject: {fileID: 6695549403535983292}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.398081, y: -0.07930684, z: 0.840196}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2610585190667671372
+--- !u!114 &5869851672200482296
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2661958313303032576}
+  m_GameObject: {fileID: 6695549403535983292}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6846a673e07dca4da8edcdc7776d93f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 5
   range: 1
-  fireRate: 1
-  maxClipSize: 10
-  currentClipAmount: 9
-  reloadTime: 10
-  bullet: {fileID: 584501105366420901, guid: a7215e758fc69d24da171e86f47113d6, type: 3}
+  fireRate: 0.3
+  maxClipSize: 25
+  currentClipAmount: 4
+  reloadTime: 2
+  bullet: {fileID: 0}
   weaponshotSound: {fileID: 0}
-  shootmode: 1
+  shootmode: 3
   burst: 0
+  burstDelay: 1
