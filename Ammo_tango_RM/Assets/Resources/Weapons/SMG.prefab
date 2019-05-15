@@ -49,7 +49,7 @@ MonoBehaviour:
   maxClipSize: 18
   currentClipAmount: 4
   reloadTime: 0.5
-  bullet: {fileID: 0}
+  bullet: {fileID: 1097164258209305290, guid: 58d30207e055ab94aa5b4361fdbf8795, type: 3}
   weaponshotSound: {fileID: 0}
   shootmode: 2
   burst: 3
