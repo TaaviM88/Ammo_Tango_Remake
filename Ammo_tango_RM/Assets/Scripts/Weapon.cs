@@ -82,9 +82,10 @@ public class Weapon : MonoBehaviour
                 {
                     GameObject bulletClone = Instantiate(bullet, spawnBullet.position, spawnBullet.rotation);
                     bulletClone.GetComponent<Bullet>().UpdateDamage(damage);
+                    bulletClone.GetComponent<Bullet>().UpdatePlayerID(playerID);
                     PlaySoud();
                     currentClipAmount -= 1;
-            }
+                }
                 
                 nextFire = Time.time + fireRate;
                 canShoot = false;

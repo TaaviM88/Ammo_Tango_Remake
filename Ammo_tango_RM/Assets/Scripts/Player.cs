@@ -40,6 +40,7 @@ public class Player : MonoBehaviour {
         combat = gameObject.GetComponent<PlayerCombat>();
         pmovement = gameObject.GetComponent<PlayerMovement>();
         PlayerID = pmovement.PlayerId;
+        Debug.Log($"Player scriptin playerId = {PlayerID}");
         currentHealth = MaxHp;
         currentShield = MaxShield;
         shieldOn = true;
@@ -74,7 +75,7 @@ public class Player : MonoBehaviour {
         {
             #region Player1            
             case 1:
-                if (combat.ReturnWeapon().shootmode == Weapon.ShootMode.Single)
+                if (combat.ReturnCurrentWeaponObject().GetComponent<Weapon>().shootmode == Weapon.ShootMode.Single)
                 {
                     if (Input.GetButtonDown("Fire1p1"))
                     {
@@ -82,7 +83,7 @@ public class Player : MonoBehaviour {
                     }
                 }
 
-                if(combat.ReturnWeapon().shootmode == Weapon.ShootMode.Burst)
+                if(combat.ReturnCurrentWeaponObject().GetComponent<Weapon>().shootmode == Weapon.ShootMode.Burst)
                 {
                     if (Input.GetButtonDown("Fire1p1"))
                     {
@@ -90,7 +91,7 @@ public class Player : MonoBehaviour {
                     }
                     
                 }
-                if(combat.ReturnWeapon().shootmode == Weapon.ShootMode.Rapid)
+                if(combat.ReturnCurrentWeaponObject().GetComponent<Weapon>().shootmode == Weapon.ShootMode.Rapid)
                 {
                     if (Input.GetButton("Fire1p1"))
                     {
@@ -108,7 +109,7 @@ public class Player : MonoBehaviour {
 
             #region Player2            
             case 2:
-                if (combat.ReturnWeapon().shootmode == Weapon.ShootMode.Single)
+                if (combat.ReturnCurrentWeaponObject().GetComponent<Weapon>().shootmode == Weapon.ShootMode.Single)
                 {
                     if (Input.GetButtonDown("Fire1p2"))
                     {
@@ -116,7 +117,7 @@ public class Player : MonoBehaviour {
                     }
                 }
 
-                if (combat.ReturnWeapon().shootmode == Weapon.ShootMode.Burst)
+                if (combat.ReturnCurrentWeaponObject().GetComponent<Weapon>().shootmode == Weapon.ShootMode.Burst)
                 {
                     if (Input.GetButtonDown("Fire1p2"))
                     {
@@ -124,7 +125,7 @@ public class Player : MonoBehaviour {
                     }
 
                 }
-                if (combat.ReturnWeapon().shootmode == Weapon.ShootMode.Rapid)
+                if (combat.ReturnCurrentWeaponObject().GetComponent<Weapon>().shootmode == Weapon.ShootMode.Rapid)
                 {
                     if (Input.GetButton("Fire1p2"))
                     {
@@ -142,7 +143,7 @@ public class Player : MonoBehaviour {
 
             #region Player3            
             case 3:
-                if (combat.ReturnWeapon().shootmode == Weapon.ShootMode.Single)
+                if (combat.ReturnCurrentWeaponObject().GetComponent<Weapon>().shootmode == Weapon.ShootMode.Single)
                 {
                     if (Input.GetButtonDown("Fire1p3"))
                     {
@@ -150,7 +151,7 @@ public class Player : MonoBehaviour {
                     }
                 }
 
-                if (combat.ReturnWeapon().shootmode == Weapon.ShootMode.Burst)
+                if (combat.ReturnCurrentWeaponObject().GetComponent<Weapon>().shootmode == Weapon.ShootMode.Burst)
                 {
                     if (Input.GetButtonDown("Fire1p3"))
                     {
@@ -158,7 +159,7 @@ public class Player : MonoBehaviour {
                     }
 
                 }
-                if (combat.ReturnWeapon().shootmode == Weapon.ShootMode.Rapid)
+                if (combat.ReturnCurrentWeaponObject().GetComponent<Weapon>().shootmode == Weapon.ShootMode.Rapid)
                 {
                     if (Input.GetButton("Fire1p3"))
                     {
@@ -176,7 +177,7 @@ public class Player : MonoBehaviour {
 
             #region Player4            
             case 4:
-                if (combat.ReturnWeapon().shootmode == Weapon.ShootMode.Single)
+                if (combat.ReturnCurrentWeaponObject().GetComponent<Weapon>().shootmode == Weapon.ShootMode.Single)
                 {
                     if (Input.GetButtonDown("Fire1p4"))
                     {
@@ -184,7 +185,7 @@ public class Player : MonoBehaviour {
                     }
                 }
 
-                if (combat.ReturnWeapon().shootmode == Weapon.ShootMode.Burst)
+                if (combat.ReturnCurrentWeaponObject().GetComponent<Weapon>().shootmode == Weapon.ShootMode.Burst)
                 {
                     if (Input.GetButtonDown("Fire1p4"))
                     {
@@ -192,7 +193,7 @@ public class Player : MonoBehaviour {
                     }
 
                 }
-                if (combat.ReturnWeapon().shootmode == Weapon.ShootMode.Rapid)
+                if (combat.ReturnCurrentWeaponObject().GetComponent<Weapon>().shootmode == Weapon.ShootMode.Rapid)
                 {
                     if (Input.GetButton("Fire1p4"))
                     {
@@ -279,6 +280,7 @@ public class Player : MonoBehaviour {
 
                 GameObject clone = Instantiate(other.gameObject.GetComponent<WeaponBox>().ReturnWeapon());
                 clone.transform.parent = weaponSlotObj.transform;
+                clone.transform.position = Vector3.zero;
                 combat.UpdateWeapon(clone);
               
                 /*weaponSlotObj = Instantiate(other.gameObject.GetComponent<WeaponBox>().ReturnWeapon());

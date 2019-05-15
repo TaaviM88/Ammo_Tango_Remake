@@ -29,18 +29,23 @@ public class PlayerCombat : MonoBehaviour {
     private float throwForce = -40f;
     [SerializeField]
     private float subweaponCoolDown = 1f;
-    Weapon wp;
+    //Weapon wp;
     PlayerMovement pmovement;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         currentWeapon = baseWeapon;
+        /*GameObject clone = Instantiate(currentWeapon);
+        clone.transform.parent = weaponSlotObj.transform;
+        clone.transform.position = Vector3.zero;*/
         currentSubWeapon = baseSubWeapon;
         currentSubWeaponAmount = SubweaponAmount;
-        wp = currentWeapon.GetComponent<Weapon>();
-        wp.ReloadClip();
+
+        //currentWeapon.GetComponent<Weapon>().ReloadClip();
+        //wp = currentWeapon.GetComponent<Weapon>();
+        //wp.ReloadClip();
         pmovement = GetComponent<PlayerMovement>();
-        wp.ShootingPlayerID(pmovement.PlayerId);
+        //wp.ShootingPlayerID(pmovement.PlayerId);
     }
 
     // Update is called once per frame
@@ -51,7 +56,8 @@ public class PlayerCombat : MonoBehaviour {
 
     public void ShootMainWeapon()
     {
-        wp.Shoot(shotspawn); 
+        //wp.Shoot(shotspawn);
+        currentWeapon.GetComponent<Weapon>().Shoot(shotspawn);
     }
 
     public void UseSubWeapon()
@@ -92,21 +98,21 @@ public class PlayerCombat : MonoBehaviour {
     public void UpdateWeapon(GameObject newWeapon)
     {
         currentWeapon = newWeapon;
-        
-        wp = currentWeapon.GetComponent<Weapon>();
-        wp.ShootingPlayerID(pmovement.PlayerId);
+        currentWeapon.GetComponent<Weapon>().ShootingPlayerID(pmovement.PlayerId);
+        //wp = currentWeapon.GetComponent<Weapon>();
+        //wp.ShootingPlayerID(pmovement.PlayerId);
     }
 
     public void RollBackBaseWeapon()
     {
         currentWeapon = baseWeapon;
-        wp = currentWeapon.GetComponent<Weapon>();
+        //wp = currentWeapon.GetComponent<Weapon>();
     }
 
-    public Weapon ReturnWeapon()
+   /* public Weapon ReturnWeapon()
     {
         return wp;
-    }
+    }*/
 
     public GameObject ReturnCurrentWeaponObject()
     {
