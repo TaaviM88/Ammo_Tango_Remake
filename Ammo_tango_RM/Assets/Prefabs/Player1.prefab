@@ -454,7 +454,8 @@ MonoBehaviour:
   damage: 0
   cooldown: 0
   shotspawn: {fileID: 1067779601}
-  baseWeapon: {fileID: 0}
+  baseWeapon: {fileID: 6433864071158248637, guid: 36238772c9b577c408473a1b33a05c59,
+    type: 3}
   currentWeapon: {fileID: 0}
   baseSubWeapon: {fileID: 916243297590462624, guid: dbcd364445abb064ea4f0111147da941,
     type: 3}
@@ -521,11 +522,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShieldEffect
-      objectReference: {fileID: 0}
-    - target: {fileID: 3114078246815318965, guid: 465cfd30b97003f4c85e438976b820c4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3114078246815318961, guid: 465cfd30b97003f4c85e438976b820c4,
         type: 3}

@@ -52,10 +52,12 @@ public class Player : MonoBehaviour {
 
         foreach (Transform child in gameObject.GetComponentsInChildren<Transform>())
         {
+            
             if(child.GetComponent<ShieldEffect>() != null)
             {
                 shield = child.gameObject;
                 shield.SetActive(false);
+                
             }
 
             if(child.name == "WeaponSlot")

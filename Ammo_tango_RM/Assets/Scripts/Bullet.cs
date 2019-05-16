@@ -36,7 +36,7 @@ public class Bullet : MonoBehaviour {
             Disable();
         }
 
-        //Debug.Log($"Bullet id ={playerID}");
+        // Debug.Log($"Bullet id ={playerID}");
     }
 
     private void FixedUpdate()
@@ -47,7 +47,7 @@ public class Bullet : MonoBehaviour {
 
     }
 
-    public void OnCollisionEnter(Collision collision)
+    /*public void OnCollisionEnter(Collision collision)
     {
 
         if(collision.gameObject.GetComponent<Player>())
@@ -62,15 +62,19 @@ public class Bullet : MonoBehaviour {
             //Disable();
         }
 
+        if (other.gameObject.isStatic == true)
+        {
+            Disable();
+        }
+
         //Destroy(this.gameObject);
-        Disable();
+        //Disable();
 
-    }
+    }*/
 
-    private void OnParticleCollision(GameObject other)
+    private void OnTriggerEnter(Collider other)
     {
-
-        if (other.gameObject.GetComponent<Player>() && other.gameObject.GetComponent<PlayerMovement>().PlayerId != playerID)
+        if (other.gameObject.GetComponent<Player>())
         {
             other.gameObject.GetComponent<Player>().TakeDamageShield(damage);
             //Disable();
@@ -82,7 +86,32 @@ public class Bullet : MonoBehaviour {
             //Disable();
         }
 
-        Disable();
+        if (other.gameObject.isStatic == true)
+        {
+            Disable();
+        }
+    }
+
+    private void OnParticleCollision(GameObject other)
+    {
+
+        if (other.gameObject.GetComponent<Player>() && other.gameObject.GetComponent<PlayerMovement>().PlayerId != playerID)
+        {
+            other.gameObject.GetComponent<Player>().TakeDamageShield(damage);
+            Disable();
+        }
+
+        if (other.gameObject.GetComponent<Destroyer>())
+        {
+            other.gameObject.GetComponent<Destroyer>().TakeDMG(damage);
+            Disable();
+        }
+
+        if(other.gameObject.isStatic == true)
+        {
+            Disable();
+        }
+        //
     }
 
     public void Disable()
