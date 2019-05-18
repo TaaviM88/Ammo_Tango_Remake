@@ -2,20 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCombat : MonoBehaviour { 
-
+public class PlayerCombat : MonoBehaviour {
+    /*
     public float damage;
     public float cooldown;
     private float timer = 0f;
     //public GameObject ammo;
     //public Player player;
-    public Transform shotspawn;
+    
 
     [SerializeField]
     GameObject baseWeapon;
 
     [SerializeField]
     GameObject currentWeapon;
+    */
+
+    public Transform shotspawn;
     [Header("SubWeapon Settings")]
     [SerializeField]
     GameObject baseSubWeapon;
@@ -34,14 +37,14 @@ public class PlayerCombat : MonoBehaviour {
     // Start is called before the first frame update
     void Awake()
     {
-        currentWeapon = baseWeapon;
+       // currentWeapon = baseWeapon;
         currentSubWeapon = baseSubWeapon;
         currentSubWeaponAmount = SubweaponAmount;
 
         //currentWeapon.GetComponent<Weapon>().ReloadClip();
         //wp = currentWeapon.GetComponent<Weapon>();
         //wp.ReloadClip();
-        pmovement = GetComponent<PlayerMovement>();
+        //pmovement = GetComponent<PlayerMovement>();
         //wp.ShootingPlayerID(pmovement.PlayerId);
     }
 
@@ -54,7 +57,7 @@ public class PlayerCombat : MonoBehaviour {
     public void ShootMainWeapon()
     {
         //wp.Shoot(shotspawn);
-        currentWeapon.GetComponent<Weapon>().Shoot(shotspawn);
+       // currentWeapon.GetComponent<Weapon>().Shoot(shotspawn);
     }
 
     public void UseSubWeapon()
@@ -94,15 +97,15 @@ public class PlayerCombat : MonoBehaviour {
 
     public void UpdateWeapon(GameObject newWeapon)
     {
-        currentWeapon = newWeapon;
-        currentWeapon.GetComponent<Weapon>().ShootingPlayerID(pmovement.PlayerId);
+        //currentWeapon = newWeapon;
+        //currentWeapon.GetComponent<Weapon>().ShootingPlayerID(pmovement.PlayerId);
         //wp = currentWeapon.GetComponent<Weapon>();
         //wp.ShootingPlayerID(pmovement.PlayerId);
     }
 
     public void RollBackBaseWeapon()
     {
-        currentWeapon = baseWeapon;
+        //currentWeapon = baseWeapon;
         //wp = currentWeapon.GetComponent<Weapon>();
     }
 
@@ -111,8 +114,8 @@ public class PlayerCombat : MonoBehaviour {
         return wp;
     }*/
 
-    public GameObject ReturnCurrentWeaponObject()
+   /* public GameObject ReturnCurrentWeaponObject()
     {
         return currentWeapon;
-    }
+    }*/
 }

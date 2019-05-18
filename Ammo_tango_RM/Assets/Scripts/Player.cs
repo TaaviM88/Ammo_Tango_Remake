@@ -5,8 +5,8 @@ using Cinemachine;
 
 public class Player : MonoBehaviour {
 
-    enum PlayerName {character1, character2, character3, character4 }
-
+    public enum CharacterName {None, character1, character2, character3, character4 }
+    public CharacterName characterName = CharacterName.None;
     [Header("Player stats")]
     
     public float currentHealth = 10;
@@ -20,6 +20,7 @@ public class Player : MonoBehaviour {
     [SerializeField]
     private float MaxShield;
 
+
     private PlayerCombat combat;
 
     bool shieldOn = true;
@@ -30,6 +31,13 @@ public class Player : MonoBehaviour {
 
     CinemachineTargetGroup cmTargets;
     Weapon wp;
+
+    [Header("Weapon Settings")]
+    public Transform shotspawn;
+    [SerializeField]
+    GameObject baseWeapon;
+    [SerializeField]
+    GameObject currentWeapon;
 
     //Child objects
     private GameObject shield;
@@ -50,6 +58,9 @@ public class Player : MonoBehaviour {
         cmTargets = obj.GetComponent<CinemachineTargetGroup>();
         cmTargets.AddMember(gameObject.transform, 1, 0);
 
+        //Weapon Settings
+        currentWeapon = baseWeapon;
+
         foreach (Transform child in gameObject.GetComponentsInChildren<Transform>())
         {
             
@@ -63,11 +74,10 @@ public class Player : MonoBehaviour {
             if(child.name == "WeaponSlot")
             {
                 weaponSlotObj = child.gameObject;
-                GameObject clone = Instantiate(combat.ReturnCurrentWeaponObject());
+                GameObject clone = Instantiate(currentWeapon);
                 clone.transform.parent = weaponSlotObj.transform;
             }
         }
-
     }
 
     // Update is called once per frame
@@ -78,28 +88,28 @@ public class Player : MonoBehaviour {
             #region Player1            
             case 1:
                 
-                if (combat.ReturnCurrentWeaponObject().GetComponent<Weapon>().shootmode == Weapon.ShootMode.Single)
+                if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Single)
                 {
                     if (Input.GetButtonDown("Fire1p1"))
                     {
                         Debug.Log($"Player{PlayerID} is shooting");
-                        combat.ShootMainWeapon();
+                        ShootMainWeapon();
                     }
                 }
 
-                if(combat.ReturnCurrentWeaponObject().GetComponent<Weapon>().shootmode == Weapon.ShootMode.Burst)
+                if(currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Burst)
                 {
                     if (Input.GetButtonDown("Fire1p1"))
                     {
-                        combat.ShootMainWeapon();
+                        ShootMainWeapon();
                     }
                     
                 }
-                if(combat.ReturnCurrentWeaponObject().GetComponent<Weapon>().shootmode == Weapon.ShootMode.Rapid)
+                if(currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Rapid)
                 {
                     if (Input.GetButton("Fire1p1"))
                     {
-                        combat.ShootMainWeapon();
+                        ShootMainWeapon();
                     }
                 }
                 
@@ -114,28 +124,28 @@ public class Player : MonoBehaviour {
             #region Player2            
             case 2:
                 
-                if (combat.ReturnCurrentWeaponObject().GetComponent<Weapon>().shootmode == Weapon.ShootMode.Single)
+                if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Single)
                 {
                     if (Input.GetButtonDown("Fire1p2"))
                     {
                         Debug.Log($"Player{PlayerID} is shooting");
-                        combat.ShootMainWeapon();
+                        ShootMainWeapon();
                     }
                 }
 
-                if (combat.ReturnCurrentWeaponObject().GetComponent<Weapon>().shootmode == Weapon.ShootMode.Burst)
+                if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Burst)
                 {
                     if (Input.GetButtonDown("Fire1p2"))
                     {
-                        combat.ShootMainWeapon();
+                        ShootMainWeapon();
                     }
 
                 }
-                if (combat.ReturnCurrentWeaponObject().GetComponent<Weapon>().shootmode == Weapon.ShootMode.Rapid)
+                if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Rapid)
                 {
                     if (Input.GetButton("Fire1p2"))
                     {
-                        combat.ShootMainWeapon();
+                        ShootMainWeapon();
                     }
                 }
 
@@ -149,27 +159,27 @@ public class Player : MonoBehaviour {
 
             #region Player3            
             case 3:
-                if (combat.ReturnCurrentWeaponObject().GetComponent<Weapon>().shootmode == Weapon.ShootMode.Single)
+                if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Single)
                 {
                     if (Input.GetButtonDown("Fire1p3"))
                     {
-                        combat.ShootMainWeapon();
+                        ShootMainWeapon();
                     }
                 }
 
-                if (combat.ReturnCurrentWeaponObject().GetComponent<Weapon>().shootmode == Weapon.ShootMode.Burst)
+                if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Burst)
                 {
                     if (Input.GetButtonDown("Fire1p3"))
                     {
-                        combat.ShootMainWeapon();
+                        ShootMainWeapon();
                     }
 
                 }
-                if (combat.ReturnCurrentWeaponObject().GetComponent<Weapon>().shootmode == Weapon.ShootMode.Rapid)
+                if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Rapid)
                 {
                     if (Input.GetButton("Fire1p3"))
                     {
-                        combat.ShootMainWeapon();
+                        ShootMainWeapon();
                     }
                 }
 
@@ -183,27 +193,27 @@ public class Player : MonoBehaviour {
 
             #region Player4            
             case 4:
-                if (combat.ReturnCurrentWeaponObject().GetComponent<Weapon>().shootmode == Weapon.ShootMode.Single)
+                if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Single)
                 {
                     if (Input.GetButtonDown("Fire1p4"))
                     {
-                        combat.ShootMainWeapon();
+                        ShootMainWeapon();
                     }
                 }
 
-                if (combat.ReturnCurrentWeaponObject().GetComponent<Weapon>().shootmode == Weapon.ShootMode.Burst)
+                if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Burst)
                 {
                     if (Input.GetButtonDown("Fire1p4"))
                     {
-                        combat.ShootMainWeapon();
+                        ShootMainWeapon(); ;
                     }
 
                 }
-                if (combat.ReturnCurrentWeaponObject().GetComponent<Weapon>().shootmode == Weapon.ShootMode.Rapid)
+                if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Rapid)
                 {
                     if (Input.GetButton("Fire1p4"))
                     {
-                        combat.ShootMainWeapon();
+                        ShootMainWeapon();
                     }
                 }
 
@@ -217,7 +227,30 @@ public class Player : MonoBehaviour {
 
         }
     }
+    //Weapon and shooting methods
+    public void ShootMainWeapon()
+    {
+        //wp.Shoot(shotspawn);
+        currentWeapon.GetComponent<Weapon>().Shoot(shotspawn);
+    }
 
+    public void UpdateWeapon(GameObject newWeapon)
+    {
+        currentWeapon = newWeapon;
+        currentWeapon.GetComponent<Weapon>().ShootingPlayerID(pmovement.PlayerId);
+    }
+
+    public void RollBackBaseWeapon()
+    {
+        currentWeapon = baseWeapon;
+    }
+
+    public GameObject ReturnCurrentWeaponObject()
+    {
+        return currentWeapon;
+    }
+
+    //Take damage methods and Dying method
     public void TakeDamageShield(float damage)
     {
         //Instantiet hit particle effect
@@ -279,6 +312,7 @@ public class Player : MonoBehaviour {
                 {
                     if(child.name != weaponSlotObj.name)
                     {
+                        
                         Destroy(child.gameObject);
                     }
                     
@@ -287,11 +321,8 @@ public class Player : MonoBehaviour {
                 GameObject clone = Instantiate(other.gameObject.GetComponent<WeaponBox>().ReturnWeapon());
                 clone.transform.parent = weaponSlotObj.transform;
                 clone.transform.position = Vector3.zero;
-                combat.UpdateWeapon(clone);
-              
-                /*weaponSlotObj = Instantiate(other.gameObject.GetComponent<WeaponBox>().ReturnWeapon());
-
-                combat.UpdateWeapon(weaponSlotObj);*/
+                UpdateWeapon(clone);
+                //combat.UpdateWeapon(clone);
                 other.gameObject.GetComponent<WeaponBox>().ResetRespawn();
             }
         } 
