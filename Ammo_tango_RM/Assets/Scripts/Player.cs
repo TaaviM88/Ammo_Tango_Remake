@@ -231,7 +231,14 @@ public class Player : MonoBehaviour {
     public void ShootMainWeapon()
     {
         //wp.Shoot(shotspawn);
-        currentWeapon.GetComponent<Weapon>().Shoot(shotspawn);
+        if(currentWeapon.GetComponent<Weapon>() != null)
+        {
+            currentWeapon.GetComponent<Weapon>().Shoot(shotspawn);
+        }
+        else
+        {
+            Debug.Log("Can't find weapon-script");
+        }
     }
 
     public void UpdateWeapon(GameObject newWeapon)

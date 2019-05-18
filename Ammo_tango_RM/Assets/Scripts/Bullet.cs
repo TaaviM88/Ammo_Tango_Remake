@@ -74,7 +74,7 @@ public class Bullet : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<Player>())
+        if (other.gameObject.GetComponent<Player>() && other.gameObject.GetComponent<PlayerMovement>().PlayerId != playerID)
         {
             other.gameObject.GetComponent<Player>().TakeDamageShield(damage);
             //Disable();
@@ -83,7 +83,7 @@ public class Bullet : MonoBehaviour {
         if (other.gameObject.GetComponent<Destroyer>())
         {
             other.gameObject.GetComponent<Destroyer>().TakeDMG(damage);
-            //Disable();
+            Disable();
         }
 
         if (other.gameObject.isStatic == true)

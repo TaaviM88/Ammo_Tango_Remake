@@ -40,7 +40,7 @@ public class Weapon : MonoBehaviour
 
     private int playerID = 0;
 
-    public virtual void Start()
+    public virtual void Awake()
     {
         if(weaponshotSound == null)
         {
