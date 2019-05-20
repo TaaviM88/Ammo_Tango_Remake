@@ -60,6 +60,7 @@ public class UIManager : MonoBehaviour
             break;
 
             case 2:
+                
                 break;
 
 
@@ -80,6 +81,9 @@ public class UIManager : MonoBehaviour
                 //pelaaja1
                 //slider 1 aktiiviseksi
                 //slider
+                break;
+
+            case 2:
                 break;
 
             default:
