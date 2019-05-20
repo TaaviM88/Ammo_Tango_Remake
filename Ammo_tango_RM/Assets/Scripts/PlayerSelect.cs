@@ -10,7 +10,7 @@ public class PlayerSelect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerId = gameObject.GetComponent<PlayerMovement>().PlayerId;
+        //PlayerId = gameObject.GetComponent<PlayerMovement>().PlayerId;
     }
 
     // Update is called once per frame

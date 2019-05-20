@@ -1,0 +1,9 @@
+diff a/Ammo_tango_RM/Assets/Scripts/Player.cs b/Ammo_tango_RM/Assets/Scripts/Player.cs	(rejected hunks)
+@@ -43,6 +43,7 @@
+     private GameObject shield;
+     private GameObject weaponSlotObj;
+     // Start is called before the first frame update
++
+     void Start()
+     {
+         combat = gameObject.GetComponent<PlayerCombat>();

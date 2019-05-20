@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
 
-    public enum CharacterName {None, character1, character2, character3, character4 }
+    public enum CharacterName { None, character1, character2, character3, character4 }
     public CharacterName characterName = CharacterName.None;
     [Header("Player stats")]
-    
+
     public float currentHealth = 10;
 
     [SerializeField]
@@ -39,11 +40,11 @@ public class Player : MonoBehaviour {
     [SerializeField]
     GameObject currentWeapon;
 
+    GameObject gm;
     //Child objects
     private GameObject shield;
     private GameObject weaponSlotObj;
     // Start is called before the first frame update
-
     void Start()
     {
         combat = gameObject.GetComponent<PlayerCombat>();
@@ -52,6 +53,11 @@ public class Player : MonoBehaviour {
         Debug.Log($"Player scriptin playerId = {PlayerID}");
         currentHealth = MaxHp;
         currentShield = MaxShield;
+        // UIManager.instance.UpdateShieldBar(currentShield, pmovement.PlayerId);
+        //GameManager.instance.UpdateShield(currentShield, pmovement.PlayerId);
+        gm = FindObjectOfType<GameManager>().gameObject;
+        gm.GetComponent<GameManager>().UpdateShield(currentShield, pmovement.PlayerId);
+        //sama hp:lle
         shieldOn = true;
 
         //Add player to TargetGroup object. Camera stuff
@@ -60,23 +66,26 @@ public class Player : MonoBehaviour {
         cmTargets.AddMember(gameObject.transform, 1, 0);
 
         //Weapon Settings
+
         currentWeapon = baseWeapon;
 
         foreach (Transform child in gameObject.GetComponentsInChildren<Transform>())
         {
-            
-            if(child.GetComponent<ShieldEffect>() != null)
+
+            if (child.GetComponent<ShieldEffect>() != null)
             {
                 shield = child.gameObject;
                 shield.SetActive(false);
-                
+
             }
 
-            if(child.name == "WeaponSlot")
+            if (child.name == "WeaponSlot")
             {
                 weaponSlotObj = child.gameObject;
                 GameObject clone = Instantiate(currentWeapon);
                 clone.transform.parent = weaponSlotObj.transform;
+                currentWeapon = clone;
+                currentWeapon.GetComponent<Weapon>().ShootingPlayerID(pmovement.PlayerId);
             }
         }
     }
@@ -84,11 +93,11 @@ public class Player : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        switch(pmovement.PlayerId)
+        switch (pmovement.PlayerId)
         {
             #region Player1            
             case 1:
-                
+
                 if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Single)
                 {
                     if (Input.GetButtonDown("Fire1p1"))
@@ -98,24 +107,24 @@ public class Player : MonoBehaviour {
                     }
                 }
 
-                if(currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Burst)
+                if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Burst)
                 {
                     if (Input.GetButtonDown("Fire1p1"))
                     {
                         ShootMainWeapon();
                     }
-                    
+
                 }
-                if(currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Rapid)
+                if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Rapid)
                 {
                     if (Input.GetButton("Fire1p1"))
                     {
                         ShootMainWeapon();
                     }
                 }
-                
 
-                if(Input.GetButtonDown("Fire2p1"))
+
+                if (Input.GetButtonDown("Fire2p1"))
                 {
                     combat.UseSubWeapon();
                 }
@@ -124,7 +133,7 @@ public class Player : MonoBehaviour {
 
             #region Player2            
             case 2:
-                
+
                 if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Single)
                 {
                     if (Input.GetButtonDown("Fire1p2"))
@@ -232,7 +241,7 @@ public class Player : MonoBehaviour {
     public void ShootMainWeapon()
     {
         //wp.Shoot(shotspawn);
-        if(currentWeapon.GetComponent<Weapon>() != null)
+        if (currentWeapon.GetComponent<Weapon>() != null)
         {
             currentWeapon.GetComponent<Weapon>().Shoot(shotspawn);
         }
@@ -262,16 +271,18 @@ public class Player : MonoBehaviour {
     public void TakeDamageShield(float damage)
     {
         //Instantiet hit particle effect
-        if(currentShield > 0)
+        if (currentShield > 0)
         {
             currentShield = Mathf.Max(currentShield - damage, 0);
+            //GameManager.instance.UpdateShield(currentShield, pmovement.PlayerId);
+            gm.GetComponent<GameManager>().UpdateShield(currentShield, pmovement.PlayerId);
             Debug.Log($"{gameObject.name} Takes shield damage {damage} Shield left {currentShield}");
-            if(shield.activeSelf == false)
+            if (shield.activeSelf == false)
             {
                 shield.SetActive(true);
             }
-            
-            if ( currentShield == 0)
+
+            if (currentShield == 0)
             {
                 shieldOn = false;
             }
@@ -286,18 +297,19 @@ public class Player : MonoBehaviour {
     {
         currentShield = Mathf.Min(currentShield + restore, MaxShield);
 
-        if(currentShield > 0)
+        if (currentShield > 0)
         {
-            shieldOn = true; 
+            shieldOn = true;
         }
     }
 
     public void TakeDamageHP(float damage)
     {
         //instantiate hit particle effect
-        currentHealth = Mathf.Max( currentHealth - damage, 0);
+        currentHealth = Mathf.Max(currentHealth - damage, 0);
+        gm.GetComponent<GameManager>().UpdateHealth(currentHealth, pmovement.PlayerId);
         Debug.Log($"{gameObject.name} Takes damage {damage} Healt left {currentHealth}");
-        if (currentHealth <=0)
+        if (currentHealth <= 0)
         {
             Debug.Log($"{gameObject.name} Dies");
             Die();
@@ -312,18 +324,18 @@ public class Player : MonoBehaviour {
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.GetComponent<WeaponBox>())
+        if (other.gameObject.GetComponent<WeaponBox>())
         {
-            if(other.gameObject.GetComponent<WeaponBox>().ReturnWeapon() != null)
+            if (other.gameObject.GetComponent<WeaponBox>().ReturnWeapon() != null)
             {
                 foreach (Transform child in weaponSlotObj.gameObject.GetComponentsInChildren<Transform>())
                 {
-                    if(child.name != weaponSlotObj.name)
+                    if (child.name != weaponSlotObj.name)
                     {
-                        
+
                         Destroy(child.gameObject);
                     }
-                    
+
                 }
 
                 GameObject clone = Instantiate(other.gameObject.GetComponent<WeaponBox>().ReturnWeapon());
@@ -333,6 +345,6 @@ public class Player : MonoBehaviour {
                 //combat.UpdateWeapon(clone);
                 other.gameObject.GetComponent<WeaponBox>().ResetRespawn();
             }
-        } 
+        }
     }
 }

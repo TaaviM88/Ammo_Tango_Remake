@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public static List<GameObject> playerList;
     public static List<GameObject> spawnpoints;
-
+    UIManager uIManager;
     public static float timer = 0f;
    // public TextMeshProUGUI timertext;
 
@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
         AddSpawnPoint(GameObject.Find("Spawn3"));
         AddSpawnPoint(GameObject.Find("Spawn4"));
 
+        uIManager = gameObject.GetComponent<UIManager>();
         //timertext.GetComponent<TextMeshProUGUI>();
     }
 
@@ -99,6 +100,15 @@ public class GameManager : MonoBehaviour
         spawnpoints.Add(spawner);
     }
 
+    public void UpdateShield(float amount, int pID)
+    {
+        uIManager.UpdateShieldBar(amount, pID);
+    }
+    public void UpdateHealth(float amount, int pID)
+    {
+        uIManager.UpdateHealthBar(amount, pID);
+    }
+
     public void HideUI(GameObject setupUI)
     {
         if(setupUI.activeSelf == true)
@@ -122,27 +132,36 @@ public class GameManager : MonoBehaviour
         {
             if (point.name.Equals("Spawn1"))
             {
-
-                Instantiate(playerList[0]).GetComponent<PlayerMovement>().UpdatePlayerID(1);
-                playerList[0].transform.position = point.transform.position;
+                if ((playerList[0]).GetComponent<PlayerMovement>() != null)
+                {
+                    Instantiate(playerList[0]).GetComponent<PlayerMovement>().UpdatePlayerID(1);
+                    playerList[0].transform.position = point.transform.position;
+                }
             }
             if (point.name.Equals("Spawn2"))
             {
-                
-                Instantiate(playerList[1]).GetComponent<PlayerMovement>().UpdatePlayerID(2);
-                playerList[1].transform.position = point.transform.position;
+                if ((playerList[1]).GetComponent<PlayerMovement>() != null)
+                {
+                    Instantiate(playerList[1]).GetComponent<PlayerMovement>().UpdatePlayerID(2);
+                    playerList[1].transform.position = point.transform.position;
+                }
             }
             if (point.name.Equals("Spawn3"))
             {
+                if((playerList[2]).GetComponent<PlayerMovement>() != null){
+                    Instantiate(playerList[2]).GetComponent<PlayerMovement>().UpdatePlayerID(3);
+                    playerList[2].transform.position = point.transform.position;
+                }
                 
-                Instantiate(playerList[2]).GetComponent<PlayerMovement>().UpdatePlayerID(3);
-                playerList[2].transform.position = point.transform.position;
             }
             if (point.name.Equals("Spawn4"))
             {
-                
-                Instantiate(playerList[3]).GetComponent<PlayerMovement>().UpdatePlayerID(4);
-                playerList[3].transform.position = point.transform.position;
+                if ((playerList[3]).GetComponent<PlayerMovement>() != null)
+                {
+                    Instantiate(playerList[3]).GetComponent<PlayerMovement>().UpdatePlayerID(4);
+                    playerList[3].transform.position = point.transform.position;
+                }
+                    
             }
         }
     }
