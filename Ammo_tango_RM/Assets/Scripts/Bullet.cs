@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour {
     Rigidbody rb;
 
     public ParticleSystem particleLauncher;
-
+    public GameObject bulletHitParticleEffect;
     public int playerID = 0;
     List<ParticleCollisionEvent> collisionEvents;
     // Start is called before the first frame update
@@ -33,7 +33,7 @@ public class Bullet : MonoBehaviour {
 
         if(btimer >= fadetime)
         {
-            Disable();
+            Disable(false);
         }
 
         // Debug.Log($"Bullet id ={playerID}");
@@ -77,18 +77,18 @@ public class Bullet : MonoBehaviour {
         if (other.gameObject.GetComponent<Player>() && other.gameObject.GetComponent<PlayerMovement>().PlayerId != playerID)
         {
             other.gameObject.GetComponent<Player>().TakeDamageShield(damage);
-            //Disable();
+            Disable(true);
         }
 
         if (other.gameObject.GetComponent<Destroyer>())
         {
             other.gameObject.GetComponent<Destroyer>().TakeDMG(damage);
-            Disable();
+            Disable(true);
         }
 
         if (other.gameObject.isStatic == true)
         {
-            Disable();
+            Disable(true);
         }
     }
 
@@ -98,27 +98,31 @@ public class Bullet : MonoBehaviour {
         if (other.gameObject.GetComponent<Player>() && other.gameObject.GetComponent<PlayerMovement>().PlayerId != playerID)
         {
             other.gameObject.GetComponent<Player>().TakeDamageShield(damage);
-            Disable();
+            Disable(false);
         }
 
         if (other.gameObject.GetComponent<Destroyer>())
         {
             other.gameObject.GetComponent<Destroyer>().TakeDMG(damage);
-            Disable();
+            Disable(false);
         }
 
         if(other.gameObject.isStatic == true)
         {
-            Disable();
+            Disable(false);
         }
-        //
     }
 
-    public void Disable()
+    public void Disable(bool spawnHitEffect)
     {
         /*transform.position = Vector3.zero;
         transform.rotation = Quaternion.Euler(0, 0, 0);
         rb.velocity = Vector3.zero;*/
+        if(spawnHitEffect)
+        {
+            Instantiate(bulletHitParticleEffect, transform.position, transform.rotation);
+        }
+
         Destroy(gameObject);
         //gameObject.SetActive(false);
     }

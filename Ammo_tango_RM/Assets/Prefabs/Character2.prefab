@@ -171,6 +171,7 @@ MonoBehaviour:
     type: 3}
   currentWeapon: {fileID: 6433864071158248637, guid: 36238772c9b577c408473a1b33a05c59,
     type: 3}
+  ragdoll: {fileID: 2543124322274293351, guid: 9f57c317428a2f44fb29b301cded8952, type: 3}
 --- !u!136 &1640218842776696934
 CapsuleCollider:
   m_ObjectHideFlags: 0

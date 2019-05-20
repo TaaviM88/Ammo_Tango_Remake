@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     GameObject currentWeapon;
 
+    public GameObject ragdoll;
     GameObject gm;
     //Child objects
     private GameObject shield;
@@ -321,6 +322,8 @@ public class Player : MonoBehaviour
         //dying stuff here
         Debug.Log($"{gameObject.name} dies.");
         cmTargets.RemoveMember(gameObject.transform);
+        Instantiate(ragdoll,transform.position,transform.rotation);
+        Destroy(gameObject); 
     }
     private void OnTriggerEnter(Collider other)
     {

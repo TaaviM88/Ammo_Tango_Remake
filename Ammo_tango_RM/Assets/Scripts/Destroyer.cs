@@ -16,7 +16,7 @@ public class Destroyer : MonoBehaviour
 
         if(takenDamage <= 0)
         {
-            Instantiate(destroyedObject, transform.position, Quaternion.identity);
+            Instantiate(destroyedObject, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }
