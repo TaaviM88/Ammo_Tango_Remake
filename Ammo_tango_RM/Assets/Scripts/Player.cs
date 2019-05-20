@@ -43,6 +43,7 @@ public class Player : MonoBehaviour {
     private GameObject shield;
     private GameObject weaponSlotObj;
     // Start is called before the first frame update
+
     void Start()
     {
         combat = gameObject.GetComponent<PlayerCombat>();
