@@ -11,8 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     public GameObject[] sliders;
 
-    private Slider armor;
-    private Slider hp;
+    public List<Slider> sliderlist;
 
     void Awake()
     {
@@ -34,9 +33,15 @@ public class UIManager : MonoBehaviour
     void Start()
     {
 
+        foreach(GameObject slider in sliders)
+        {
+            sliderlist.Add(slider.GetComponent<Slider>());
+        }
+
+        /*
         armor = sliders[0].GetComponent<Slider>();
         hp = sliders[1].GetComponent<Slider>();
-        
+        */
     }
 
     // Update is called once per frame
@@ -52,7 +57,7 @@ public class UIManager : MonoBehaviour
         switch(pID)
         {
             case 1: 
-                armor.SetValueWithoutNotify(amount);
+                sliderlist[0].SetValueWithoutNotify(amount);
 
             //pelaaja1
             //slider 1 aktiiviseksi
@@ -60,7 +65,15 @@ public class UIManager : MonoBehaviour
             break;
 
             case 2:
-                
+                sliderlist[2].SetValueWithoutNotify(amount);
+                break;
+
+            case 3:
+                sliderlist[4].SetValueWithoutNotify(amount);
+                break;
+
+            case 4:
+                sliderlist[6].SetValueWithoutNotify(amount);
                 break;
 
 
@@ -76,7 +89,7 @@ public class UIManager : MonoBehaviour
         switch (pID)
         {
             case 1:
-                hp.SetValueWithoutNotify(amount);
+                sliderlist[1].SetValueWithoutNotify(amount);
 
                 //pelaaja1
                 //slider 1 aktiiviseksi
@@ -84,6 +97,15 @@ public class UIManager : MonoBehaviour
                 break;
 
             case 2:
+                sliderlist[3].SetValueWithoutNotify(amount);
+                break;
+
+            case 3:
+                sliderlist[5].SetValueWithoutNotify(amount);
+                break;
+
+            case 4:
+                sliderlist[7].SetValueWithoutNotify(amount);
                 break;
 
             default:
