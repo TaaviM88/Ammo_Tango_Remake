@@ -86,6 +86,13 @@ public class Bullet : MonoBehaviour {
             Disable(true);
         }
 
+        if(other.gameObject.GetComponent<CellController>())
+        {
+            //Debug.Log("löyty cellController");
+            other.gameObject.GetComponent<CellController>().ActivateRigidbody();
+            Disable(true);
+        }
+
         if (other.gameObject.isStatic == true)
         {
             Disable(true);
@@ -107,7 +114,12 @@ public class Bullet : MonoBehaviour {
             Disable(false);
         }
 
-        if(other.gameObject.isStatic == true)
+        if (other.gameObject.GetComponent<CellController>())
+        {
+            other.gameObject.GetComponent<CellController>().ActivateRigidbody();
+            Disable(false);
+        }
+        if (other.gameObject.isStatic == true)
         {
             Disable(false);
         }

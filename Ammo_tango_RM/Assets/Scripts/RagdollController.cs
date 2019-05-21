@@ -17,6 +17,14 @@ public class RagdollController : MonoBehaviour
         foreach (Rigidbody rb in bodies)
         {
             rb.isKinematic = true;
+            if(rb.GetComponent<MeshCollider>())
+            {
+                rb.GetComponent<MeshCollider>().isTrigger = true;
+            }
+            else if(rb.GetComponent<Collider>().isTrigger)
+            {
+                rb.GetComponent<Collider>().isTrigger = true;
+            }
         }
     }
 }
