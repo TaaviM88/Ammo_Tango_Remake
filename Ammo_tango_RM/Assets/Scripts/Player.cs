@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
         //GameManager.instance.UpdateShield(currentShield, pmovement.PlayerId);
         gm = FindObjectOfType<GameManager>().gameObject;
         gm.GetComponent<GameManager>().UpdateShield(currentShield, pmovement.PlayerId);
-        //sama hp:lle
+        gm.GetComponent<GameManager>().UpdateHealth(currentHealth, pmovement.PlayerId);
         shieldOn = true;
 
         //Add player to TargetGroup object. Camera stuff
