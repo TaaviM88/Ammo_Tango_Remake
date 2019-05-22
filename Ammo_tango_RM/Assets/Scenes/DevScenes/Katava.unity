@@ -312,6 +312,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.10324812
       objectReference: {fileID: 0}
+    - target: {fileID: 8085563703740307486, guid: eb577f81a6a41d54aaab06c57b20422a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb577f81a6a41d54aaab06c57b20422a, type: 3}
 --- !u!1 &300608863 stripped
@@ -759,12 +764,12 @@ PrefabInstance:
     - target: {fileID: 5896721037192175139, guid: 09b68ab5a7d718b49bf1d46e1a9de7b1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 459291.84
+      value: 498807.56
       objectReference: {fileID: 0}
     - target: {fileID: 5896721037192175139, guid: 09b68ab5a7d718b49bf1d46e1a9de7b1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -395956.22
+      value: -430022.75
       objectReference: {fileID: 0}
     - target: {fileID: 5896721037192175139, guid: 09b68ab5a7d718b49bf1d46e1a9de7b1,
         type: 3}
@@ -1319,12 +1324,12 @@ PrefabInstance:
     - target: {fileID: 1263851495764194680, guid: ab7d33b79eaf4154d8a0b82cf834e174,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 459291.84
+      value: 498807.56
       objectReference: {fileID: 0}
     - target: {fileID: 1263851495764194680, guid: ab7d33b79eaf4154d8a0b82cf834e174,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -395956.22
+      value: -430022.75
       objectReference: {fileID: 0}
     - target: {fileID: 1263851495764194680, guid: ab7d33b79eaf4154d8a0b82cf834e174,
         type: 3}
@@ -1686,17 +1691,17 @@ PrefabInstance:
     - target: {fileID: 6791976072643723557, guid: 58d30207e055ab94aa5b4361fdbf8795,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -5.279
       objectReference: {fileID: 0}
     - target: {fileID: 6791976072643723557, guid: 58d30207e055ab94aa5b4361fdbf8795,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.249
       objectReference: {fileID: 0}
     - target: {fileID: 6791976072643723557, guid: 58d30207e055ab94aa5b4361fdbf8795,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -7.758
       objectReference: {fileID: 0}
     - target: {fileID: 6791976072643723557, guid: 58d30207e055ab94aa5b4361fdbf8795,
         type: 3}
@@ -1736,6 +1741,21 @@ PrefabInstance:
     - target: {fileID: 6791976072643723557, guid: 58d30207e055ab94aa5b4361fdbf8795,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 792275799333808458, guid: 58d30207e055ab94aa5b4361fdbf8795,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280368652582876732, guid: 58d30207e055ab94aa5b4361fdbf8795,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.atime1
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280368652582876732, guid: 58d30207e055ab94aa5b4361fdbf8795,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.a
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
