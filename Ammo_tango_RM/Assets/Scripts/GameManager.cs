@@ -61,8 +61,6 @@ public class GameManager : MonoBehaviour
         StartCoroutine(Timer(3));
         GetSpawnPoints();
 
-        timertext.text = "";
-
     }
 
     IEnumerator Timer(int time)
@@ -84,8 +82,10 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.5f);
         Time.timeScale = 1;
         timertext.text = "GO!";
-        
 
+        yield return new WaitForSecondsRealtime(1);
+
+        timertext.text = "";
         
     }
 
