@@ -26,10 +26,6 @@ public class UIManager : MonoBehaviour
             sliderlist.Add(slider.GetComponent<Slider>());
         }
 
-        /*
-        armor = sliders[0].GetComponent<Slider>();
-        hp = sliders[1].GetComponent<Slider>();
-        */
     }
 
     // Update is called once per frame
