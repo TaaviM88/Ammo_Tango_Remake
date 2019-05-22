@@ -105,23 +105,23 @@ public class Bullet : MonoBehaviour {
         if (other.gameObject.GetComponent<Player>() && other.gameObject.GetComponent<PlayerMovement>().PlayerId != playerID)
         {
             other.gameObject.GetComponent<Player>().TakeDamageShield(damage);
-            Disable(false);
+            //Disable(false);
         }
 
         if (other.gameObject.GetComponent<Destroyer>())
         {
             other.gameObject.GetComponent<Destroyer>().TakeDMG(damage);
-            Disable(false);
+            //Disable(false);
         }
 
         if (other.gameObject.GetComponent<CellController>())
         {
             other.gameObject.GetComponent<CellController>().ActivateRigidbody();
-            Disable(false);
+            //Disable(false);
         }
         if (other.gameObject.isStatic == true)
         {
-            Disable(false);
+            //Disable(false);
         }
     }
 
