@@ -43,13 +43,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6846a673e07dca4da8edcdc7776d93f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 15
   range: 1
-  fireRate: 0.15
-  maxClipSize: 25
-  currentClipAmount: 4
+  fireRate: -1.05
+  maxClipSize: 45
+  currentClipAmount: 45
   reloadTime: 2
-  bullet: {fileID: 434169537653491879, guid: ac42fda4ec1c50943a134e3bde46f2e3, type: 3}
+  bullet: {fileID: 2393648402652785170, guid: 3ee5f8d50a06e9b4c93aeccfb3943a24, type: 3}
   weaponshotSound: {fileID: 0}
   shootmode: 3
   burst: 0
