@@ -15,6 +15,12 @@ ModelImporter:
   - first:
       74: 8349542763059015795
     second: Armature|Walk
+  - first:
+      74: 2292772726886258522
+    second: Armature|Run 45
+  - first:
+      74: -5827020697108162622
+    second: Armature|Run 90
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -421,16 +427,6 @@ ModelImporter:
       position: {x: 1.3562385e-10, y: 0.0014012154, z: 5.1950336e-11}
       rotation: {x: -0.030560842, y: 0.9819684, z: -0.18655562, w: -0.0010763435}
       scale: {x: 1, y: 1, z: 0.99999994}
-    - name: ik.armtarget.l
-      parentName: Armature
-      position: {x: -0.0050139944, y: 0, z: 0.011382514}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: ik.armtarget.r
-      parentName: Armature
-      position: {x: 0.0050139944, y: 0, z: 0.011382514}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
     - name: character001
       parentName: character1(Clone)
       position: {x: -0, y: 0, z: -0.0000000037252903}
