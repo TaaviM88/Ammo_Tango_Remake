@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public static List<GameObject> spawnpoints;
     UIManager uIManager;
     public static float timer = 0f;
-   // public TextMeshProUGUI timertext;
+    public TextMeshProUGUI timertext;
 
     //public int playerID;
 
@@ -51,27 +51,42 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //timer += Time.deltaTime * (1.0f / 0.0001f);
-        //timertext.text = Mathf.Round(timer / 10000).ToString();
+        
     }
 
 
 
     public void SetupGame()
     {
-
-        //lisää timeri
-        /*
-        Time.timeScale = 0.0001f;
-
-        if(timer >= 3)
-        {
-            Time.timeScale = 1;
-        }
-        */
-
+        StartCoroutine(Timer(3));
         GetSpawnPoints();
 
+        timertext.text = "";
+
+    }
+
+    IEnumerator Timer(int time)
+    {
+        
+
+        Time.timeScale = 0;
+
+        timertext.text = time.ToString();
+
+        while (time > 0)
+        {
+            yield return new WaitForSecondsRealtime(1);
+            timertext.text = time.ToString();
+            time--;
+        }
+
+
+        yield return new WaitForSecondsRealtime(0.5f);
+        Time.timeScale = 1;
+        timertext.text = "GO!";
+        
+
+        
     }
 
 
@@ -122,8 +137,8 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Sets players on the playerList on spawnpoints on their respective list. Requires Spawn1, Spawn2 and Player1, Player2.
-    /// Instantiates prefabs chosen by the player and updates playerID for the instantiated gameobject.
+    /// Sets players on the playerList on spawnpoints on their respective list.
+    /// Instantiates prefabs chosen by the player and updates playerID for the instantiated gameobject (if player has PlayerMovement -component).
     /// </summary>
     public void GetSpawnPoints()
     {
