@@ -40,6 +40,8 @@ public class Weapon : MonoBehaviour
 
     private int playerID = 0;
 
+    AudioManager audioM;
+
     public virtual void Awake()
     {
         if(weaponshotSound == null)
@@ -48,6 +50,8 @@ public class Weapon : MonoBehaviour
         }
 
         currentClipAmount = maxClipSize;
+
+        audioM = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -140,6 +144,8 @@ public class Weapon : MonoBehaviour
     public void PlaySoud()
     {
         //play shooting sound
+        Debug.Log(weaponshotSound);
+        audioM.Play(weaponshotSound.name);
     }
 
     public void ReloadClip()

@@ -31,10 +31,10 @@ public class AudioManager : MonoBehaviour {
         }
     }
 
-    /*void Start()
+    void Start()
     {
         Play("Theme");
-    }*/
+    }
 
     public void Play (string name)
     {

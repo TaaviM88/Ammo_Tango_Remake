@@ -50,7 +50,7 @@ MonoBehaviour:
   currentClipAmount: 4
   reloadTime: 0.5
   bullet: {fileID: 1097164258209305290, guid: 58d30207e055ab94aa5b4361fdbf8795, type: 3}
-  weaponshotSound: {fileID: 0}
+  weaponshotSound: {fileID: 8300000, guid: 9b1a8370ceb58b94a8b6b2d09190f066, type: 3}
   shootmode: 2
   burst: 3
   burstDelay: 0.1

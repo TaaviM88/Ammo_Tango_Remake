@@ -47,10 +47,10 @@ MonoBehaviour:
   range: 1
   fireRate: 0.3
   maxClipSize: 10
-  currentClipAmount: 4
+  currentClipAmount: 8
   reloadTime: 2
   bullet: {fileID: 2838793218307300478, guid: e6d345dfd9fbb594bb9ea25c2251dc46, type: 3}
-  weaponshotSound: {fileID: 0}
+  weaponshotSound: {fileID: 8300000, guid: 3f25d6f10ce72d34889739c328dac519, type: 3}
   shootmode: 1
   burst: 0
   burstDelay: 1
