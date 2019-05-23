@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
         combat = gameObject.GetComponent<PlayerCombat>();
         pmovement = gameObject.GetComponent<PlayerMovement>();
         PlayerID = pmovement.PlayerId;
-        Debug.Log($"Player scriptin playerId = {PlayerID}");
+        //Debug.Log($"Player scriptin playerId = {PlayerID}");
         currentHealth = MaxHp;
         currentShield = MaxShield;
         // UIManager.instance.UpdateShieldBar(currentShield, pmovement.PlayerId);
@@ -326,8 +326,18 @@ public class Player : MonoBehaviour
         //dying stuff here
         Debug.Log($"{gameObject.name} dies.");
         cmTargets.RemoveMember(gameObject.transform);
+        PlayerSelect.ingameplayers[pmovement.PlayerId - 1] = null;
+        Debug.Log(PlayerSelect.VictoryCheck());
         Instantiate(ragdoll,transform.position,transform.rotation);
-        Destroy(gameObject); 
+        Destroy(gameObject);
+
+        if(PlayerSelect.VictoryCheck() == true)
+        {
+            Time.timeScale = 0.1f;
+            new WaitForSecondsRealtime(2);
+            Time.timeScale = 1;
+            //Debug.Log(PlayerSelect.GetWinner());
+        }
     }
     private void OnTriggerEnter(Collider other)
     {

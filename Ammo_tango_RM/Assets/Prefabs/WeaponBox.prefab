@@ -58,9 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb0ebf452e99b294589a3f12c804ce86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponPrefabs:
-  - {fileID: 2661958313303032576, guid: c16324278ca17bb45b381e5efb51cd0d, type: 3}
-  - {fileID: 2661958313303032576, guid: d50f07d83f3306d409e81f609087ddbe, type: 3}
+  weaponPrefabs: []
   weaponIndex: 0
   random: 1
 --- !u!1 &2363071257514609295

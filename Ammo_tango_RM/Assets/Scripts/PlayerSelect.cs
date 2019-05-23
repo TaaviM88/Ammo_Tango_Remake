@@ -7,10 +7,13 @@ public class PlayerSelect : MonoBehaviour
 
     public int PlayerId;
 
+    public static GameObject[] ingameplayers;
+
     // Start is called before the first frame update
     void Start()
     {
         //PlayerId = gameObject.GetComponent<PlayerMovement>().PlayerId;
+        ingameplayers = new GameObject[3];
     }
 
     // Update is called once per frame
@@ -60,6 +63,47 @@ public class PlayerSelect : MonoBehaviour
         }
 
 
+    }
+
+    public static bool VictoryCheck()
+    {
+        int count = 0;
+
+        foreach(GameObject player in ingameplayers)
+        {
+            if(player != null)
+            {
+                count++;
+            }
+        }
+
+        if(count == 1)
+        {
+            //SHOW RESULTS MAN
+            GameManager.instance.winnertext.text = GetWinner() + " wins!";
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public static string GetWinner()
+    {
+        string winner = "";
+
+        foreach (GameObject player in ingameplayers)
+        {
+            if (player != null)
+            {
+                winner = player.GetComponent<Player>().characterName.ToString();
+            }
+        }
+
+
+
+        return winner;
     }
 
     public void RemovePlayer()
