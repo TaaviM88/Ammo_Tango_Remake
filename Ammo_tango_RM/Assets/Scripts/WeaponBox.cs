@@ -18,9 +18,11 @@ public class WeaponBox : MonoBehaviour
 
     private bool objectIsActive = true;
     [Header("Respawn settings")]
-    private float timeBTWRespawns = 10;
+    public float timeBTWRespawns = 10;
     private float startBTWRespawns;
 
+    public GameObject[] weaponHolograms;
+    public GameObject HologramScreen;                                                                                                                                                        
     private void Start()
     {
         startBTWRespawns = timeBTWRespawns;
@@ -36,6 +38,7 @@ public class WeaponBox : MonoBehaviour
 
         randomwep = Random.Range(0, weaponPrefabs.Count);
         hasRandom = true;
+        ChangeHologram();
     }
 
     private void Update()
@@ -46,12 +49,15 @@ public class WeaponBox : MonoBehaviour
         { 
             // GetComponentInChildren<Material>().SetColor("_color", Color.green);
             randomwep = Random.Range(0, weaponPrefabs.Count);
+
             Debug.Log(randomwep);
             hasRandom = true;
+            ChangeHologram();
         }
         if (hasRandom == true)
         {
             objectIsActive = true;
+            
             /*Renderer rend = GetComponentInChildren<Renderer>();
             rend.material.shader = Shader.Find("HDRP/Lit");
             rend.material.SetColor("_BaseColor", Color.green);*/
@@ -94,6 +100,68 @@ public class WeaponBox : MonoBehaviour
         objectIsActive = false;
         timeBTWRespawns = startBTWRespawns;
         hasRandom = false;
+        DisableHologram();
     }
 
+    public void ChangeHologram()
+    {
+
+       if(weaponPrefabs[randomwep].GetComponent<Weapon>().shootmode == Weapon.ShootMode.Single)
+       {
+            if(weaponPrefabs[randomwep].GetComponent<Weapon>().name != "Shotgun")
+            {
+                for (int i = 0; i < weaponHolograms.Length; i++)
+                {
+                    if (weaponHolograms[i].name == "WeaponPickUpSinglePrefab")
+                    {
+                        weaponHolograms[i].SetActive(true);
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < weaponHolograms.Length; i++)
+                {
+                    if (weaponHolograms[i].name == "WeaponPickUpFanPrefab")
+                    {
+                        weaponHolograms[i].SetActive(true);
+                    }
+                }
+            }
+            return;
+       }
+
+       if(weaponPrefabs[randomwep].GetComponent<Weapon>().shootmode == Weapon.ShootMode.Burst)
+        {
+            for (int i = 0; i < weaponHolograms.Length; i++)
+            {
+                if (weaponHolograms[i].name == "WeaponPickUpBurstPrefab")
+                {
+                    weaponHolograms[i].SetActive(true);
+                }
+            }
+        }
+
+       if (weaponPrefabs[randomwep].GetComponent<Weapon>().shootmode == Weapon.ShootMode.Rapid)
+        {
+            for (int i = 0; i < weaponHolograms.Length; i++)
+            {
+                if (weaponHolograms[i].name == "WeaponPickUpFullAutoPrefab")
+                {
+                    weaponHolograms[i].SetActive(true);
+                }
+            }
+        }
+
+        HologramScreen.SetActive(true);
+    }
+
+    public void DisableHologram()
+    {
+        for (int i = 0; i < weaponHolograms.Length; i++)
+        {
+          weaponHolograms[i].SetActive(false);
+        }
+        HologramScreen.SetActive(false);
+    }
 }
