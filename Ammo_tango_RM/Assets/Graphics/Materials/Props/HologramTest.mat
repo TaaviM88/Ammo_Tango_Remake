@@ -7,11 +7,11 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HologramMaterial
+  m_Name: HologramTest
   m_Shader: {fileID: -6465566751694194690, guid: e63ae7e35b5a04b48a99377eaafe6e24,
     type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 1
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -23,10 +23,6 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_1351B10C:
-        m_Texture: {fileID: 2800000, guid: 6465b2555c7673a4fa07a6e72c70f874, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_B88D3C59:
         m_Texture: {fileID: 2800000, guid: 6465b2555c7673a4fa07a6e72c70f874, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -115,7 +111,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_1A12F55C: 0.1
     - Vector1_3337F5BD: 0.003
     - _AORemapMax: 1
     - _AORemapMin: 0
@@ -242,12 +237,8 @@ Material:
     - _ZTestModeDistortion: 8
     - _ZWrite: 1
     m_Colors:
-    - Color_4C6A7142: {r: 0.8141109, g: 2.09947, b: 2.4308662, a: 0}
     - Color_55ED9A22: {r: 0.585186, g: 0.06900778, b: 0.1457727, a: 0}
-    - Color_6F818E1F: {r: 0.20754719, g: 0.16299678, b: 0.016642937, a: 0}
     - Color_C41E0F02: {r: 0.9333333, g: 0.5254902, b: 0.7764706, a: 0}
-    - Vector2_88D339AE: {r: 1, g: 1, b: 0, a: 0}
-    - Vector2_F09009D7: {r: 1, g: 3, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
