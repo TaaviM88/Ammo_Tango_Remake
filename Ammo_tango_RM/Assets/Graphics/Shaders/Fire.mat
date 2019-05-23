@@ -8,10 +8,10 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Fire
-  m_Shader: {fileID: -6465566751694194690, guid: 86526c67dd8befa4ab64d3bc21b77c7d,
+  m_Shader: {fileID: -6465566751694194690, guid: 7a15db8aff99d6b4b8ea85e64f4cf4f7,
     type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 4
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
   m_CustomRenderQueue: -1
@@ -47,8 +47,14 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_423602B7: -1.5
     - Vector1_475A3BAB: 1.5
-    - Vector1_D2D85ED4: -1
+    - Vector1_606A6DF: -1.5
+    - Vector1_753DDBC6: 1.5
+    - Vector1_95C47780: 1.5
+    - Vector1_9740E44: -1.5
+    - Vector1_D2D85ED4: -5
+    - Vector1_E8D05EC0: 1.5
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -68,7 +74,10 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_48513DB6: {r: 1.976675, g: 0.4967559, b: 0, a: 0}
     - Color_78F91309: {r: 3.953349, g: 0.9728137, b: 0, a: 0}
+    - Color_AAD516CB: {r: 1.976675, g: 0.4967559, b: 0, a: 0}
+    - Color_CF523C81: {r: 1.976675, g: 0.4967559, b: 0, a: 0}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
