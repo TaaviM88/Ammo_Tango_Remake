@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Hologram
-    second: {fileID: 2100000, guid: 56a2bc2afcfa8964cb2c66f1eae08637, type: 2}
+    second: {fileID: 2100000, guid: 65c3f6e7d0e1a554ab0c9f8536c87d43, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
