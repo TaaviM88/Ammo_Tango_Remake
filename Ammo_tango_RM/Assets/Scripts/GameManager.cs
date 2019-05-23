@@ -33,6 +33,11 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(testMode == true)
+        {
+            Debug.Log("Test Mode ON");
+        }
+
         playerList = new List<GameObject>();
         spawnpoints = new List<GameObject>();
 

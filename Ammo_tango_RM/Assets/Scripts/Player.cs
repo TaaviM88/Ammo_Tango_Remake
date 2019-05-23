@@ -94,149 +94,153 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (pmovement.PlayerId)
+        if(Time.timeScale > 0)
         {
-            #region Player1            
-            case 1:
+            switch (pmovement.PlayerId)
+            {
+                #region Player1            
+                case 1:
 
-                if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Single)
-                {
-                    if (Input.GetButtonDown("Fire1p1"))
+                    if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Single)
                     {
-                        Debug.Log($"Player{PlayerID} is shooting");
-                        ShootMainWeapon();
-                    }
-                }
-
-                if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Burst)
-                {
-                    if (Input.GetButtonDown("Fire1p1"))
-                    {
-                        ShootMainWeapon();
+                        if (Input.GetButtonDown("Fire1p1"))
+                        {
+                            Debug.Log($"Player{PlayerID} is shooting");
+                            ShootMainWeapon();
+                        }
                     }
 
-                }
-                if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Rapid)
-                {
-                    if (Input.GetButton("Fire1p1"))
+                    if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Burst)
                     {
-                        ShootMainWeapon();
+                        if (Input.GetButtonDown("Fire1p1"))
+                        {
+                            ShootMainWeapon();
+                        }
+
                     }
-                }
-
-
-                if (Input.GetButtonDown("Fire2p1"))
-                {
-                    combat.UseSubWeapon();
-                }
-                break;
-            #endregion
-
-            #region Player2            
-            case 2:
-
-                if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Single)
-                {
-                    if (Input.GetButtonDown("Fire1p2"))
+                    if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Rapid)
                     {
-                        Debug.Log($"Player{PlayerID} is shooting");
-                        ShootMainWeapon();
-                    }
-                }
-
-                if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Burst)
-                {
-                    if (Input.GetButtonDown("Fire1p2"))
-                    {
-                        ShootMainWeapon();
+                        if (Input.GetButton("Fire1p1"))
+                        {
+                            ShootMainWeapon();
+                        }
                     }
 
-                }
-                if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Rapid)
-                {
-                    if (Input.GetButton("Fire1p2"))
+
+                    if (Input.GetButtonDown("Fire2p1"))
                     {
-                        ShootMainWeapon();
+                        combat.UseSubWeapon();
                     }
-                }
-
-
-                if (Input.GetButtonDown("Fire2p2"))
-                {
-                    combat.UseSubWeapon();
-                }
-                break;
-            #endregion
-
-            #region Player3            
-            case 3:
-                if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Single)
-                {
-                    if (Input.GetButtonDown("Fire1p3"))
-                    {
-                        ShootMainWeapon();
-                    }
-                }
-
-                if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Burst)
-                {
-                    if (Input.GetButtonDown("Fire1p3"))
-                    {
-                        ShootMainWeapon();
-                    }
-
-                }
-                if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Rapid)
-                {
-                    if (Input.GetButton("Fire1p3"))
-                    {
-                        ShootMainWeapon();
-                    }
-                }
-
-
-                if (Input.GetButtonDown("Fire2p3"))
-                {
-                    combat.UseSubWeapon();
-                }
-                break;
-            #endregion
-
-            #region Player4            
-            case 4:
-                if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Single)
-                {
-                    if (Input.GetButtonDown("Fire1p4"))
-                    {
-                        ShootMainWeapon();
-                    }
-                }
-
-                if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Burst)
-                {
-                    if (Input.GetButtonDown("Fire1p4"))
-                    {
-                        ShootMainWeapon(); ;
-                    }
-
-                }
-                if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Rapid)
-                {
-                    if (Input.GetButton("Fire1p4"))
-                    {
-                        ShootMainWeapon();
-                    }
-                }
-
-
-                if (Input.GetButtonDown("Fire2p4"))
-                {
-                    combat.UseSubWeapon();
-                }
-                break;
+                    break;
                 #endregion
 
+                #region Player2            
+                case 2:
+
+                    if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Single)
+                    {
+                        if (Input.GetButtonDown("Fire1p2"))
+                        {
+                            Debug.Log($"Player{PlayerID} is shooting");
+                            ShootMainWeapon();
+                        }
+                    }
+
+                    if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Burst)
+                    {
+                        if (Input.GetButtonDown("Fire1p2"))
+                        {
+                            ShootMainWeapon();
+                        }
+
+                    }
+                    if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Rapid)
+                    {
+                        if (Input.GetButton("Fire1p2"))
+                        {
+                            ShootMainWeapon();
+                        }
+                    }
+
+
+                    if (Input.GetButtonDown("Fire2p2"))
+                    {
+                        combat.UseSubWeapon();
+                    }
+                    break;
+                #endregion
+
+                #region Player3            
+                case 3:
+                    if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Single)
+                    {
+                        if (Input.GetButtonDown("Fire1p3"))
+                        {
+                            ShootMainWeapon();
+                        }
+                    }
+
+                    if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Burst)
+                    {
+                        if (Input.GetButtonDown("Fire1p3"))
+                        {
+                            ShootMainWeapon();
+                        }
+
+                    }
+                    if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Rapid)
+                    {
+                        if (Input.GetButton("Fire1p3"))
+                        {
+                            ShootMainWeapon();
+                        }
+                    }
+
+
+                    if (Input.GetButtonDown("Fire2p3"))
+                    {
+                        combat.UseSubWeapon();
+                    }
+                    break;
+                #endregion
+
+                #region Player4            
+                case 4:
+                    if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Single)
+                    {
+                        if (Input.GetButtonDown("Fire1p4"))
+                        {
+                            ShootMainWeapon();
+                        }
+                    }
+
+                    if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Burst)
+                    {
+                        if (Input.GetButtonDown("Fire1p4"))
+                        {
+                            ShootMainWeapon(); ;
+                        }
+
+                    }
+                    if (currentWeapon.GetComponent<Weapon>().shootmode == Weapon.ShootMode.Rapid)
+                    {
+                        if (Input.GetButton("Fire1p4"))
+                        {
+                            ShootMainWeapon();
+                        }
+                    }
+
+
+                    if (Input.GetButtonDown("Fire2p4"))
+                    {
+                        combat.UseSubWeapon();
+                    }
+                    break;
+                    #endregion
+
+            }
         }
+
     }
     //Weapon and shooting methods
     public void ShootMainWeapon()
