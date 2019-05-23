@@ -237,8 +237,8 @@ Material:
     - _ZTestModeDistortion: 8
     - _ZWrite: 1
     m_Colors:
-    - Color_4C6A7142: {r: 0.6300626, g: 2.270603, b: 1.69998, a: 0}
-    - Color_6F818E1F: {r: 0.745728, g: 0.9245283, b: 0.9221756, a: 0}
+    - Color_4C6A7142: {r: 0.8141109, g: 2.09947, b: 2.4308662, a: 0}
+    - Color_6F818E1F: {r: 0.20754719, g: 0.16299678, b: 0.016642937, a: 0}
     - Vector2_F09009D7: {r: 1, g: 3, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
