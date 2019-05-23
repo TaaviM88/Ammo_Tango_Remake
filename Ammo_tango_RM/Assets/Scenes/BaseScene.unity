@@ -1415,21 +1415,45 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1910669763}
+    - target: {fileID: 1953120631517668597, guid: febe8e8f6c588c84ba2e6342998574ea,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 4523783610698564845, guid: bc2d4e80123fe5b479bd4f028b8a9392,
+        type: 3}
     - target: {fileID: 4303304439394667580, guid: febe8e8f6c588c84ba2e6342998574ea,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2109525452}
+    - target: {fileID: 4303304439394667580, guid: febe8e8f6c588c84ba2e6342998574ea,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 4523783610698564845, guid: bc2d4e80123fe5b479bd4f028b8a9392,
+        type: 3}
     - target: {fileID: 1267445831488879990, guid: febe8e8f6c588c84ba2e6342998574ea,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1086563343}
+    - target: {fileID: 1267445831488879990, guid: febe8e8f6c588c84ba2e6342998574ea,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 4523783610698564845, guid: bc2d4e80123fe5b479bd4f028b8a9392,
+        type: 3}
     - target: {fileID: 3136518840249312435, guid: febe8e8f6c588c84ba2e6342998574ea,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1528674069}
+    - target: {fileID: 3136518840249312435, guid: febe8e8f6c588c84ba2e6342998574ea,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 4523783610698564845, guid: bc2d4e80123fe5b479bd4f028b8a9392,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: febe8e8f6c588c84ba2e6342998574ea, type: 3}
 --- !u!1001 &6830923278856924924

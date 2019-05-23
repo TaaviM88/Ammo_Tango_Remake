@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 
     //public int playerID;
 
+    public bool testMode = true;
+
     void Awake()
     {
         if(instance = null)
@@ -58,7 +60,15 @@ public class GameManager : MonoBehaviour
 
     public void SetupGame()
     {
-        StartCoroutine(Timer(3));
+        if(testMode == false)
+        {
+            StartCoroutine(Timer(3));
+        }
+        else
+        {
+            timertext.text = "";
+        }
+        
         GetSpawnPoints();
 
     }
