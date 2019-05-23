@@ -1,5 +1,33 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &6906270149664587782
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3207089447279905956}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.1069984, y: 2.8721714, z: 1}
+  m_Center: {x: 0.0071806908, y: 1.582757, z: 0}
+--- !u!114 &1522600403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3207089447279905956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a762904d2a3974da8d8fec5d130b75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyedObject: {fileID: 1648296319023884543, guid: dad542ac2972d9545bd90525aaf30272,
+    type: 3}
+  hp: 500
 --- !u!1 &6751485992262928680
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,11 +38,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7799059015931172109}
   m_Layer: 0
-  m_Name: Wall2tileplasterIntact
+  m_Name: WalltileplasterIntact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7799059015931172109
 Transform:
@@ -31,19 +59,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6906270149664587782
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3207089447279905956}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 6.1069984, y: 2.8721714, z: 1}
-  m_Center: {x: 0.0071806908, y: 1.582757, z: 0}
 --- !u!1001 &6890564373258605997
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55,6 +70,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wall2PlasterTileIntact
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d4a877289f034aa468a7d17240c4d606,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 5370631940874693551, guid: d4a877289f034aa468a7d17240c4d606,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: -6294446924268948256, guid: d4a877289f034aa468a7d17240c4d606,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655398387569491834, guid: d4a877289f034aa468a7d17240c4d606,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 7881062021474804992, guid: d4a877289f034aa468a7d17240c4d606,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: d4a877289f034aa468a7d17240c4d606,
         type: 3}
