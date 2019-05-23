@@ -144,8 +144,12 @@ public class Weapon : MonoBehaviour
     public void PlaySoud()
     {
         //play shooting sound
-        Debug.Log(weaponshotSound);
-        audioM.Play(weaponshotSound.name);
+        if (audioM != null)
+        {
+            Debug.Log(weaponshotSound);
+            audioM.Play(weaponshotSound.name);
+        }
+        
     }
 
     public void ReloadClip()
