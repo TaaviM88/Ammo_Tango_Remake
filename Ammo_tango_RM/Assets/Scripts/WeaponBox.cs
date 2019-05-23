@@ -52,16 +52,17 @@ public class WeaponBox : MonoBehaviour
         if (hasRandom == true)
         {
             objectIsActive = true;
-            Renderer rend = GetComponentInChildren<Renderer>();
+            /*Renderer rend = GetComponentInChildren<Renderer>();
             rend.material.shader = Shader.Find("HDRP/Lit");
-            rend.material.SetColor("_BaseColor", Color.green);
+            rend.material.SetColor("_BaseColor", Color.green);*/
         }
         else
         {
-            Renderer rend = GetComponentInChildren<Renderer>();
+            /*Renderer rend = GetComponentInChildren<Renderer>();
             rend.material.shader = Shader.Find("HDRP/Lit");
             rend.material.SetColor("_BaseColor", Color.clear);
            // GetComponentInChildren<Material>().SetColor("_color", Color.green);
+           */
             timeBTWRespawns -= Time.deltaTime;
         }
 

@@ -12,9 +12,9 @@ public class Destroyer : MonoBehaviour
     private float hp = 1;
     public void TakeDMG( float  dmg)
     {
-        float takenDamage = Mathf.Min(dmg - hp, 0);
+        hp = Mathf.Max(hp-dmg, 0);
 
-        if(takenDamage <= 0)
+        if(hp <= 0)
         {
             Instantiate(destroyedObject, transform.position, transform.rotation);
             Destroy(gameObject);
