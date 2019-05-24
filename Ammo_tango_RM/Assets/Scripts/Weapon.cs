@@ -22,7 +22,7 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     protected float reloadTime = 10f;
     protected float currentReloadTime =0;
-    protected bool isReloading = false;
+    public bool isReloading = false;
 
     [SerializeField]
     protected GameObject bullet;
@@ -125,6 +125,7 @@ public class Weapon : MonoBehaviour
             GameObject bulletClone = Instantiate(bullet, spawnbullet.position, spawnbullet.rotation);
             bulletClone.GetComponent<Bullet>().UpdateDamage(damage);
             bulletClone.GetComponent<Bullet>().UpdatePlayerID(playerID);
+            bulletClone.GetComponent<Bullet>().fadetime = range;
             PlaySoud();
             currentClipAmount -= 1;
             yield return new WaitForSeconds(burstDelay);
@@ -191,5 +192,15 @@ public class Weapon : MonoBehaviour
     public void ShootingPlayerID(int id)
     {
         playerID = id;
+    }
+
+    public float ReturnRange()
+    {
+        return range;
+    }
+
+    public float ReturnReloadTime()
+    {
+        return reloadTime;
     }
 }

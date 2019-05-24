@@ -45,9 +45,19 @@ public class Player : MonoBehaviour
     //Child objects
     private GameObject shield;
     private GameObject weaponSlotObj;
+    private float currentWeaponRange = 1f;
+
+    private float cWeaponReloadTime = 0;
+    public GameObject laserStartPoint;
+    public GameObject laserEndPoint;
+    LineRenderer lineR;
+    RaycastHit hit;
+    public int lengthOfLineRenderer = 2;
     // Start is called before the first frame update
     void Start()
     {
+        lineR = GetComponent<LineRenderer>();
+        lineR.positionCount = lengthOfLineRenderer;
         combat = gameObject.GetComponent<PlayerCombat>();
         pmovement = gameObject.GetComponent<PlayerMovement>();
         PlayerID = pmovement.PlayerId;
@@ -69,7 +79,6 @@ public class Player : MonoBehaviour
         //Weapon Settings
 
         currentWeapon = baseWeapon;
-
         foreach (Transform child in gameObject.GetComponentsInChildren<Transform>())
         {
 
@@ -87,6 +96,7 @@ public class Player : MonoBehaviour
                 clone.transform.parent = weaponSlotObj.transform;
                 currentWeapon = clone;
                 currentWeapon.GetComponent<Weapon>().ShootingPlayerID(pmovement.PlayerId);
+                cWeaponReloadTime = currentWeapon.GetComponent<Weapon>().ReturnReloadTime();
             }
         }
     }
@@ -94,6 +104,26 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (lineR.enabled == true)
+        {
+            lineR.SetPosition(0, laserStartPoint.transform.position);
+            lineR.SetPosition(1, laserEndPoint.transform.position);
+        }
+        
+        /* if (Physics.Raycast(shotspawn.position, transform.forward, currentWeaponRange))
+         {
+             lineR.SetPosition(1, hit.point);
+         }*/
+
+        /*var points = new Vector3[lengthOfLineRenderer];
+        var t = Time.time;
+        for (int i = 0; i < lengthOfLineRenderer; i++)
+        {
+            lineR.SetPosition(i, new Vector3(i * 0.5f, Mathf.Sin(i + t),0.0f));
+        }*/
+
+        
+
         if(Time.timeScale > 0)
         {
             switch (pmovement.PlayerId)
@@ -105,7 +135,7 @@ public class Player : MonoBehaviour
                     {
                         if (Input.GetButtonDown("Fire1p1"))
                         {
-                            Debug.Log($"Player{PlayerID} is shooting");
+                           // Debug.Log($"Player{PlayerID} is shooting");
                             ShootMainWeapon();
                         }
                     }
@@ -141,7 +171,7 @@ public class Player : MonoBehaviour
                     {
                         if (Input.GetButtonDown("Fire1p2"))
                         {
-                            Debug.Log($"Player{PlayerID} is shooting");
+                            //Debug.Log($"Player{PlayerID} is shooting");
                             ShootMainWeapon();
                         }
                     }
@@ -245,20 +275,34 @@ public class Player : MonoBehaviour
     //Weapon and shooting methods
     public void ShootMainWeapon()
     {
+        //currentWeapon.GetComponent<Weapon>() != null 
         //wp.Shoot(shotspawn);
-        if (currentWeapon.GetComponent<Weapon>() != null)
+        if (currentWeapon.GetComponent<Weapon>().isReloading == false)
         {
+            if (lineR.enabled == false)
+            {
+                EnableLaserSight();
+            }
             currentWeapon.GetComponent<Weapon>().Shoot(shotspawn);
+            
         }
         else
         {
-            Debug.Log("Can't find weapon-script");
+            if (lineR.enabled == true)
+            {
+                DisableLaserSight(); 
+                Invoke("EnableLaserSight", cWeaponReloadTime); // ToggleLaserSight(true, cWeaponReloadTime);
+            }
+
+            //Debug.Log("Can't find weapon-script");
         }
     }
 
     public void UpdateWeapon(GameObject newWeapon)
     {
         currentWeapon = newWeapon;
+        currentWeaponRange = currentWeapon.GetComponent<Weapon>().ReturnRange();
+        cWeaponReloadTime = currentWeapon.GetComponent<Weapon>().ReturnReloadTime();
         currentWeapon.GetComponent<Weapon>().ShootingPlayerID(pmovement.PlayerId);
     }
 
@@ -270,6 +314,15 @@ public class Player : MonoBehaviour
     public GameObject ReturnCurrentWeaponObject()
     {
         return currentWeapon;
+    }
+
+    public void DisableLaserSight()
+    {
+        lineR.enabled = false;
+    }
+    public void EnableLaserSight()
+    {
+        lineR.enabled = true;
     }
 
     //Take damage methods and Dying method

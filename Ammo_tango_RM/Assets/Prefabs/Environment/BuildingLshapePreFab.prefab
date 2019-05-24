@@ -171,12 +171,12 @@ PrefabInstance:
     - target: {fileID: -5251147071517493267, guid: efc67c615edc3f048ae5ec1b8f25204a,
         type: 3}
       propertyPath: m_CastShadows
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -6904875581141820109, guid: efc67c615edc3f048ae5ec1b8f25204a,
         type: 3}
       propertyPath: m_CastShadows
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efc67c615edc3f048ae5ec1b8f25204a, type: 3}
@@ -294,7 +294,7 @@ PrefabInstance:
     - target: {fileID: -1504981713932161579, guid: 5f29b9363153a9b48933a03ff703c505,
         type: 3}
       propertyPath: m_CastShadows
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f29b9363153a9b48933a03ff703c505, type: 3}
