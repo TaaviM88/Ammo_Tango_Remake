@@ -53,9 +53,11 @@ public class Player : MonoBehaviour
     LineRenderer lineR;
     RaycastHit hit;
     public int lengthOfLineRenderer = 2;
+    TextMesh txt;
     // Start is called before the first frame update
     void Start()
     {
+        txt = GetComponent<TextMesh>();
         lineR = GetComponent<LineRenderer>();
         lineR.positionCount = lengthOfLineRenderer;
         combat = gameObject.GetComponent<PlayerCombat>();
@@ -97,6 +99,7 @@ public class Player : MonoBehaviour
                 currentWeapon = clone;
                 currentWeapon.GetComponent<Weapon>().ShootingPlayerID(pmovement.PlayerId);
                 cWeaponReloadTime = currentWeapon.GetComponent<Weapon>().ReturnReloadTime();
+                txt.text = currentWeapon.GetComponent<Weapon>().ReturnCurrentClipSize().ToString();
             }
         }
     }
@@ -109,6 +112,7 @@ public class Player : MonoBehaviour
             lineR.SetPosition(0, laserStartPoint.transform.position);
             lineR.SetPosition(1, laserEndPoint.transform.position);
         }
+
         
         /* if (Physics.Raycast(shotspawn.position, transform.forward, currentWeaponRange))
          {
@@ -284,7 +288,13 @@ public class Player : MonoBehaviour
                 EnableLaserSight();
             }
             currentWeapon.GetComponent<Weapon>().Shoot(shotspawn);
-            
+            txt.text = currentWeapon.GetComponent<Weapon>().ReturnCurrentClipSize().ToString();
+
+            if(currentWeapon.GetComponent<Weapon>().isReloading)
+            {
+                DisableLaserSight();
+                Invoke("EnableLaserSight", cWeaponReloadTime);
+            }
         }
         else
         {
@@ -304,6 +314,7 @@ public class Player : MonoBehaviour
         currentWeaponRange = currentWeapon.GetComponent<Weapon>().ReturnRange();
         cWeaponReloadTime = currentWeapon.GetComponent<Weapon>().ReturnReloadTime();
         currentWeapon.GetComponent<Weapon>().ShootingPlayerID(pmovement.PlayerId);
+        txt.text = currentWeapon.GetComponent<Weapon>().ReturnCurrentClipSize().ToString();
     }
 
     public void RollBackBaseWeapon()

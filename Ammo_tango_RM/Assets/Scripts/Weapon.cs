@@ -203,4 +203,9 @@ public class Weapon : MonoBehaviour
     {
         return reloadTime;
     }
+
+    public float ReturnCurrentClipSize()
+    {
+        return currentClipAmount;
+    }
 }
