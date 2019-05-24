@@ -96,7 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponPrefabs: []
   weaponIndex: 0
-  random: 0
+  random: 1
   timeBTWRespawns: 10
   weaponHolograms:
   - {fileID: 2185374068025294171}
@@ -130,6 +130,11 @@ PrefabInstance:
       value: WeaponHologramScreen
       objectReference: {fileID: 0}
     - target: {fileID: 7878415498980566451, guid: f21d2f329c6d21340ba9c87631d512f9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2271363639285478055, guid: f21d2f329c6d21340ba9c87631d512f9,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -189,9 +194,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2271363639285478055, guid: f21d2f329c6d21340ba9c87631d512f9,
+    - target: {fileID: 556571955689113211, guid: f21d2f329c6d21340ba9c87631d512f9,
         type: 3}
-      propertyPath: m_StaticEditorFlags
+      propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5904591143994614636, guid: f21d2f329c6d21340ba9c87631d512f9,
@@ -305,6 +310,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1405178814681427936, guid: aa3eb180b58d7864f98aeab8347a29f9,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa3eb180b58d7864f98aeab8347a29f9, type: 3}
 --- !u!1 &2185374068025294171 stripped
@@ -409,6 +419,11 @@ PrefabInstance:
     - target: {fileID: 92445147444274560, guid: b59b6c73c9fe7694f85467b369255da5,
         type: 3}
       propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834293617469804892, guid: b59b6c73c9fe7694f85467b369255da5,
+        type: 3}
+      propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -517,6 +532,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 347319316970796629, guid: a22b2be63adc5444b97b839e472398c7,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a22b2be63adc5444b97b839e472398c7, type: 3}
 --- !u!1 &1635718704585015579 stripped
@@ -623,6 +643,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7489008367336774348, guid: 73a4b0e142c0e6d48a840b9c79f1eab5,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73a4b0e142c0e6d48a840b9c79f1eab5, type: 3}
 --- !u!1 &933219791891759777 stripped
@@ -702,6 +727,11 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 6bd78f0cb5011d145a58db49e4d801f1,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 6bd78f0cb5011d145a58db49e4d801f1,
+        type: 3}
+      propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
