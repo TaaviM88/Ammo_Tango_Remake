@@ -75,22 +75,24 @@ public class Weapon : MonoBehaviour
     public virtual void Shoot(Transform spawnBullet)
     {
         //&& Time.time > nextFire
-      
-            if (currentClipAmount > 0 && Time.time > nextFire && canShoot)
+      if(!isReloading)
+        {
+                if (currentClipAmount > 0 && Time.time > nextFire && canShoot)
             {
-                if(shootmode == ShootMode.Burst)
+                if (shootmode == ShootMode.Burst)
                 {
                     StartCoroutine("FireBurst", spawnBullet);
                 }
                 else
                 {
                     GameObject bulletClone = Instantiate(bullet, spawnBullet.position, spawnBullet.rotation);
+                    bulletClone.GetComponent<Bullet>().SetupFadeTime(range);
                     bulletClone.GetComponent<Bullet>().UpdateDamage(damage);
                     bulletClone.GetComponent<Bullet>().UpdatePlayerID(playerID);
                     PlaySoud();
                     currentClipAmount -= 1;
                 }
-                
+
                 nextFire = Time.time + fireRate;
                 canShoot = false;
                 Invoke("ChangeCanShoot", fireRate);
@@ -101,6 +103,8 @@ public class Weapon : MonoBehaviour
                 Invoke("ReloadClip", reloadTime);
                 isReloading = true;
             }
+        }
+            
 
         //bulletClone.GetComponent<Rigidbody>().AddForce(transform.forward * (Time.deltaTime * 60),ForceMode.Impulse);
         /*GameObject bul = PoolManager.Instance.GetPlayer1Bullet();
@@ -123,9 +127,10 @@ public class Weapon : MonoBehaviour
         for (int i = 0; i < burst; i++)
         {
             GameObject bulletClone = Instantiate(bullet, spawnbullet.position, spawnbullet.rotation);
+            bulletClone.GetComponent<Bullet>().SetupFadeTime(range);
             bulletClone.GetComponent<Bullet>().UpdateDamage(damage);
             bulletClone.GetComponent<Bullet>().UpdatePlayerID(playerID);
-            bulletClone.GetComponent<Bullet>().fadetime = range;
+            
             PlaySoud();
             currentClipAmount -= 1;
             yield return new WaitForSeconds(burstDelay);

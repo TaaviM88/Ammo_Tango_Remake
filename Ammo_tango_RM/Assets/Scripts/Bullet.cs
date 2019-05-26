@@ -24,6 +24,7 @@ public class Bullet : MonoBehaviour {
     {
         rb = GetComponent<Rigidbody>();
         collisionEvents = new List<ParticleCollisionEvent>();
+
     }
 
     // Update is called once per frame
@@ -158,5 +159,11 @@ public class Bullet : MonoBehaviour {
     public void UpdatePlayerID(int id)
     {
         playerID = id;
+    }
+
+    public void SetupFadeTime(float t)
+    {
+        fadetime = t;
+        Debug.Log(t);
     }
  }

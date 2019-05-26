@@ -290,6 +290,10 @@ public class Player : MonoBehaviour
             currentWeapon.GetComponent<Weapon>().Shoot(shotspawn);
             txt.text = currentWeapon.GetComponent<Weapon>().ReturnCurrentClipSize().ToString();
 
+            if(currentWeapon.GetComponent<Weapon>().ReturnCurrentClipSize() <= 0)
+            {
+                Invoke("ReloadTXT", cWeaponReloadTime);
+            }
            /* if(currentWeapon.GetComponent<Weapon>().isReloading)
             {
                 DisableLaserSight();
@@ -315,6 +319,7 @@ public class Player : MonoBehaviour
         cWeaponReloadTime = currentWeapon.GetComponent<Weapon>().ReturnReloadTime();
         currentWeapon.GetComponent<Weapon>().ShootingPlayerID(pmovement.PlayerId);
         txt.text = currentWeapon.GetComponent<Weapon>().ReturnCurrentClipSize().ToString();
+        CancelInvoke("ReloadTXT");
     }
 
     public void RollBackBaseWeapon()
@@ -336,7 +341,11 @@ public class Player : MonoBehaviour
         lineR.enabled = true;
     }
     */
-
+    
+    public void ReloadTXT()
+    {
+        txt.text = currentWeapon.GetComponent<Weapon>().ReturnCurrentClipSize().ToString();
+    }
     //Take damage methods and Dying method
     public void TakeDamageShield(float damage)
     {
