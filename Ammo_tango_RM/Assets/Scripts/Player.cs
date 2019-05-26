@@ -50,16 +50,16 @@ public class Player : MonoBehaviour
     private float cWeaponReloadTime = 0;
     public GameObject laserStartPoint;
     public GameObject laserEndPoint;
-    LineRenderer lineR;
+   /* LineRenderer lineR;
     RaycastHit hit;
-    public int lengthOfLineRenderer = 2;
+    public int lengthOfLineRenderer = 2;*/
     TextMesh txt;
     // Start is called before the first frame update
     void Start()
     {
         txt = GetComponent<TextMesh>();
-        lineR = GetComponent<LineRenderer>();
-        lineR.positionCount = lengthOfLineRenderer;
+       /* lineR = GetComponent<LineRenderer>();
+        lineR.positionCount = lengthOfLineRenderer;*/
         combat = gameObject.GetComponent<PlayerCombat>();
         pmovement = gameObject.GetComponent<PlayerMovement>();
         PlayerID = pmovement.PlayerId;
@@ -107,11 +107,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (lineR.enabled == true)
+       /* if (lineR.enabled == true)
         {
             lineR.SetPosition(0, laserStartPoint.transform.position);
             lineR.SetPosition(1, laserEndPoint.transform.position);
-        }
+        }*/
 
         
         /* if (Physics.Raycast(shotspawn.position, transform.forward, currentWeaponRange))
@@ -283,26 +283,26 @@ public class Player : MonoBehaviour
         //wp.Shoot(shotspawn);
         if (currentWeapon.GetComponent<Weapon>().isReloading == false)
         {
-            if (lineR.enabled == false)
+           /* if (lineR.enabled == false)
             {
                 EnableLaserSight();
-            }
+            }*/
             currentWeapon.GetComponent<Weapon>().Shoot(shotspawn);
             txt.text = currentWeapon.GetComponent<Weapon>().ReturnCurrentClipSize().ToString();
 
-            if(currentWeapon.GetComponent<Weapon>().isReloading)
+           /* if(currentWeapon.GetComponent<Weapon>().isReloading)
             {
                 DisableLaserSight();
                 Invoke("EnableLaserSight", cWeaponReloadTime);
-            }
+            }*/
         }
         else
         {
-            if (lineR.enabled == true)
+            /*if (lineR.enabled == true)
             {
                 DisableLaserSight(); 
                 Invoke("EnableLaserSight", cWeaponReloadTime); // ToggleLaserSight(true, cWeaponReloadTime);
-            }
+            }*/
 
             //Debug.Log("Can't find weapon-script");
         }
@@ -327,7 +327,7 @@ public class Player : MonoBehaviour
         return currentWeapon;
     }
 
-    public void DisableLaserSight()
+   /* public void DisableLaserSight()
     {
         lineR.enabled = false;
     }
@@ -335,6 +335,7 @@ public class Player : MonoBehaviour
     {
         lineR.enabled = true;
     }
+    */
 
     //Take damage methods and Dying method
     public void TakeDamageShield(float damage)
