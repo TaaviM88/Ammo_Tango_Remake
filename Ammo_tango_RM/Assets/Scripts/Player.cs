@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
     private float cWeaponReloadTime = 0;
     public GameObject laserStartPoint;
     public GameObject laserEndPoint;
+
    /* LineRenderer lineR;
     RaycastHit hit;
     public int lengthOfLineRenderer = 2;*/
@@ -281,16 +282,19 @@ public class Player : MonoBehaviour
     {
         //currentWeapon.GetComponent<Weapon>() != null 
         //wp.Shoot(shotspawn);
-        if (currentWeapon.GetComponent<Weapon>().isReloading == false)
+        wp = currentWeapon.GetComponent<Weapon>();
+        if (wp.isReloading == false)
         {
            /* if (lineR.enabled == false)
             {
                 EnableLaserSight();
             }*/
             currentWeapon.GetComponent<Weapon>().Shoot(shotspawn);
-            txt.text = currentWeapon.GetComponent<Weapon>().ReturnCurrentClipSize().ToString();
+            wp.Shoot(shotspawn);
+            txt.text = wp.ReturnCurrentClipSize().ToString();
+           
 
-            if(currentWeapon.GetComponent<Weapon>().ReturnCurrentClipSize() <= 0)
+            if(wp.ReturnCurrentClipSize() <= 0)
             {
                 Invoke("ReloadTXT", cWeaponReloadTime);
             }
@@ -300,31 +304,33 @@ public class Player : MonoBehaviour
                 Invoke("EnableLaserSight", cWeaponReloadTime);
             }*/
         }
-        else
+       /* else
         {
-            /*if (lineR.enabled == true)
+            if (lineR.enabled == true)
             {
                 DisableLaserSight(); 
                 Invoke("EnableLaserSight", cWeaponReloadTime); // ToggleLaserSight(true, cWeaponReloadTime);
-            }*/
+            }
 
             //Debug.Log("Can't find weapon-script");
-        }
+        }*/
     }
 
     public void UpdateWeapon(GameObject newWeapon)
     {
         currentWeapon = newWeapon;
-        currentWeaponRange = currentWeapon.GetComponent<Weapon>().ReturnRange();
-        cWeaponReloadTime = currentWeapon.GetComponent<Weapon>().ReturnReloadTime();
-        currentWeapon.GetComponent<Weapon>().ShootingPlayerID(pmovement.PlayerId);
-        txt.text = currentWeapon.GetComponent<Weapon>().ReturnCurrentClipSize().ToString();
+        wp = currentWeapon.GetComponent<Weapon>();
+        currentWeaponRange = wp.ReturnRange();
+        cWeaponReloadTime = wp.ReturnReloadTime();
+        wp.ShootingPlayerID(pmovement.PlayerId);
+        txt.text = wp.ReturnCurrentClipSize().ToString();
         CancelInvoke("ReloadTXT");
     }
 
     public void RollBackBaseWeapon()
     {
         currentWeapon = baseWeapon;
+        wp = currentWeapon.GetComponent<Weapon>();
     }
 
     public GameObject ReturnCurrentWeaponObject()
