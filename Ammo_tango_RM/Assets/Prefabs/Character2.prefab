@@ -4876,7 +4876,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6190561362341448937}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.34, y: 3.55, z: 0}
+  m_LocalPosition: {x: 3.6, y: 3.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1640218842425498163}
@@ -4958,8 +4958,6 @@ MonoBehaviour:
   currentWeapon: {fileID: 6433864071158248637, guid: 36238772c9b577c408473a1b33a05c59,
     type: 3}
   ragdoll: {fileID: 2543124322274293351, guid: 9f57c317428a2f44fb29b301cded8952, type: 3}
-  laserStartPoint: {fileID: 0}
-  laserEndPoint: {fileID: 0}
 --- !u!136 &1640218842776696934
 CapsuleCollider:
   m_ObjectHideFlags: 0

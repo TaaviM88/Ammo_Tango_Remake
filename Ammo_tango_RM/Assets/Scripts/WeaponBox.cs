@@ -50,7 +50,7 @@ public class WeaponBox : MonoBehaviour
             // GetComponentInChildren<Material>().SetColor("_color", Color.green);
             randomwep = Random.Range(0, weaponPrefabs.Count);
 
-            Debug.Log(randomwep);
+            //Debug.Log(randomwep);
             hasRandom = true;
             ChangeHologram();
         }
