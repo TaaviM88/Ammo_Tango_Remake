@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public static float timer = 0f;
     public TextMeshProUGUI timertext;
     public TextMeshProUGUI winnertext;
+    public GameObject resultsUI;
 
     //public int playerID;
 
@@ -56,16 +57,24 @@ public class GameManager : MonoBehaviour
         //timertext.GetComponent<TextMeshProUGUI>();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void UpdateWinner()
     {
+        resultsUI.SetActive(true);
+        winnertext.text = PlayerSelect.GetWinner() + " wins!";
 
+        new WaitForSecondsRealtime(5);
+
+        GetSpawnPoints();
     }
-
-
 
     public void SetupGame()
     {
+        if(resultsUI.activeSelf == true)
+        {
+            resultsUI.SetActive(false);
+        }
+
         if(testMode == false)
         {
             StartCoroutine(StartTimer(3));
@@ -77,6 +86,11 @@ public class GameManager : MonoBehaviour
         
         GetSpawnPoints();
 
+    }
+
+    public void ResetStage()
+    {
+        
     }
 
     IEnumerator StartTimer(int time)
@@ -122,7 +136,6 @@ public class GameManager : MonoBehaviour
         {
             return player;
         }
-        Debug.Log(null);
         return null;
     }
 

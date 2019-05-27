@@ -79,8 +79,7 @@ public class PlayerSelect : MonoBehaviour
 
         if(count == 1)
         {
-            //SHOW RESULTS MAN
-            GameManager.instance.winnertext.text = GetWinner() + " wins!";
+            FindObjectOfType<GameManager>().UpdateWinner();
             return true;
         }
         else

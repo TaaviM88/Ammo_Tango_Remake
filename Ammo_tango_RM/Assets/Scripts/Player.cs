@@ -51,6 +51,8 @@ public class Player : MonoBehaviour
     public GameObject laserStartPoint;
     public GameObject laserEndPoint;
 
+    bool dead = false;
+
    /* LineRenderer lineR;
     RaycastHit hit;
     public int lengthOfLineRenderer = 2;*/
@@ -396,28 +398,32 @@ public class Player : MonoBehaviour
         Debug.Log($"{gameObject.name} Takes damage {damage} Healt left {currentHealth}");
         if (currentHealth <= 0)
         {
-            Debug.Log($"{gameObject.name} Dies");
+            
             Die();
         }
     }
 
     public void Die()
     {
-        //dying stuff here
-        Debug.Log($"{gameObject.name} dies.");
-        cmTargets.RemoveMember(gameObject.transform);
-        PlayerSelect.ingameplayers[pmovement.PlayerId - 1] = null;
-        Debug.Log(PlayerSelect.VictoryCheck());
-        Instantiate(ragdoll,transform.position,transform.rotation);
-        Destroy(gameObject);
-
-        if(PlayerSelect.VictoryCheck() == true)
+        if(dead == false)
         {
-            Time.timeScale = 0.1f;
-            new WaitForSecondsRealtime(2);
-            Time.timeScale = 1;
-            //Debug.Log(PlayerSelect.GetWinner());
+            //dying stuff here
+            cmTargets.RemoveMember(gameObject.transform);
+            PlayerSelect.ingameplayers[pmovement.PlayerId - 1] = null;
+            Instantiate(ragdoll, transform.position, transform.rotation);
+            Destroy(gameObject);
+
+            if (PlayerSelect.VictoryCheck() == true)
+            {
+                Time.timeScale = 0.1f;
+                new WaitForSecondsRealtime(2);
+                Time.timeScale = 1;
+                //Debug.Log(PlayerSelect.GetWinner());
+            }
+
+            dead = true;
         }
+        
     }
     private void OnTriggerEnter(Collider other)
     {

@@ -28,23 +28,6 @@ public class UIManager : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void ShowResults()
-    {
-        if(hudElements[8].gameObject.activeSelf == false)
-        {
-            hudElements[8].gameObject.SetActive(true);
-        }
-        else
-        {
-            hudElements[8].gameObject.SetActive(false);
-        }
-    }
 
     public void UpdateShieldBar(float amount,int pID)
     {
