@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 451e3cdab76e81d44ae50cce1ecf0dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: 1
+  characterName: 4
   currentHealth: 10
   MaxHp: 100
   currentShield: 0
@@ -144,7 +144,7 @@ MonoBehaviour:
     type: 3}
   currentWeapon: {fileID: 6433864071158248637, guid: 36238772c9b577c408473a1b33a05c59,
     type: 3}
-  ragdoll: {fileID: 3256384766124064118, guid: 2c5b7108ce1d26043903fa6b01ba1340, type: 3}
+  ragdoll: {fileID: 2105328316361416041, guid: 4bfce462857a1a844b94b3f2a39a67b2, type: 3}
   laserStartPoint: {fileID: 0}
   laserEndPoint: {fileID: 0}
 --- !u!136 &8311338245803849995
