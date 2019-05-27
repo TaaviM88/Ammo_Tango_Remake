@@ -14,4 +14,9 @@ public class ChangeScene : MonoBehaviour
     {
         SceneManager.LoadScene(scene, LoadSceneMode.Additive);
     }
+
+    public static void ResetScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }

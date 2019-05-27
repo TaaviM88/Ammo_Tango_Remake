@@ -6,7 +6,7 @@ using Cinemachine;
 public class Player : MonoBehaviour
 {
 
-    public enum CharacterName { None, Slippy, John, Darius, character4 }
+    public enum CharacterName { None, Slippy, John, Darius, Anya }
     public CharacterName characterName = CharacterName.None;
     [Header("Player stats")]
 

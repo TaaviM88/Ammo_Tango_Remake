@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI timertext;
     public TextMeshProUGUI winnertext;
     public GameObject resultsUI;
+    public GameObject setupUI;
 
     //public int playerID;
 
@@ -65,15 +66,14 @@ public class GameManager : MonoBehaviour
 
         new WaitForSecondsRealtime(5);
 
+        ChangeScene.ResetScene();
+        setupUI.SetActive(false);
+        resultsUI.SetActive(false);
         GetSpawnPoints();
     }
 
     public void SetupGame()
     {
-        if(resultsUI.activeSelf == true)
-        {
-            resultsUI.SetActive(false);
-        }
 
         if(testMode == false)
         {
@@ -86,11 +86,6 @@ public class GameManager : MonoBehaviour
         
         GetSpawnPoints();
 
-    }
-
-    public void ResetStage()
-    {
-        
     }
 
     IEnumerator StartTimer(int time)
