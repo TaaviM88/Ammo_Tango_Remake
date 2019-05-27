@@ -13,7 +13,7 @@ public class PlayerSelect : MonoBehaviour
     void Start()
     {
         //PlayerId = gameObject.GetComponent<PlayerMovement>().PlayerId;
-        ingameplayers = new GameObject[3];
+        ingameplayers = new GameObject[4];
     }
 
     // Update is called once per frame
