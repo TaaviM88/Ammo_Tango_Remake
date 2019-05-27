@@ -24,6 +24,7 @@ public class Bullet : MonoBehaviour {
     {
         rb = GetComponent<Rigidbody>();
         collisionEvents = new List<ParticleCollisionEvent>();
+        rb.AddForce(-transform.forward * (Time.deltaTime * force), ForceMode.Impulse);
 
     }
 
@@ -40,10 +41,10 @@ public class Bullet : MonoBehaviour {
         // Debug.Log($"Bullet id ={playerID}");
     }
 
-    private void FixedUpdate()
+  private void FixedUpdate()
     {
         //rb.AddForce(Vector3.forward * (Time.deltaTime * speed), ForceMode.Impulse);
-        rb.AddForce( - transform.forward * (Time.deltaTime * force), ForceMode.Impulse);
+        rb.AddForce(-transform.forward * force, ForceMode.Impulse); //(Time.deltaTime * force), ForceMode.Impulse);
         //rb.velocity = new Vector3(transform.forward.x * (Time.deltaTime * speed), transform.forward.y * (Time.deltaTime * speed), transform.forward.z * (Time.deltaTime * speed));
 
     }
@@ -164,6 +165,5 @@ public class Bullet : MonoBehaviour {
     public void SetupFadeTime(float t)
     {
         fadetime = t;
-        Debug.Log(t);
     }
  }

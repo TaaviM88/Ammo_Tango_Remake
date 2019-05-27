@@ -41,7 +41,7 @@ public class Weapon : MonoBehaviour
     private int playerID = 0;
 
     AudioManager audioM;
-
+    Bullet bulletScript;
     public virtual void Awake()
     {
         if(weaponshotSound == null)
@@ -86,9 +86,10 @@ public class Weapon : MonoBehaviour
                 else
                 {
                     GameObject bulletClone = Instantiate(bullet, spawnBullet.position, spawnBullet.rotation);
-                    bulletClone.GetComponent<Bullet>().SetupFadeTime(range);
-                    bulletClone.GetComponent<Bullet>().UpdateDamage(damage);
-                    bulletClone.GetComponent<Bullet>().UpdatePlayerID(playerID);
+                    bulletScript = bulletClone.GetComponent<Bullet>();
+                    bulletScript.SetupFadeTime(range);
+                    bulletScript.UpdateDamage(damage);
+                    bulletScript.UpdatePlayerID(playerID);
                     PlaySound();
                     currentClipAmount -= 1;
                 }
@@ -127,9 +128,10 @@ public class Weapon : MonoBehaviour
         for (int i = 0; i < burst; i++)
         {
             GameObject bulletClone = Instantiate(bullet, spawnbullet.position, spawnbullet.rotation);
-            bulletClone.GetComponent<Bullet>().SetupFadeTime(range);
-            bulletClone.GetComponent<Bullet>().UpdateDamage(damage);
-            bulletClone.GetComponent<Bullet>().UpdatePlayerID(playerID);
+            bulletScript = bulletClone.GetComponent<Bullet>();
+            bulletScript.SetupFadeTime(range);
+            bulletScript.UpdateDamage(damage);
+            bulletScript.UpdatePlayerID(playerID);
             
             PlaySound();
             currentClipAmount -= 1;
