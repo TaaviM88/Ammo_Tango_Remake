@@ -8,10 +8,6 @@ public class ShieldEffect : MonoBehaviour
     public float fadeTime = 2f;
     // Start is called before the first frame update
 
-    private void Start()
-    {
-        //gameObject.SetActive(false);
-    }
 
     private void OnEnable()
     {
