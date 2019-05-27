@@ -54,10 +54,10 @@ public class Weapon : MonoBehaviour
         audioM = FindObjectOfType<AudioManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+
+  /*  void Update()
     {
-        /*if(currentReloadTime > 0 && currentClipAmount <= 0)
+       if(currentReloadTime > 0 && currentClipAmount <= 0)
         {
             currentReloadTime -= Time.deltaTime;
         }
@@ -65,12 +65,12 @@ public class Weapon : MonoBehaviour
         {
             ReloadClip();
         }
-        */
-        /*if (Time.time > nextFire)
+        
+        if (Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
-        }*/
-    }
+        }
+    }*/
 
     public virtual void Shoot(Transform spawnBullet)
     {
@@ -89,7 +89,7 @@ public class Weapon : MonoBehaviour
                     bulletClone.GetComponent<Bullet>().SetupFadeTime(range);
                     bulletClone.GetComponent<Bullet>().UpdateDamage(damage);
                     bulletClone.GetComponent<Bullet>().UpdatePlayerID(playerID);
-                    PlaySoud();
+                    PlaySound();
                     currentClipAmount -= 1;
                 }
 
@@ -131,7 +131,7 @@ public class Weapon : MonoBehaviour
             bulletClone.GetComponent<Bullet>().UpdateDamage(damage);
             bulletClone.GetComponent<Bullet>().UpdatePlayerID(playerID);
             
-            PlaySoud();
+            PlaySound();
             currentClipAmount -= 1;
             yield return new WaitForSeconds(burstDelay);
         }
@@ -142,12 +142,9 @@ public class Weapon : MonoBehaviour
         return this.name;
     }
 
-    public GameObject ReturnBullet()
-    {
-        return bullet;
-    }
 
-    public void PlaySoud()
+
+    public void PlaySound()
     {
         //play shooting sound
         if (audioM != null)
