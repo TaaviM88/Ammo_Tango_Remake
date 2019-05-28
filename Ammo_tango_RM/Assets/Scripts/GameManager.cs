@@ -21,16 +21,16 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        if(instance = null)
-        {
-            instance = this;
-        }
-        else if(instance != null)
+        if(instance != null)
         {
             Destroy(gameObject);
         }
-
-        DontDestroyOnLoad(gameObject);
+        else
+        {
+            instance = this;
+        }
+        
+        //DontDestroyOnLoad(gameObject);
     }
 
     // Start is called before the first frame update
@@ -61,15 +61,22 @@ public class GameManager : MonoBehaviour
 
     public void UpdateWinner()
     {
+        //Time.timeScale = 0.001f;
         resultsUI.SetActive(true);
         winnertext.text = PlayerSelect.GetWinner() + " wins!";
 
-        new WaitForSecondsRealtime(5);
+        Debug.Log(PlayerSelect.GetWinnerID());
+        Points.AddPoint(PlayerSelect.GetWinnerID());
+        Debug.Log(Points.p1);
+        Debug.Log(Points.p2);
+        
+        StartCoroutine(Timer(5));
+        
 
-        ChangeScene.ResetScene();
-        setupUI.SetActive(false);
-        resultsUI.SetActive(false);
-        GetSpawnPoints();
+        
+        
+        
+
     }
 
     public void SetupGame()
@@ -85,6 +92,19 @@ public class GameManager : MonoBehaviour
         }
         
         GetSpawnPoints();
+
+    }
+
+    public IEnumerator Timer(int time)
+    {
+        
+        yield return new WaitForSecondsRealtime(time);
+        resultsUI.SetActive(false);
+        //Time.timeScale = 1;
+
+        ChangeScene.ResetScene();
+        setupUI.SetActive(false);
+        SetupGame();
 
     }
 

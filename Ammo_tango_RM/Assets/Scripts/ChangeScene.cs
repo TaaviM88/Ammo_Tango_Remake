@@ -17,6 +17,11 @@ public class ChangeScene : MonoBehaviour
 
     public static void ResetScene()
     {
+        SceneManager.UnloadSceneAsync(1);
+        //SceneManager.SetActiveScene(SceneManager.GetSceneByName("BaseScene"));
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene("Level1Scene", LoadSceneMode.Additive);
+
+        
     }
 }

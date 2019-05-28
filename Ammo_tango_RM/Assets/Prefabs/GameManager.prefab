@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6830923278910740038
 Transform:
   m_ObjectHideFlags: 0
@@ -46,6 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timertext: {fileID: 0}
+  winnertext: {fileID: 0}
+  resultsUI: {fileID: 0}
+  setupUI: {fileID: 0}
   testMode: 1
 --- !u!114 &6830923278910740039
 MonoBehaviour:

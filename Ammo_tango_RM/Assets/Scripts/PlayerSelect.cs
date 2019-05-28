@@ -105,6 +105,23 @@ public class PlayerSelect : MonoBehaviour
         return winner;
     }
 
+    public static int GetWinnerID()
+    {
+        int winner = 0;
+
+        foreach (GameObject player in ingameplayers)
+        {
+            if (player != null)
+            {
+                winner = player.GetComponent<PlayerMovement>().PlayerId;
+            }
+        }
+
+
+
+        return winner;
+    }
+
     public void RemovePlayer()
     {
         switch (PlayerId)
