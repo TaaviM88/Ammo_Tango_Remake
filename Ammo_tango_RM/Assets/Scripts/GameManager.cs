@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public static float timer = 0f;
     public TextMeshProUGUI timertext;
     public TextMeshProUGUI winnertext;
+    public TextMeshProUGUI pointstext;
     public GameObject resultsUI;
     public GameObject setupUI;
 
@@ -56,6 +57,8 @@ public class GameManager : MonoBehaviour
 
         uIManager = gameObject.GetComponent<UIManager>();
         //timertext.GetComponent<TextMeshProUGUI>();
+
+        pointstext.text = "WINS\nP1: " + Points.p1 + "\nP2: " + Points.p2 + "\nP3: " + Points.p3 + "\nP4: " + Points.p4;
     }
 
 
@@ -69,7 +72,9 @@ public class GameManager : MonoBehaviour
         Points.AddPoint(PlayerSelect.GetWinnerID());
         Debug.Log(Points.p1);
         Debug.Log(Points.p2);
-        
+
+        pointstext.text = "WINS\nP1: " + Points.p1 + "\nP2: " + Points.p2 + "\nP3: " + Points.p3 + "\nP4: " + Points.p4;
+
         StartCoroutine(Timer(5));
         
 
@@ -188,28 +193,32 @@ public class GameManager : MonoBehaviour
     {
         if (playerList[0].GetComponent<PlayerMovement>() != null)
         {
-            Instantiate(playerList[0]).GetComponent<PlayerMovement>().UpdatePlayerID(1);
+            Instantiate(playerList[0]);
+            playerList[0].GetComponent<PlayerMovement>().UpdatePlayerID(1);
             PlayerSelect.ingameplayers[0] = playerList[0].gameObject;
             playerList[0].transform.position = spawnpoints[0].transform.position;
         }
 
         if (playerList[1].GetComponent<PlayerMovement>() != null)
         {
-            Instantiate(playerList[1]).GetComponent<PlayerMovement>().UpdatePlayerID(2);
+            Instantiate(playerList[1]);
+            playerList[1].GetComponent<PlayerMovement>().UpdatePlayerID(2);
             PlayerSelect.ingameplayers[1] = playerList[1].gameObject;
             playerList[1].transform.position = spawnpoints[1].transform.position;
         }
 
         if (playerList[2].GetComponent<PlayerMovement>() != null)
         {
-            Instantiate(playerList[2]).GetComponent<PlayerMovement>().UpdatePlayerID(3);
+            Instantiate(playerList[2]);
+            playerList[2].GetComponent<PlayerMovement>().UpdatePlayerID(3);
             PlayerSelect.ingameplayers[2] = playerList[2].gameObject;
             playerList[2].transform.position = spawnpoints[2].transform.position;
         }
 
         if (playerList[3].GetComponent<PlayerMovement>() != null)
         {
-            Instantiate(playerList[3]).GetComponent<PlayerMovement>().UpdatePlayerID(4);
+            Instantiate(playerList[3]);
+            playerList[3].GetComponent<PlayerMovement>().UpdatePlayerID(4);
             PlayerSelect.ingameplayers[3] = playerList[3].gameObject;
             playerList[3].transform.position = spawnpoints[3].transform.position;
         }
