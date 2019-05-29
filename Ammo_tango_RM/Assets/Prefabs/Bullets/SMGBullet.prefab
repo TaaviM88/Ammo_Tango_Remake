@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadetime: 1
-  force: 150
+  force: 10
   damage: 5
   particleLauncher: {fileID: 0}
   bulletHitParticleEffect: {fileID: 8407727787147934367, guid: ac425ce97212e9c4cbfc967a1c8ffdce,

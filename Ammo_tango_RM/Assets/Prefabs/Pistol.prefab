@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  range: 0.2
+  range: 0.7
   fireRate: 0.3
   maxClipSize: 10
   currentClipAmount: 5

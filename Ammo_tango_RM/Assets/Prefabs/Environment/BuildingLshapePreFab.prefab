@@ -11,8 +11,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.11999999, y: 0.00090005976, z: 0.059999984}
-  m_Center: {x: 0.059999995, y: 0.12871, z: 0.029999992}
+  m_Size: {x: 0.12, y: 0.12660415, z: 0.059999995}
+  m_Center: {x: 0.06, y: 0.18525666, z: 0.030000001}
 --- !u!1 &4262719995324054756
 GameObject:
   m_ObjectHideFlags: 0
@@ -68,11 +68,37 @@ MeshCollider:
   m_GameObject: {fileID: 5190913511896102812}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 3212721272013590850, guid: 5f29b9363153a9b48933a03ff703c505, type: 3}
+--- !u!65 &9108751437951969369
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5190913511896102812}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.11992425, y: 0.12660415, z: 0.06}
+  m_Center: {x: -0.058540426, y: 0.18525669, z: 0.030000001}
+--- !u!65 &2548247307202857264
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5190913511896102812}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.23906012, y: 0.13114002, z: 0.060000084}
+  m_Center: {x: 0.0004699345, y: 0.062450033, z: 0.029999977}
 --- !u!65 &356037277305270144
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -84,8 +110,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.0009000227, y: 0.12004003, z: 0.059999987}
-  m_Center: {x: 0.11955479, y: 0.06302001, z: 0.029999994}
+  m_Size: {x: 0.23653173, y: 0.12004003, z: 0.059999995}
+  m_Center: {x: 0.0012632847, y: 0.06302001, z: 0.029999994}
 --- !u!1001 &4262719995660410527
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -102,6 +128,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: efc67c615edc3f048ae5ec1b8f25204a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -2431287621342110146, guid: efc67c615edc3f048ae5ec1b8f25204a,
         type: 3}
@@ -167,6 +198,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6951557332847000833, guid: efc67c615edc3f048ae5ec1b8f25204a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.98
       objectReference: {fileID: 0}
     - target: {fileID: -5251147071517493267, guid: efc67c615edc3f048ae5ec1b8f25204a,
         type: 3}

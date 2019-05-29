@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 428066474101883925}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.782, y: 0, z: 0}
+  m_LocalPosition: {x: 4.42, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9121535215233838799}
@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadetime: 2
-  force: 150
+  force: 25
   damage: 0
   particleLauncher: {fileID: 0}
   bulletHitParticleEffect: {fileID: 8407727787147934367, guid: ac425ce97212e9c4cbfc967a1c8ffdce,

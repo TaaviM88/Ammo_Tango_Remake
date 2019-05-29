@@ -44,11 +44,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 100
-  range: 1
+  range: 2.5
   fireRate: 0.5
   maxClipSize: 4
   currentClipAmount: 4
   reloadTime: 3
+  isReloading: 0
   bullet: {fileID: 428066474101883925, guid: d8a3d64cfeda3f6499104363fc9b6a4c, type: 3}
   weaponshotSound: {fileID: 0}
   shootmode: 1
