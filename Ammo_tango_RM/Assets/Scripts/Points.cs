@@ -11,6 +11,8 @@ public class Points : MonoBehaviour
     public static int p3 = 0;
     public static int p4 = 0;
 
+    public static int round = 0;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -47,6 +49,11 @@ public class Points : MonoBehaviour
         {
             p4++;
         }
+    }
+
+    public static void AddRound()
+    {
+        round++;
     }
 
 }

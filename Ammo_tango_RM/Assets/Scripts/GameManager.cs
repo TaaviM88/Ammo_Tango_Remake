@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,8 +14,10 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI timertext;
     public TextMeshProUGUI winnertext;
     public TextMeshProUGUI pointstext;
+    public TextMeshProUGUI roundtext;
     public GameObject resultsUI;
     public GameObject setupUI;
+    public int starttimer = 5;
 
     //public int playerID;
 
@@ -58,7 +61,7 @@ public class GameManager : MonoBehaviour
         uIManager = gameObject.GetComponent<UIManager>();
         //timertext.GetComponent<TextMeshProUGUI>();
 
-        pointstext.text = "WINS\nP1: " + Points.p1 + "\nP2: " + Points.p2 + "\nP3: " + Points.p3 + "\nP4: " + Points.p4;
+        
     }
 
 
@@ -68,26 +71,42 @@ public class GameManager : MonoBehaviour
         resultsUI.SetActive(true);
         winnertext.text = PlayerSelect.GetWinner() + " wins!";
 
-        Debug.Log(PlayerSelect.GetWinnerID());
         Points.AddPoint(PlayerSelect.GetWinnerID());
-        Debug.Log(Points.p1);
-        Debug.Log(Points.p2);
 
         pointstext.text = "WINS\nP1: " + Points.p1 + "\nP2: " + Points.p2 + "\nP3: " + Points.p3 + "\nP4: " + Points.p4;
 
-        StartCoroutine(Timer(5));
-        
+        if (Points.p1 >= 3 || Points.p2 >= 3 || Points.p3 >= 3 || Points.p4 >= 3)
+        {
+            winnertext.text = PlayerSelect.GetWinner() + " is the ultimate winner!";
+            StartCoroutine(Timer(starttimer));
+            SceneManager.LoadScene("MenuScene");
+        }
 
-        
-        
-        
+        StartCoroutine(Timer(starttimer));
 
     }
 
     public void SetupGame()
     {
+        int count = 0;
+        foreach(GameObject player in playerList)
+        {
+            if(player.GetComponent<PlayerMovement>() != null)
+            {
+                count++;
+            }
+        }
 
-        if(testMode == false)
+        if(count == 0)
+        {
+            ChangeScene.ResetScene();
+        }
+
+        Points.AddRound();
+        roundtext.text = "Round " + Points.round;
+        pointstext.text = "WINS\nP1: " + Points.p1 + "\nP2: " + Points.p2 + "\nP3: " + Points.p3 + "\nP4: " + Points.p4;
+
+        if (testMode == false)
         {
             StartCoroutine(StartTimer(3));
         }
@@ -97,6 +116,7 @@ public class GameManager : MonoBehaviour
         }
         
         GetSpawnPoints();
+        
 
     }
 
