@@ -43,9 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6846a673e07dca4da8edcdc7776d93f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0.1
+  damage: 2
   range: 1
-  fireRate: 0.06
+  fireRate: 0.05
   maxClipSize: 45
   currentClipAmount: 45
   reloadTime: 2
