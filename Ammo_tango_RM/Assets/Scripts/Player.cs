@@ -357,6 +357,7 @@ public class Player : MonoBehaviour
     {
         if(dead == false)
         {
+            dead = true;
             //dying stuff here
             cmTargets.RemoveMember(gameObject.transform);
             PlayerSelect.ingameplayers[pmovement.PlayerId - 1] = null;
@@ -371,7 +372,7 @@ public class Player : MonoBehaviour
                 //Debug.Log(PlayerSelect.GetWinner());
             }
 
-            dead = true;
+            
         }
         
     }
