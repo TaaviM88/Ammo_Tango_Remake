@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
     {
         //Time.timeScale = 0.001f;
         resultsUI.SetActive(true);
-        winnertext.text = PlayerSelect.GetWinner() + " wins!";
+        winnertext.text = PlayerSelect.GetWinner() + " (P" + PlayerSelect.GetWinnerID() + ") wins!";
 
         Points.AddPoint(PlayerSelect.GetWinnerID());
 
@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
 
         if (Points.p1 >= 3 || Points.p2 >= 3 || Points.p3 >= 3 || Points.p4 >= 3)
         {
-            winnertext.text = PlayerSelect.GetWinner() + " is the ultimate winner!";
+            winnertext.text = PlayerSelect.GetWinner() + " (P" + PlayerSelect.GetWinnerID() + ") is the ultimate winner!";
             StartCoroutine(Timer(starttimer));
             SceneManager.LoadScene("MenuScene");
         }
