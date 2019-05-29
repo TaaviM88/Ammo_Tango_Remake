@@ -16,7 +16,7 @@ MonoBehaviour:
     type: 2}
   m_RenderingPathDefaultCameraFrameSettings:
     bitDatas:
-      data1: 69284256022301
+      data1: 69284222467869
       data2: 4539628424389459968
   m_RenderingPathDefaultBakedOrCustomReflectionFrameSettings:
     bitDatas:
@@ -29,11 +29,11 @@ MonoBehaviour:
   m_RenderPipelineSettings:
     supportShadowMask: 1
     supportSSR: 0
-    supportSSAO: 1
-    supportSubsurfaceScattering: 1
+    supportSSAO: 0
+    supportSubsurfaceScattering: 0
     increaseSssSampleCount: 0
     supportVolumetrics: 1
-    increaseResolutionOfVolumetrics: 1
+    increaseResolutionOfVolumetrics: 0
     supportLightLayers: 0
     supportDistortion: 1
     supportTransparentBackface: 1
@@ -74,11 +74,11 @@ MonoBehaviour:
       directionalShadowsDepthBits: 32
       shadowQuality: 0
       punctualLightShadowAtlas:
-        shadowAtlasResolution: 4096
+        shadowAtlasResolution: 512
         shadowAtlasDepthBits: 32
         useDynamicViewportRescale: 1
       areaLightShadowAtlas:
-        shadowAtlasResolution: 4096
+        shadowAtlasResolution: 512
         shadowAtlasDepthBits: 32
         useDynamicViewportRescale: 1
     decalSettings:
