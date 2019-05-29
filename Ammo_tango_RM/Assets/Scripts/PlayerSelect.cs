@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerSelect : MonoBehaviour
 {
@@ -30,7 +31,6 @@ public class PlayerSelect : MonoBehaviour
             case 1:
                 #region player1
                 GameManager.playerList[0] = character.gameObject;
-
                 break;
             #endregion
 

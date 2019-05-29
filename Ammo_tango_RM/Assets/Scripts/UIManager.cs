@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     //hudElements = portraits + name
     [SerializeField]
     public GameObject[] hudElements;
+    public Sprite[] playericons;
 
     // Start is called before the first frame update
     void Start()
@@ -75,15 +76,36 @@ public class UIManager : MonoBehaviour
     }
     public void UpdateHealthBar(float amount, int pID)
     {
+        
 
         switch (pID)
         {
+
             case 1:
                 if (!(sliders[1].activeSelf))
                 {
                     sliders[1].SetActive(true);
                     hudElements[0].SetActive(true);
                     hudElements[1].SetActive(true);
+
+                    if(GameManager.playerList[0].GetComponent<Player>().characterName == Player.CharacterName.Slippy)
+                    {
+                        hudElements[0].GetComponent<Image>().sprite = playericons[0];
+                    }
+                    if (GameManager.playerList[0].GetComponent<Player>().characterName == Player.CharacterName.John)
+                    {
+                        hudElements[0].GetComponent<Image>().sprite = playericons[1];
+                    }
+                    if (GameManager.playerList[0].GetComponent<Player>().characterName == Player.CharacterName.Darius)
+                    {
+                        hudElements[0].GetComponent<Image>().sprite = playericons[2];
+                    }
+                    if (GameManager.playerList[0].GetComponent<Player>().characterName == Player.CharacterName.Anya)
+                    {
+                        hudElements[0].GetComponent<Image>().sprite = playericons[3];
+                    }
+
+
                 }
 
                 sliderlist[1].SetValueWithoutNotify(amount);
@@ -96,6 +118,23 @@ public class UIManager : MonoBehaviour
                     sliders[3].SetActive(true);
                     hudElements[2].SetActive(true);
                     hudElements[3].SetActive(true);
+
+                    if (GameManager.playerList[1].GetComponent<Player>().characterName == Player.CharacterName.Slippy)
+                    {
+                        hudElements[2].GetComponent<Image>().sprite = playericons[0];
+                    }
+                    if (GameManager.playerList[1].GetComponent<Player>().characterName == Player.CharacterName.John)
+                    {
+                        hudElements[2].GetComponent<Image>().sprite = playericons[1];
+                    }
+                    if (GameManager.playerList[1].GetComponent<Player>().characterName == Player.CharacterName.Darius)
+                    {
+                        hudElements[2].GetComponent<Image>().sprite = playericons[2];
+                    }
+                    if (GameManager.playerList[1].GetComponent<Player>().characterName == Player.CharacterName.Anya)
+                    {
+                        hudElements[2].GetComponent<Image>().sprite = playericons[3];
+                    }
                 }
                 sliderlist[3].SetValueWithoutNotify(amount);
                 break;
@@ -106,6 +145,23 @@ public class UIManager : MonoBehaviour
                     sliders[5].SetActive(true);
                     hudElements[4].SetActive(true);
                     hudElements[5].SetActive(true);
+
+                    if (GameManager.playerList[2].GetComponent<Player>().characterName == Player.CharacterName.Slippy)
+                    {
+                        hudElements[4].GetComponent<Image>().sprite = playericons[0];
+                    }
+                    if (GameManager.playerList[2].GetComponent<Player>().characterName == Player.CharacterName.John)
+                    {
+                        hudElements[4].GetComponent<Image>().sprite = playericons[1];
+                    }
+                    if (GameManager.playerList[2].GetComponent<Player>().characterName == Player.CharacterName.Darius)
+                    {
+                        hudElements[4].GetComponent<Image>().sprite = playericons[2];
+                    }
+                    if (GameManager.playerList[2].GetComponent<Player>().characterName == Player.CharacterName.Anya)
+                    {
+                        hudElements[4].GetComponent<Image>().sprite = playericons[3];
+                    }
                 }
 
                 sliderlist[5].SetValueWithoutNotify(amount);
@@ -117,6 +173,23 @@ public class UIManager : MonoBehaviour
                     sliders[7].SetActive(true);
                     hudElements[6].SetActive(true);
                     hudElements[7].SetActive(true);
+
+                    if (GameManager.playerList[3].GetComponent<Player>().characterName == Player.CharacterName.Slippy)
+                    {
+                        hudElements[6].GetComponent<Image>().sprite = playericons[0];
+                    }
+                    if (GameManager.playerList[3].GetComponent<Player>().characterName == Player.CharacterName.John)
+                    {
+                        hudElements[6].GetComponent<Image>().sprite = playericons[1];
+                    }
+                    if (GameManager.playerList[3].GetComponent<Player>().characterName == Player.CharacterName.Darius)
+                    {
+                        hudElements[6].GetComponent<Image>().sprite = playericons[2];
+                    }
+                    if (GameManager.playerList[3].GetComponent<Player>().characterName == Player.CharacterName.Anya)
+                    {
+                        hudElements[6].GetComponent<Image>().sprite = playericons[3];
+                    }
                 }
                 sliderlist[7].SetValueWithoutNotify(amount);
                 break;

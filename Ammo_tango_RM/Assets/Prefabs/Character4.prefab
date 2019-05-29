@@ -63,7 +63,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3494158356065815940}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.6, y: 3.55, z: 0}
+  m_LocalPosition: {x: -0.07, y: 3.55, z: -4.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8311338245454977886}
@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e37f5de20e2f4084b97165cb16472bf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerId: 1
+  PlayerId: 4
   MovementSpeed: 7.5
   anime: {fileID: 3183075403360644432}
 --- !u!54 &3494158356065815943
@@ -5229,6 +5229,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3494158356065815942}
     m_Modifications:
+    - target: {fileID: 3114078246815318965, guid: 465cfd30b97003f4c85e438976b820c4,
+        type: 3}
+      propertyPath: m_Name
+      value: ShieldEffect
+      objectReference: {fileID: 0}
     - target: {fileID: 3114078246815318961, guid: 465cfd30b97003f4c85e438976b820c4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5283,11 +5288,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3114078246815318965, guid: 465cfd30b97003f4c85e438976b820c4,
-        type: 3}
-      propertyPath: m_Name
-      value: ShieldEffect
       objectReference: {fileID: 0}
     - target: {fileID: 3114078246815318963, guid: 465cfd30b97003f4c85e438976b820c4,
         type: 3}
