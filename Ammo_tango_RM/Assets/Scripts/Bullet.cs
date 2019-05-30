@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
 
     [Header("Bullet Settings")]
-    private float btimer;
+    private float btimer = 0;
     public float fadetime;
     
     [SerializeField]
@@ -25,7 +25,6 @@ public class Bullet : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         collisionEvents = new List<ParticleCollisionEvent>();
         rb.AddForce(-transform.forward * force, ForceMode.Impulse);
-
     }
 
     // Update is called once per frame
